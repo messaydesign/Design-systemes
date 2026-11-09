@@ -37,7 +37,10 @@ import { Input } from "@/components/ui/input"
         <InlineCode>FieldControl</InlineCode> reserves Figma’s 48px touch height around 32px controls ·{" "}
         <InlineCode>FieldMessage</InlineCode> below for helper or status text · <InlineCode>FieldCounter</InlineCode> for
         character limits. Group fields with <InlineCode>FieldGroup</InlineCode> and name a group with{" "}
-        <InlineCode>FieldSet</InlineCode> + <InlineCode>FieldLegend</InlineCode>.
+        <InlineCode>FieldSet</InlineCode> + <InlineCode>FieldLegend</InlineCode>. The shadcn parts are all here too:{" "}
+        <InlineCode>FieldContent</InlineCode> (stacks a label and description beside a checkbox or switch),{" "}
+        <InlineCode>FieldTitle</InlineCode>, <InlineCode>FieldSeparator</InlineCode> and{" "}
+        <InlineCode>FieldError</InlineCode>, so shadcn form examples work unchanged.
       </P>
 
       <H2>Examples</H2>
@@ -50,10 +53,11 @@ import { Input } from "@/components/ui/input"
 
       <H3>FieldMessage or FieldError?</H3>
       <P>
-        Use <InlineCode>FieldMessage</InlineCode>: it follows the Field’s validation, so one element switches between helper
-        text and the error. <InlineCode>FieldError</InlineCode> is the same component fixed to the error status, kept for
-        shadcn compatibility. Pass <InlineCode>status</InlineCode> to show info, success or warning messages without
-        changing the control.
+        Use <InlineCode>FieldMessage</InlineCode> when one element should switch between helper text and the error: it
+        follows the Field’s validation. Use <InlineCode>FieldError</InlineCode> — shadcn’s API — when errors come from a
+        form library: pass <InlineCode>errors=&#123;[&#123; message &#125;]&#125;</InlineCode> (duplicates are removed,
+        several render as a list) or children. Pass <InlineCode>status</InlineCode> to FieldMessage to show info, success or
+        warning messages without changing the control.
       </P>
       <ComponentPreview name="field-message-status" align="start" />
 
@@ -93,7 +97,9 @@ import { Input } from "@/components/ui/input"
       <PropsTable
         rows={[
           { name: "Field validation", type: '"none" | "error" | "warning" | "success"', default: '"none"', description: "Colours child controls; default status for FieldMessage." },
-          { name: "Field orientation", type: '"vertical" | "horizontal"', default: '"vertical"', description: "Label above or beside the control." },
+          { name: "Field orientation", type: '"vertical" | "horizontal" | "responsive"', default: '"vertical"', description: "Label above or beside the control; responsive switches at the FieldGroup’s @md container width." },
+          { name: "FieldError errors", type: "Array<{ message?: string } | undefined>", description: "Errors from a form library (shadcn API); children work too." },
+          { name: "FieldLegend variant", type: '"legend" | "label"', default: '"legend"', description: "Legend (SemiBold 16) or label style." },
           { name: "Field disabled", type: "boolean", description: "Sets data-disabled for styling; disable the control itself too." },
           { name: "FieldLabel requirement", type: "ReactNode", description: "Right-aligned “Required” / “Optional”." },
           { name: "FieldMessage status", type: '"helper" | "info" | "success" | "warning" | "error"', description: "Overrides the Field’s validation. Renders nothing without children." },

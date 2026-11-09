@@ -4,7 +4,8 @@
   "title": "Button Group",
   "description": "Connected Buttons with single seams and outer corners only.",
   "dependencies": [
-    "class-variance-authority"
+    "class-variance-authority",
+    "radix-ui"
   ],
   "registryDependencies": [
     "utils",

@@ -4,7 +4,8 @@
   "title": "Tabs",
   "description": "Line or Pill tabs, horizontal or vertical.",
   "dependencies": [
-    "radix-ui"
+    "radix-ui",
+    "class-variance-authority"
   ],
   "registryDependencies": [
     "utils",

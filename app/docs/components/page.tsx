@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 import { DocHeader } from "@/components/docs/blocks"
-import { COMPONENTS } from "@/components/docs/docs-nav"
+import { COMPONENTS } from "@/lib/docs/inventory"
 
 export const metadata: Metadata = { title: "Components" }
 

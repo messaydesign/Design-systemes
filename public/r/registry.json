@@ -854,7 +854,9 @@
       "type": "registry:ui",
       "title": "Input Group",
       "description": "Bordered input with text, icon and button add-ons (search, password, URL).",
-      "dependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils",
         "http://localhost:3000/r/theme.json",
@@ -1354,7 +1356,9 @@
       "type": "registry:ui",
       "title": "Empty",
       "description": "Empty / no-results / error state with recovery action.",
-      "dependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils",
         "http://localhost:3000/r/theme.json"
@@ -1391,7 +1395,8 @@
       "title": "Tabs",
       "description": "Line or Pill tabs, horizontal or vertical.",
       "dependencies": [
-        "radix-ui"
+        "radix-ui",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils",
@@ -1495,7 +1500,8 @@
       "title": "Sidebar",
       "description": "shadcn-compatible sidebar: offcanvas or icon collapse, floating/inset variants, Sheet on mobile.",
       "dependencies": [
-        "radix-ui"
+        "radix-ui",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils",
@@ -1521,7 +1527,8 @@
       "title": "Button Group",
       "description": "Connected Buttons with single seams and outer corners only.",
       "dependencies": [
-        "class-variance-authority"
+        "class-variance-authority",
+        "radix-ui"
       ],
       "registryDependencies": [
         "utils",

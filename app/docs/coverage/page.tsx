@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 import { DocHeader, H2, P } from "@/components/docs/blocks"
-import { figmaUrl, GROUPS, INVENTORY, sectionsFor, type Status } from "@/lib/docs/inventory"
+import { figmaUrl, GROUPS, INVENTORY, pageFor, sectionsFor, type Status } from "@/lib/docs/inventory"
 import { Badge } from "@/registry/main/ui/badge"
 
 export const metadata: Metadata = { title: "Coverage" }
@@ -52,7 +52,7 @@ export default function CoveragePage() {
                   <tr key={item.slug} className="border-t border-border align-top">
                     <th scope="row" className="px-3 py-2 text-start font-medium">
                       {item.status === "documented" ? (
-                        <Link className="underline" href={`/docs/components/${item.slug}`}>{item.name}</Link>
+                        <Link className="underline" href={pageFor(item)}>{item.name}</Link>
                       ) : (
                         item.name
                       )}

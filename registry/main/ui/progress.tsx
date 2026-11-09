@@ -11,12 +11,13 @@ import { cn } from "@/lib/utils"
  * value={null} renders Figma's Indeterminate state (a 1/3 bar that slides,
  * static when reduced motion is preferred).
  */
-function Progress({ className, value, ...props }: React.ComponentProps<typeof ProgressPrimitive.Root>) {
+function Progress({ className, value, max = 100, ...props }: React.ComponentProps<typeof ProgressPrimitive.Root>) {
   const indeterminate = value === null || value === undefined
   return (
     <ProgressPrimitive.Root
       data-slot="progress"
       value={value}
+      max={max}
       className={cn("relative h-2 w-full overflow-hidden rounded-full bg-[var(--surface-pressed)]", className)}
       {...props}
     >
@@ -24,9 +25,9 @@ function Progress({ className, value, ...props }: React.ComponentProps<typeof Pr
         data-slot="progress-indicator"
         className={cn(
           "h-full rounded-full bg-primary transition-[width] duration-300 motion-reduce:transition-none",
-          indeterminate && "w-1/3 motion-safe:animate-[progress-indeterminate_1.4s_ease-in-out_infinite]"
+          indeterminate && "w-1/3 motion-safe:animate-[progress-indeterminate_1.4s_ease-in-out_infinite] rtl:[animation-direction:reverse]"
         )}
-        style={indeterminate ? undefined : { width: `${Math.min(100, Math.max(0, value ?? 0))}%` }}
+        style={indeterminate ? undefined : { width: `${Math.min(100, Math.max(0, ((value ?? 0) / max) * 100))}%` }}
       />
     </ProgressPrimitive.Root>
   )

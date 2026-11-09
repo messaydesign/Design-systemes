@@ -187,8 +187,8 @@ export function TableOfContents() {
     <nav aria-label="On this page" className="flex flex-col gap-2 text-sm">
       <p className="font-medium">On this page</p>
       <ul className="flex flex-col gap-1">
-        {items.map((item) => (
-          <li key={item.id} className={item.level === 3 ? "ps-3" : undefined}>
+        {items.map((item, i) => (
+          <li key={`${item.id}-${i}`} className={item.level === 3 ? "ps-3" : undefined}>
             <a
               href={`#${item.id}`}
               aria-current={active === item.id ? "location" : undefined}

@@ -6,6 +6,32 @@ so teams can review them with `npx shadcn@latest add @main/<name> --diff`.
 
 ## Unreleased
 
+### Breaking — aligned with shadcn/ui
+- Theme: shadcn tokens hold the values (`--primary`, `--muted-foreground`,
+  `--border`, `--input`, `--ring`, `--chart-*`, `--sidebar-*`); brand
+  extensions are `--primary-hover/-active/-strong/-subtle`; Figma names are
+  aliases. `--muted-foreground` is now #525252 and `--input` #929292. — **theme**, **style**
+- Alert `status` → `variant` (`error` → `destructive`; new neutral `default`). — **alert**
+- TabsList `variant`: `"default"` (Figma Pill, now the default) | `"line"`. — **tabs**
+- PaginationLink `size` uses Button sizes (`"page"` → `"xs"`). — **pagination**
+- Sidebar follows shadcn's API (SidebarProvider/Sidebar with side, variant,
+  collapsible; rail, sub-menus, actions, badges). — **sidebar**
+
+### Added
+- `style` item: `npx shadcn init <registry>/r/style.json`.
+- shadcn parts and props across Field, InputGroup, Item, Empty, Popover,
+  Avatar, AlertDialog, ButtonGroup, Select, Switch, Toggle, ToggleGroup,
+  NativeSelect, NavigationMenu, menus (`inset`), Badge (`ghost`, `link`).
+- Docs pages for all 48 components; shadcn-style docs navigation. The
+  playground pages are replaced by examples on each page.
+
+### Fixed
+- Progress respects `max` and mirrors its indeterminate animation in RTL. — **progress**
+- Slider passes `aria-label` / `aria-labelledby` to the thumb. — **slider**
+- Native Select supports standalone warning/success borders. — **native-select**
+- Menus: `inset={false}` no longer indents. — **dropdown-menu**, **context-menu**, **menubar**
+- Registry dependencies (components and npm packages) are derived from imports.
+
 ### Added
 - Docs site at `/docs`: Introduction, Installation, Theming and tokens,
   Coverage matrix, Contributing, and full pages for Button, Input, Select,

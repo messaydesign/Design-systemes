@@ -31,6 +31,7 @@ function NativeSelect({
           "hover:border-[var(--input-outline-hover)] hover:bg-accent",
           "focus-visible:border-[var(--input-outline-focus)] focus-visible:bg-[var(--input-surface)]",
           "aria-invalid:border-[var(--status-error-border)]",
+          "data-[validation=warning]:border-[var(--status-warning-border)] data-[validation=success]:border-[var(--status-success-border)]",
           "disabled:cursor-not-allowed disabled:border-[var(--disabled-border)] disabled:bg-[var(--input-surface-disabled)] disabled:text-[var(--disabled-text)]",
           shape === "rounded" ? "rounded-[var(--radius-input-pill)] ps-[15px]" : "rounded-lg",
           className

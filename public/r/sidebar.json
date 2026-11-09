@@ -4,7 +4,8 @@
   "title": "Sidebar",
   "description": "shadcn-compatible sidebar: offcanvas or icon collapse, floating/inset variants, Sheet on mobile.",
   "dependencies": [
-    "radix-ui"
+    "radix-ui",
+    "class-variance-authority"
   ],
   "registryDependencies": [
     "utils",

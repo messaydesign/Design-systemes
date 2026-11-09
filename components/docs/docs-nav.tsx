@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { INVENTORY } from "@/lib/docs/inventory"
+import { COMPONENTS } from "@/lib/docs/inventory"
 import { Button } from "@/registry/main/ui/button"
 import { NavItem } from "@/registry/main/ui/nav-item"
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/registry/main/ui/sheet"
@@ -18,13 +18,6 @@ export const GETTING_STARTED = [
   { href: "/docs/coverage", label: "Figma coverage" },
   { href: "/docs/contributing", label: "Contributing" },
 ]
-
-/* Parts documented on another page (as shadcn does for Field). */
-const COVERED_ELSEWHERE = new Set(["Field Set", "Field Group", "Counter"])
-
-export const COMPONENTS = INVENTORY.filter(
-  (item) => (item.status === "documented" || item.status === "built") && !COVERED_ELSEWHERE.has(item.name)
-).sort((a, b) => a.name.localeCompare(b.name))
 
 const compact = "h-9 text-sm md:text-sm"
 

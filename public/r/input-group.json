@@ -3,7 +3,9 @@
   "name": "input-group",
   "title": "Input Group",
   "description": "Bordered input with text, icon and button add-ons (search, password, URL).",
-  "dependencies": [],
+  "dependencies": [
+    "class-variance-authority"
+  ],
   "registryDependencies": [
     "utils",
     "http://localhost:3000/r/theme.json",

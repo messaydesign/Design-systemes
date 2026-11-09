@@ -11,7 +11,8 @@ import { cn } from "@/lib/utils"
  * fill, 24px thumb (surface fill, 1px input outline) with a 48px hit area.
  * Focus: 1px ring with a 2px offset. Disabled: grey fill, disabled stroke.
  * Radix provides arrows/Home/End/Page keys, ordered range thumbs and RTL.
- * Pass aria-label (or thumbLabels for ranges) and show the value as text.
+ * Pass aria-label / aria-labelledby (applied to the thumb), or thumbLabels
+ * for ranges, and show the value as text.
  */
 
 function Slider({
@@ -21,6 +22,9 @@ function Slider({
   min = 0,
   max = 100,
   thumbLabels,
+  "aria-label": ariaLabel,
+  "aria-labelledby": ariaLabelledBy,
+  "aria-describedby": ariaDescribedBy,
   ...props
 }: React.ComponentProps<typeof SliderPrimitive.Root> & {
   /** Accessible names per thumb, e.g. ["Minimum", "Maximum"]. */
@@ -58,7 +62,10 @@ function Slider({
         <SliderPrimitive.Thumb
           key={index}
           data-slot="slider-thumb"
-          aria-label={thumbLabels?.[index]}
+          // Radix renders role="slider" on each thumb, so names go there.
+          aria-label={thumbLabels?.[index] ?? (values.length === 1 ? ariaLabel : undefined)}
+          aria-labelledby={thumbLabels?.[index] ? undefined : ariaLabelledBy}
+          aria-describedby={ariaDescribedBy}
           className={cn(
             "relative block size-6 shrink-0 cursor-grab rounded-full border border-input bg-[var(--input-surface)] outline-none active:cursor-grabbing",
             "after:absolute after:top-1/2 after:left-1/2 after:size-12 after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full",

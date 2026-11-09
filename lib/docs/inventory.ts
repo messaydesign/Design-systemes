@@ -99,28 +99,28 @@ export const INVENTORY: InventoryItem[] = [
     "variant, size, corner, selected, loading, loadingText, asChild",
     "6 variants × Default/Hover/Pressed/Selected/Disabled; XS–XXL and icon sizes; Default/Soft/Pill corners; loading; link",
     undefined, ["Corners", "Selected", "As link"]),
-  i("Actions", "Button Group", "187:913", ["button-group"], "built",
+  i("Actions", "Button Group", "187:913", ["button-group"], "documented",
     "orientation, corner", "Horizontal/Vertical × Default/Soft/Pill × LTR/RTL", "Docs page"),
-  i("Actions", "Split Button", "187:980", ["split-button"], "built",
+  i("Actions", "Split Button", "187:980", ["split-button"], "documented",
     "corner, loading, disabled; Action + Trigger parts", "Default/Disabled/Loading × corners × LTR/RTL", "Docs page"),
-  i("Actions", "Toggle", "187:1033", ["toggle"], "built",
-    "variant, corner, pressed/defaultPressed", "Default/Outline × Selected × Default/Hover/Pressed/Focus/Disabled", "Docs page"),
-  i("Actions", "Toggle Group", "187:1072", ["toggle-group"], "built",
-    "type, orientation, variant, corner", "Single/Multiple × Horizontal/Vertical", "Docs page"),
+  i("Actions", "Toggle", "187:1033", ["toggle"], "documented",
+    "variant, size, corner, pressed/defaultPressed", "Default/Outline × Selected × Default/Hover/Pressed/Focus/Disabled", "Docs page"),
+  i("Actions", "Toggle Group", "187:1072", ["toggle-group"], "documented",
+    "type, orientation, variant, size, spacing, corner", "Single/Multiple × Horizontal/Vertical", "Docs page"),
 
   // 03 · Forms
-  i("Forms", "Label", "187:19106", ["label"], "built", "htmlFor", "Field label Required/Optional", "Docs page"),
+  i("Forms", "Label", "187:19106", ["label"], "documented", "htmlFor", "Field label Required/Optional", "Docs page"),
   i("Forms", "Input", "187:17973", ["input", "field"], "documented",
     "shape, aria-invalid, data-validation, readOnly, disabled", "Default/Hover/Focus/Pressed/Read only/Disabled × validation × 8px/Rounded",
     "Docs page; Comfortable 48px density"),
-  i("Forms", "Textarea", "187:18173", ["textarea"], "built", "shape, validation", "Textarea control states", "Docs page"),
+  i("Forms", "Textarea", "187:18173", ["textarea"], "documented", "shape, validation", "Textarea control states", "Docs page"),
   i("Forms", "Field", "187:17007", ["field"], "documented",
     "validation, orientation; Label, Control, Description, Message, Error, Counter", "Text field Validation None/Error/Warning/Success; Field message statuses", "Docs page"),
-  i("Forms", "Field Set", "187:17060", ["field"], "built", "FieldSet, FieldLegend, FieldGroup orientation", "Vertical/Horizontal", "Docs page"),
-  i("Forms", "Field Group", "187:17290", ["field"], "built", "orientation", "Vertical/Horizontal", "Docs page"),
-  i("Forms", "Counter", "187:19162", ["field"], "built", "value, max, disabled", "Normal/Limit reached/Exceeded/Disabled", "Docs page"),
-  i("Forms", "Validation Summary", "187:19189", ["validation-summary"], "built", "status; Title, Description, List", "Info/Success/Warning/Error", "Docs page"),
-  i("Forms", "Input Group", "187:17143", ["input-group"], "built", "Text, Input, Button parts", "Text/Icon/Button/Combined add-ons", "Docs page"),
+  i("Forms", "Field Set", "187:17060", ["field"], "documented", "FieldSet, FieldLegend, FieldGroup orientation", "Vertical/Horizontal", "Documented on the Field page"),
+  i("Forms", "Field Group", "187:17290", ["field"], "documented", "orientation", "Vertical/Horizontal", "Documented on the Field page"),
+  i("Forms", "Counter", "187:19162", ["field"], "documented", "value, max, disabled", "Normal/Limit reached/Exceeded/Disabled", "Documented on the Field page"),
+  i("Forms", "Validation Summary", "187:19189", ["validation-summary"], "documented", "status; Title, Description, List", "Info/Success/Warning/Error", "Docs page"),
+  i("Forms", "Input Group", "187:17143", ["input-group"], "documented", "Text, Input, Button parts", "Text/Icon/Button/Combined add-ons", "Docs page"),
   i("Forms", "Password Field", "187:18071", ["input-group"], "partial", "Composed from Input Group", "Masked/Partial/Visible × states", "Dedicated password-reveal component and eye icon"),
   i("Forms", "Search Field", "187:18122", ["input-group"], "partial", "Composed from Input Group", "Search control states", "Clear button"),
   i("Forms", "Number Field", "187:18220", [], "design-only", "—", "Number control with steppers", "Code and docs"),
@@ -129,64 +129,64 @@ export const INVENTORY: InventoryItem[] = [
   i("Forms", "Date Field", "187:18381", [], "design-only", "—", "Date control states", "Code (needs Calendar) and docs"),
   i("Forms", "Date Range Field", "187:18432", [], "design-only", "—", "Date range control states", "Code (needs Calendar) and docs"),
   i("Forms", "Select", "187:17180", ["select"], "documented", "shape; Trigger, Content, Item(showCheck), Label", "Closed/Open, option states", "Docs page"),
-  i("Forms", "Native Select", "187:17367", ["native-select"], "built", "shape", "Native select states", "Docs page"),
+  i("Forms", "Native Select", "187:17367", ["native-select"], "documented", "shape", "Native select states", "Docs page"),
   i("Forms", "Option List", "187:16897", ["select"], "partial", "Inside Select content", "Option list states", "Standalone listbox"),
   i("Forms", "Combobox", "187:17233", [], "design-only", "—", "Closed/Open/Filtered/Empty", "Code (needs cmdk) and docs"),
   i("Forms", "Multiselect", "187:18589", [], "design-only", "—", "Chips inside control, open list", "Code (needs cmdk) and docs"),
-  i("Forms", "Input OTP", "187:18640", ["input-otp"], "built", "maxLength, value, disabled; Group, Slot, Separator", "Empty/Partial/Filled × states", "Docs page; Loading state"),
-  i("Forms", "Checkbox", "187:18800", ["checkbox"], "built", "checked (incl. indeterminate), disabled", "Unchecked/Checked/Indeterminate × states", "Docs page"),
+  i("Forms", "Input OTP", "187:18640", ["input-otp"], "documented", "maxLength, value, disabled; Group, Slot, Separator", "Empty/Partial/Filled × states", "Docs page; Loading state"),
+  i("Forms", "Checkbox", "187:18800", ["checkbox"], "documented", "checked (incl. indeterminate), disabled", "Unchecked/Checked/Indeterminate × states", "Docs page"),
   i("Forms", "Checkbox Group", "187:18907", ["checkbox", "field"], "partial", "Composed with FieldSet", "Group layouts × validation", "Dedicated group component"),
-  i("Forms", "Radio Group", "187:18962", ["radio-group"], "built", "value, orientation, disabled", "Group layouts × validation", "Docs page"),
-  i("Forms", "Switch", "187:18870", ["switch"], "built", "checked, disabled", "Off/On × states", "Docs page"),
-  i("Forms", "Slider", "187:17420", ["slider"], "built", "value, min, max, step, thumbLabels, disabled", "Single/Range × Default/Focus/Disabled", "Docs page"),
-  i("Forms", "Chip", "187:19046", ["chip"], "built", "onRemove, removeLabel, disabled", "Default/Hover/Focus/Pressed/Disabled", "Docs page"),
+  i("Forms", "Radio Group", "187:18962", ["radio-group"], "documented", "value, orientation, disabled", "Group layouts × validation", "Docs page"),
+  i("Forms", "Switch", "187:18870", ["switch"], "documented", "checked, disabled", "Off/On × states", "Docs page"),
+  i("Forms", "Slider", "187:17420", ["slider"], "documented", "value, min, max, step, thumbLabels, disabled", "Single/Range × Default/Focus/Disabled", "Docs page"),
+  i("Forms", "Chip", "187:19046", ["chip"], "documented", "onRemove, removeLabel, disabled", "Default/Hover/Focus/Pressed/Disabled", "Docs page"),
   i("Forms", "Calendar", "187:16616", [], "design-only", "—", "Single/Range, day states, locale examples", "Code (needs react-day-picker) and docs"),
   i("Forms", "Date Picker", "187:16954", [], "design-only", "—", "Single/Range × Closed/Open", "Code and docs"),
   i("Forms", "File Upload", "187:19271", [], "design-only", "—", "Dropzone/Button × Empty/Hover/Drag over/Uploading/Uploaded/Error/Disabled", "Code and docs"),
   i("Forms", "File Item", "187:19224", [], "design-only", "—", "Queued/Uploading/Processing/Uploaded/Error", "Code and docs"),
 
   // 04 · Navigation
-  i("Navigation", "Navigation Item", "187:20120", ["nav-item"], "built", "href, isActive, disabled, asChild", "Default/Current/Hover/Focus/Disabled × LTR/RTL", "Docs page"),
-  i("Navigation", "Tabs", "187:20346", ["tabs"], "built", "orientation; List variant line/pill", "Line/Pill × Selected × states; Horizontal/Vertical", "Docs page"),
-  i("Navigation", "Breadcrumb", "187:20153", ["breadcrumb"], "built", "List, Item, Link, Page, Separator, Ellipsis", "Default/Collapsed × LTR/RTL", "Docs page"),
-  i("Navigation", "Pagination", "187:20196", ["pagination"], "built", "Link isActive/disabled, Previous, Next, Ellipsis", "First/Middle/Last × LTR/RTL", "Docs page"),
-  i("Navigation", "Menubar", "187:20443", ["menubar"], "built", "Menu, Trigger, Content, Item variants, Sub", "Closed/Open", "Docs page"),
-  i("Navigation", "Navigation Menu", "187:20512", ["navigation-menu"], "built", "Trigger, Content, Link variant item/link", "Closed/Open", "Docs page"),
-  i("Navigation", "Sidebar", "187:20571", ["sidebar"], "built", "Provider open/defaultOpen, MenuButton isActive/tooltip, Trigger", "Expanded/Collapsed × LTR/RTL; mobile Sheet", "Docs page"),
+  i("Navigation", "Navigation Item", "187:20120", ["nav-item"], "documented", "href, isActive, disabled, asChild", "Default/Current/Hover/Focus/Disabled × LTR/RTL", "Docs page"),
+  i("Navigation", "Tabs", "187:20346", ["tabs"], "documented", "orientation; TabsList variant default (Pill)/line", "Line/Pill × Selected × states; Horizontal/Vertical", "Docs page"),
+  i("Navigation", "Breadcrumb", "187:20153", ["breadcrumb"], "documented", "List, Item, Link, Page, Separator, Ellipsis", "Default/Collapsed × LTR/RTL", "Docs page"),
+  i("Navigation", "Pagination", "187:20196", ["pagination"], "documented", "Link isActive/disabled, Previous, Next, Ellipsis", "First/Middle/Last × LTR/RTL", "Docs page"),
+  i("Navigation", "Menubar", "187:20443", ["menubar"], "documented", "Menu, Trigger, Content, Item variants, Sub", "Closed/Open", "Docs page"),
+  i("Navigation", "Navigation Menu", "187:20512", ["navigation-menu"], "documented", "Trigger, Content, Link variant item/link", "Closed/Open", "Docs page"),
+  i("Navigation", "Sidebar", "187:20571", ["sidebar"], "documented", "Provider open/defaultOpen, MenuButton isActive/tooltip, Trigger", "Expanded/Collapsed × LTR/RTL; mobile Sheet", "Docs page"),
 
   // 05 · Overlays and menus
   i("Overlays", "Dialog", "187:21428", ["dialog"], "documented", "Content corner; Header, Title, Description, Footer, Close", "Closed/Open/Loading/Error × corners × LTR/RTL", "Docs page; Loading/Error examples"),
-  i("Overlays", "Alert Dialog", "187:21467", ["alert-dialog"], "built", "Action, Cancel", "Closed/Open/Loading/Error", "Docs page"),
-  i("Overlays", "Sheet", "187:21506", ["sheet"], "built", "side start/end/top/bottom", "Trailing/Leading × Closed/Open", "Docs page"),
+  i("Overlays", "Alert Dialog", "187:21467", ["alert-dialog"], "documented", "Action, Cancel", "Closed/Open/Loading/Error", "Docs page"),
+  i("Overlays", "Sheet", "187:21506", ["sheet"], "documented", "side start/end/top/bottom", "Trailing/Leading × Closed/Open", "Docs page"),
   i("Overlays", "Drawer", "187:21545", [], "design-only", "—", "Bottom/Top × Closed/Open", "Code (needs vaul) and docs"),
-  i("Overlays", "Popover", "187:21627", ["popover"], "built", "Content corner, side, align", "Default/Soft/Pill", "Docs page"),
-  i("Overlays", "Tooltip", "187:21121", ["tooltip"], "built", "side, sideOffset", "Top/Bottom/Start/End", "Docs page"),
-  i("Overlays", "Hover Card", "187:21185", ["hover-card"], "built", "openDelay, side", "Closed/Open", "Docs page"),
-  i("Overlays", "Dropdown Menu", "187:21078", ["dropdown-menu"], "built", "Item variant, CheckboxItem, RadioItem, Sub, Shortcut", "Menu / Item kinds × Default/Highlighted/Disabled", "Docs page"),
-  i("Overlays", "Context Menu", "187:21584", ["context-menu"], "built", "Same parts as Dropdown Menu", "Closed/Open", "Docs page"),
+  i("Overlays", "Popover", "187:21627", ["popover"], "documented", "Content corner, side, align", "Default/Soft/Pill", "Docs page"),
+  i("Overlays", "Tooltip", "187:21121", ["tooltip"], "documented", "side, sideOffset", "Top/Bottom/Start/End", "Docs page"),
+  i("Overlays", "Hover Card", "187:21185", ["hover-card"], "documented", "openDelay, side", "Closed/Open", "Docs page"),
+  i("Overlays", "Dropdown Menu", "187:21078", ["dropdown-menu"], "documented", "Item variant, CheckboxItem, RadioItem, Sub, Shortcut", "Menu / Item kinds × Default/Highlighted/Disabled", "Docs page"),
+  i("Overlays", "Context Menu", "187:21584", ["context-menu"], "documented", "Same parts as Dropdown Menu", "Closed/Open", "Docs page"),
   i("Overlays", "Command", "187:21224", [], "design-only", "—", "Default/Filtered/Empty/Loading/Error", "Code (needs cmdk) and docs"),
 
   // 06 · Content and layout
   i("Content and layout", "Card", "187:22361", ["card"], "documented", "corner; Header, Title, Description, Content, Footer", "Default/Soft/Pill", "Docs page"),
   i("Content and layout", "Item", "187:22312", ["item"], "documented", "variant; Media, Content, Title, Description, Actions", "Default/Outline/Muted", "Docs page"),
   i("Content and layout", "Avatar", "187:22285", ["avatar"], "documented", "size; Image, Fallback, Badge", "32/48/64 × Initials/Icon/Image/Loading/Error", "Docs page"),
-  i("Content and layout", "Accordion", "187:22469", ["accordion"], "built", "type single/multiple, collapsible", "Single/Multiple; item states", "Docs page"),
-  i("Content and layout", "Collapsible", "187:22530", ["collapsible"], "built", "open, onOpenChange", "Closed/Open", "Docs page"),
-  i("Content and layout", "Separator", "187:22260", ["separator"], "built", "orientation, decorative", "Horizontal/Vertical", "Docs page"),
-  i("Content and layout", "Aspect Ratio", "187:22606", ["aspect-ratio"], "built", "ratio", "16:9, 4:3, 1:1, 3:4", "Docs page"),
-  i("Content and layout", "Kbd", "187:22641", ["kbd"], "built", "Kbd, KbdGroup", "Key, shortcut group", "Docs page"),
+  i("Content and layout", "Accordion", "187:22469", ["accordion"], "documented", "type single/multiple, collapsible", "Single/Multiple; item states", "Docs page"),
+  i("Content and layout", "Collapsible", "187:22530", ["collapsible"], "documented", "open, onOpenChange", "Closed/Open", "Docs page"),
+  i("Content and layout", "Separator", "187:22260", ["separator"], "documented", "orientation, decorative", "Horizontal/Vertical", "Docs page"),
+  i("Content and layout", "Aspect Ratio", "187:22606", ["aspect-ratio"], "documented", "ratio", "16:9, 4:3, 1:1, 3:4", "Docs page"),
+  i("Content and layout", "Kbd", "187:22641", ["kbd"], "documented", "Kbd, KbdGroup", "Key, shortcut group", "Docs page"),
   i("Content and layout", "Media Placeholder", "187:22573", [], "design-only", "—", "Placeholder media", "Code and docs"),
   i("Content and layout", "Scroll Area", "187:22670", [], "design-only", "—", "Vertical/Horizontal/Both content", "Code (Radix Scroll Area) and docs"),
   i("Content and layout", "Resizable", "187:22894", [], "design-only", "—", "Handle states, panel groups", "Code (needs react-resizable-panels) and docs"),
   i("Content and layout", "Carousel", "187:22998", [], "design-only", "—", "Item states, controls", "Code (needs embla-carousel) and docs"),
 
   // 07 · Feedback
-  i("Feedback", "Alert", "187:23822", ["alert"], "built", "status, appearance; Title, Description", "Info/Success/Warning/Error × Default/Outline", "Docs page"),
+  i("Feedback", "Alert", "187:23822", ["alert"], "documented", "variant (default/destructive/info/success/warning), appearance, icon; Title, Description", "Info/Success/Warning/Error × Default/Outline", "Docs page"),
   i("Feedback", "Badge", "187:23764", ["badge"], "documented", "variant, asChild", "Default/Secondary/Outline/Destructive", "Docs page"),
-  i("Feedback", "Progress", "187:23733", ["progress"], "built", "value (null = indeterminate)", "0/25/50/75/100/Indeterminate", "Docs page"),
-  i("Feedback", "Skeleton", "187:23793", ["skeleton"], "built", "className", "Text/Avatar/Card", "Docs page"),
-  i("Feedback", "Spinner", "187:23961", ["spinner"], "built", "size", "16/24/32", "Docs page"),
-  i("Feedback", "Empty", "187:23859", ["empty"], "built", "Media, Title, Description, Content", "Default/Filtered/Error", "Docs page"),
+  i("Feedback", "Progress", "187:23733", ["progress"], "documented", "value (null = indeterminate)", "0/25/50/75/100/Indeterminate", "Docs page"),
+  i("Feedback", "Skeleton", "187:23793", ["skeleton"], "documented", "className", "Text/Avatar/Card", "Docs page"),
+  i("Feedback", "Spinner", "187:23961", ["spinner"], "documented", "size, label, svg props", "16/24/32", "Docs page"),
+  i("Feedback", "Empty", "187:23859", ["empty"], "documented", "Media, Title, Description, Content", "Default/Filtered/Error", "Docs page"),
   i("Feedback", "Toast", "187:23908", [], "design-only", "—", "Default/Success/Info/Warning/Error/Loading", "Code (needs sonner) and docs"),
 
   // 08 · Data visualization
@@ -210,6 +210,19 @@ export function sectionsFor(item: InventoryItem) {
   return [...COMMON_SECTIONS.slice(0, 4), ...GROUP_SECTIONS[item.group], ...(item.sections ?? []), ...COMMON_SECTIONS.slice(4)]
 }
 
+/** Docs page for an item (parts documented on another component's page). */
+export function pageFor(item: InventoryItem) {
+  return ["field-set", "field-group", "counter"].includes(item.slug) ? "/docs/components/field" : `/docs/components/${item.slug}`
+}
+
 export function bySlug(slug: string) {
   return INVENTORY.find((item) => item.slug === slug)
 }
+
+/* Parts documented on another page (as shadcn does for Field). */
+const COVERED_ELSEWHERE = new Set(["Field Set", "Field Group", "Counter"])
+
+/** The Components list in the docs sidebar and index: everything with code, A–Z. */
+export const COMPONENTS = INVENTORY.filter(
+  (item) => (item.status === "documented" || item.status === "built") && !COVERED_ELSEWHERE.has(item.name)
+).sort((a, b) => a.name.localeCompare(b.name))

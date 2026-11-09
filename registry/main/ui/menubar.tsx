@@ -108,7 +108,7 @@ function MenubarItem({
   return (
     <MenubarPrimitive.Item
       data-slot="menubar-item"
-      data-inset={inset}
+      data-inset={inset || undefined}
       data-variant={variant}
       className={cn(
         item,
@@ -160,7 +160,7 @@ function MenubarLabel({
   return (
     <MenubarPrimitive.Label
       data-slot="menubar-label"
-      data-inset={inset}
+      data-inset={inset || undefined}
       className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-foreground data-[inset]:ps-10", className)}
       {...props}
     />
@@ -198,7 +198,7 @@ function MenubarSubTrigger({
   return (
     <MenubarPrimitive.SubTrigger
       data-slot="menubar-sub-trigger"
-      data-inset={inset}
+      data-inset={inset || undefined}
       className={cn(item, "data-[state=open]:bg-accent", className)}
       {...props}
     >

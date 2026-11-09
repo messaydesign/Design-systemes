@@ -52,9 +52,9 @@ export function AppShell({ appName, children }: { appName: string; children: Rea
             <ThemeToggle />
           </div>
         </header>
-        <main id="main" className="flex-1 px-4 py-8 md:px-8">
+        <div id="main" className="flex-1 px-4 py-8 md:px-8">
           {children}
-        </main>
+        </div>
       </SidebarInset>
     </SidebarProvider>
   )

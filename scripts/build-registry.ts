@@ -254,6 +254,19 @@ for (const item of registry.items as { files?: { path: string }[]; registryDepen
   }
 }
 
+// npm dependencies likewise come from imports of known packages.
+const NPM = ["class-variance-authority", "radix-ui", "input-otp"]
+for (const item of registry.items as { files?: { path: string }[]; dependencies?: string[] }[]) {
+  for (const file of item.files ?? []) {
+    const src = readFileSync(file.path, "utf8")
+    for (const pkg of NPM) {
+      if (src.includes(`from "${pkg}"`) && !item.dependencies?.includes(pkg)) {
+        item.dependencies = [...(item.dependencies ?? []), pkg]
+      }
+    }
+  }
+}
+
 // The shadcn CLI (4.23) drops a theme's custom variants when the theme is
 // installed as a dependency, so every item whose source uses `selected:`
 // carries the variant itself (the CLI de-duplicates it).

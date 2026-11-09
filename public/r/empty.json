@@ -3,7 +3,9 @@
   "name": "empty",
   "title": "Empty",
   "description": "Empty / no-results / error state with recovery action.",
-  "dependencies": [],
+  "dependencies": [
+    "class-variance-authority"
+  ],
   "registryDependencies": [
     "utils",
     "http://localhost:3000/r/theme.json"

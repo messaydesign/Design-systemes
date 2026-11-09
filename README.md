@@ -18,7 +18,7 @@ consuming apps with the shadcn CLI, so teams own the code.
 
 ```bash
 bun install
-bun run dev              # docs + playground at http://localhost:3000
+bun run dev              # docs at http://localhost:3000
 bun run registry:build   # regenerate registry.json + public/r/*.json
 ```
 

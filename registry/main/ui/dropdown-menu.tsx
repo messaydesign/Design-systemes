@@ -84,7 +84,7 @@ function DropdownMenuItem({
   return (
     <DropdownMenuPrimitive.Item
       data-slot="dropdown-menu-item"
-      data-inset={inset}
+      data-inset={inset || undefined}
       data-variant={variant}
       className={cn(item, "data-[variant=destructive]:text-[var(--status-error-text)] data-[variant=destructive]:[&_svg]:text-foreground", className)}
       {...props}
@@ -140,7 +140,7 @@ function DropdownMenuLabel({
   return (
     <DropdownMenuPrimitive.Label
       data-slot="dropdown-menu-label"
-      data-inset={inset}
+      data-inset={inset || undefined}
       className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-foreground data-[inset]:ps-10", className)}
       {...props}
     />
@@ -181,7 +181,7 @@ function DropdownMenuSubTrigger({
   return (
     <DropdownMenuPrimitive.SubTrigger
       data-slot="dropdown-menu-sub-trigger"
-      data-inset={inset}
+      data-inset={inset || undefined}
       className={cn(item, "data-[state=open]:bg-accent", className)}
       {...props}
     >
