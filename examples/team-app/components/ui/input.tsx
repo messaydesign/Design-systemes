@@ -13,12 +13,12 @@ import { cn } from "@/lib/utils"
  */
 const inputVariants = cva(
   [
-    "flex h-8 w-full min-w-0 border border-[var(--input-outline)] bg-[var(--input-surface)] px-[7px]",
-    "font-sans text-base leading-6 md:text-sm md:leading-5 text-[var(--input-text)] placeholder:text-[var(--input-placeholder)]",
+    "flex h-8 w-full min-w-0 border border-input bg-[var(--input-surface)] px-[7px]",
+    "font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground placeholder:text-[var(--input-placeholder)]",
     "transition-[color,background-color,border-color] duration-150 outline-none",
-    "hover:border-[var(--input-outline-hover)] hover:bg-[var(--surface-hover)]",
+    "hover:border-[var(--input-outline-hover)] hover:bg-accent",
     "focus:border-[var(--input-outline-focus)] focus:bg-[var(--input-surface)]",
-    "read-only:bg-[var(--surface)] read-only:hover:border-[var(--input-outline)]",
+    "read-only:bg-muted read-only:hover:border-input",
     "aria-invalid:border-[var(--status-error-border)]",
     "data-[validation=warning]:border-[var(--status-warning-border)]",
     "data-[validation=success]:border-[var(--status-success-border)]",
@@ -29,7 +29,7 @@ const inputVariants = cva(
   {
     variants: {
       shape: {
-        default: "rounded-[var(--radius)]",
+        default: "rounded-lg",
         rounded: "rounded-[var(--radius-input-pill)] px-[15px]",
       },
     },

@@ -11,22 +11,41 @@ import { CheckIcon, ChevronDownIcon } from "@/registry/main/ui/icons"
  * "Option List" (31:284) and "Forms/Option" (30:20).
  * Listbox semantics (not an action menu); keyboard, typeahead and focus return
  * come from Radix Select.
+ *
+ * shadcn API: SelectTrigger `size` "sm" | "default". Figma has a single 32px
+ * control height, so both sizes are 32px today; `size` is accepted (and exposed
+ * as data-size) so shadcn examples work and a smaller step can be added later.
+ * Extras: `shape` on the trigger, `showCheck` on items (shadcn always shows it).
  */
 
-const Select = SelectPrimitive.Root
-const SelectGroup = SelectPrimitive.Group
-const SelectValue = SelectPrimitive.Value
+function Select(props: React.ComponentProps<typeof SelectPrimitive.Root>) {
+  return <SelectPrimitive.Root data-slot="select" {...props} />
+}
+
+function SelectGroup(props: React.ComponentProps<typeof SelectPrimitive.Group>) {
+  return <SelectPrimitive.Group data-slot="select-group" {...props} />
+}
+
+function SelectValue(props: React.ComponentProps<typeof SelectPrimitive.Value>) {
+  return <SelectPrimitive.Value data-slot="select-value" {...props} />
+}
 
 function SelectTrigger({
   className,
+  size = "default",
   shape = "default",
   children,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Trigger> & { shape?: "default" | "rounded" }) {
+}: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
+  size?: "sm" | "default"
+  shape?: "default" | "rounded"
+}) {
   return (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
+      data-size={size}
       className={cn(
+        // data-[size=sm] and data-[size=default] are both 32px (Figma has one size).
         "group/select flex h-8 w-full min-w-0 cursor-pointer items-center justify-between gap-2 border border-input bg-[var(--input-surface)] px-[7px] text-start",
         "font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground data-[placeholder]:text-[var(--input-placeholder)]",
         "transition-[color,background-color,border-color] duration-150 outline-none",
@@ -35,7 +54,7 @@ function SelectTrigger({
         "data-[state=open]:border-[var(--input-outline-focus)] data-[state=open]:bg-[var(--input-surface)]",
         "aria-invalid:border-[var(--status-error-border)]",
         "disabled:pointer-events-none disabled:border-[var(--disabled-border)] disabled:bg-[var(--input-surface-disabled)] disabled:text-[var(--disabled-text)]",
-        "[&>span]:line-clamp-1",
+        "[&>span]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2",
         shape === "rounded" ? "rounded-[var(--radius-input-pill)] px-[15px]" : "rounded-lg",
         className
       )}
@@ -70,7 +89,9 @@ function SelectContent({
         )}
         {...props}
       >
+        <SelectScrollUpButton />
         <SelectPrimitive.Viewport className="flex flex-col gap-2 p-[7px]">{children}</SelectPrimitive.Viewport>
+        <SelectScrollDownButton />
       </SelectPrimitive.Content>
     </SelectPrimitive.Portal>
   )
@@ -129,12 +150,41 @@ function SelectSeparator({ className, ...props }: React.ComponentProps<typeof Se
   )
 }
 
+const scrollButtonClass =
+  "flex h-8 cursor-default items-center justify-center text-muted-foreground [&_svg:not([class*='size-'])]:size-4"
+
+function SelectScrollUpButton({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.ScrollUpButton>) {
+  return (
+    <SelectPrimitive.ScrollUpButton
+      data-slot="select-scroll-up-button"
+      className={cn(scrollButtonClass, className)}
+      {...props}
+    >
+      <ChevronDownIcon className="rotate-180" />
+    </SelectPrimitive.ScrollUpButton>
+  )
+}
+
+function SelectScrollDownButton({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.ScrollDownButton>) {
+  return (
+    <SelectPrimitive.ScrollDownButton
+      data-slot="select-scroll-down-button"
+      className={cn(scrollButtonClass, className)}
+      {...props}
+    >
+      <ChevronDownIcon />
+    </SelectPrimitive.ScrollDownButton>
+  )
+}
+
 export {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
   SelectSeparator,
   SelectTrigger,
   SelectValue,

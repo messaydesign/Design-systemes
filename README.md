@@ -141,7 +141,7 @@ Menu checkbox/radio items always reserve the 16px mark slot so labels align
 | Accordion / Item, Accordion Single/Multiple | `<Accordion type="single" \| "multiple">` |
 | Collapsible | `<Collapsible>` + outline `Button` trigger |
 | Separator, Kbd, Aspect Ratio | `<Separator>`, `<Kbd>`/`<KbdGroup>`, `<AspectRatio>` |
-| Alert Status × Appearance | `<Alert status=… appearance="default" \| "outline">` |
+| Alert Status × Appearance | `<Alert variant="info" \| "success" \| "warning" \| "destructive" appearance="default" \| "outline">` (plus neutral `default`) |
 | Badge Default/Secondary/Outline/Destructive | `<Badge variant=…>` |
 | Forms/Progress 0–100 / Indeterminate | `<Progress value={n}>` / `value={null}` |
 | Skeleton Text/Avatar/Card, Spinner 16/24/32 | `<Skeleton>`, `<Spinner size="sm" \| "default" \| "lg">` |
@@ -155,7 +155,7 @@ and Carousel (need extra libraries).
 | Figma | Code |
 | --- | --- |
 | Navigation / Item Default/Current/Hover/Focus/Disabled, LTR/RTL | `<NavItem href isActive disabled>` (icon + `<span>` label) |
-| Tabs / Trigger Variant Line/Pill × Selected × State | `<TabsList variant="line" \| "pill">` + `<TabsTrigger>` (`disabled`) |
+| Tabs / Trigger Variant Line/Pill × Selected × State | `<TabsList variant="line" \| "default">` (default = Figma Pill) + `<TabsTrigger>` (`disabled`) |
 | Tabs Orientation Horizontal/Vertical | `<Tabs orientation=…>` + `<TabsContent>` |
 | Breadcrumb Default/Collapsed, LTR/RTL | `Breadcrumb*`; `<BreadcrumbEllipsis>` is a 48px button for a dropdown of hidden pages |
 | Pagination First/Middle/Last, LTR/RTL | `Pagination*`; `<PaginationLink isActive>`, `<PaginationPrevious disabled>` |

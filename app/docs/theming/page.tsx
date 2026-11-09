@@ -6,9 +6,10 @@ import { readTokens } from "@/lib/docs/tokens"
 export const metadata: Metadata = { title: "Theming and tokens" }
 
 const groups: { title: string; test: (name: string) => boolean; note?: string }[] = [
-  { title: "Brand", test: (n) => n.startsWith("brand-"), note: "Change these to rebrand. Everything else references them." },
-  { title: "Semantic (shadcn names)", test: (n) => ["background", "foreground", "card", "card-foreground", "popover", "popover-foreground", "primary", "primary-foreground", "secondary", "secondary-foreground", "muted", "muted-foreground", "accent", "accent-foreground", "destructive", "border", "input", "ring"].includes(n) },
-  { title: "Surface and text", test: (n) => n.startsWith("surface") || n.startsWith("text-") || n === "background" || n.startsWith("border-") || n === "overlay" },
+  { title: "Theme (shadcn tokens)", test: (n) => ["background", "foreground", "card", "card-foreground", "popover", "popover-foreground", "primary", "primary-foreground", "secondary", "secondary-foreground", "muted", "muted-foreground", "accent", "accent-foreground", "destructive", "destructive-foreground", "border", "input", "ring", "radius"].includes(n) || n.startsWith("chart-") || n.startsWith("sidebar") },
+  { title: "Brand extensions", test: (n) => /^primary-(hover|active|strong|subtle)/.test(n) },
+  { title: "Figma names (aliases)", test: (n) => n.startsWith("brand-") || ["text-primary", "text-secondary", "surface", "surface-elevated", "surface-hover", "muted-background", "border-subtle", "input-outline", "button-focus-color"].includes(n) },
+  { title: "Surfaces and overlay", test: (n) => ["surface-pressed", "border-disabled", "border-control", "overlay", "skeleton", "tooltip-background", "tooltip-text", "selected-background"].includes(n) },
   { title: "Inputs", test: (n) => n.startsWith("input-") || n.startsWith("disabled-") },
   { title: "Status", test: (n) => n.startsWith("status-") },
   { title: "Buttons", test: (n) => n.startsWith("button-") },
@@ -30,31 +31,41 @@ export default function ThemingPage() {
 
       <H2>Change the brand</H2>
       <P>
-        All brand colours live in one block of tokens. Component tokens reference them, so these are the only colours
-        you edit to rebrand. Replace the values in <InlineCode>:root</InlineCode> and the four that differ in{" "}
-        <InlineCode>.dark</InlineCode>. (In a project set up by the CLI, <InlineCode>:root</InlineCode> comes after the
-        long <InlineCode>@theme inline</InlineCode> block — search for <InlineCode>--brand-</InlineCode>.)
+        Theming works like shadcn/ui: CSS variables named <InlineCode>--background</InlineCode>,{" "}
+        <InlineCode>--primary</InlineCode>, <InlineCode>--muted-foreground</InlineCode>… hold the values and components use
+        them through utilities such as <InlineCode>bg-primary</InlineCode> and <InlineCode>text-muted-foreground</InlineCode>.
+        Main Brand adds a few <InlineCode>--primary-*</InlineCode> extensions for hover, pressed, brand text and selected
+        tints, which shadcn doesn’t have. Edit them in <InlineCode>:root</InlineCode> and <InlineCode>.dark</InlineCode>:
       </P>
       <CodeBlock lang="css" code={`/* Example: a blue brand */
 :root {
-  --brand-primary: #2f6bff;           /* primary fill */
-  --brand-primary-hover: #1f55db;
-  --brand-primary-pressed: #1844b0;
-  --brand-on-primary: #ffffff;        /* text on the primary fill */
-  --brand-on-primary-active: #ffffff; /* text on hover/pressed fill */
-  --brand-strong: #1844b0;            /* brand text, borders and focus */
-  --brand-subtle: #eef3ff;            /* tint behind selected items */
-  --brand-strong-hover: #12388f;      /* link hover */
-  --brand-strong-pressed: #0d2a6b;    /* link pressed */
+  --primary: #2f6bff;
+  --primary-foreground: #ffffff;
+  --ring: var(--primary-strong);
+
+  /* Main Brand extensions */
+  --primary-hover: #1f55db;
+  --primary-active: #1844b0;             /* pressed */
+  --primary-active-foreground: #ffffff;
+  --primary-strong: #1844b0;             /* brand text, borders, focus */
+  --primary-strong-hover: #12388f;       /* link hover */
+  --primary-strong-active: #0d2a6b;      /* link pressed */
+  --primary-subtle: #eef3ff;             /* selected backgrounds */
 }
 
 .dark {
-  /* On dark surfaces brand text needs a lighter tint. */
-  --brand-strong: #8fb0ff;
-  --brand-subtle: #0f1d40;
-  --brand-strong-hover: #b3caff;
-  --brand-strong-pressed: #d1defe;
+  --primary-strong: #8fb0ff;
+  --primary-strong-hover: #b3caff;
+  --primary-strong-active: #d1defe;
+  --primary-subtle: #0f1d40;
 }`} />
+      <P>
+        Neutral colours (<InlineCode>--background</InlineCode>, <InlineCode>--muted</InlineCode>,{" "}
+        <InlineCode>--accent</InlineCode>, <InlineCode>--border</InlineCode>, <InlineCode>--input</InlineCode>), charts
+        (<InlineCode>--chart-1…5</InlineCode>) and the sidebar (<InlineCode>--sidebar-*</InlineCode>) work the same way.
+        Figma variable names (<InlineCode>--brand-primary</InlineCode>, <InlineCode>--text-secondary</InlineCode>,{" "}
+        <InlineCode>--surface</InlineCode>…) are kept as aliases of these, so designs and code use the same names.
+      </P>
       <Callout tone="warning" title="Check contrast">
         <InlineCode>--brand-strong</InlineCode> is used for text and focus rings: keep at least 4.5:1 against{" "}
         <InlineCode>--background</InlineCode>, and 3:1 for <InlineCode>--brand-primary</InlineCode> against its

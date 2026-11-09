@@ -49,6 +49,31 @@ const registry = {
       },
     },
     {
+      // `npx shadcn init <url>/r/style.json` — the base every Main Brand app
+      // starts from, like shadcn's own "style" item.
+      name: "style",
+      type: "registry:style",
+      title: "Main Brand style",
+      description: "Base for Main Brand UI projects: dependencies, cn(), theme tokens, fonts and base styles.",
+      extends: "none",
+      dependencies: ["class-variance-authority", "clsx", "tailwind-merge", "radix-ui"],
+      registryDependencies: ["utils", `${BASE_URL}/r/theme.json`, `${BASE_URL}/r/icons.json`],
+      cssVars: {
+        theme: block("@theme inline"),
+        light: block(":root"),
+        dark: block(".dark"),
+      },
+      css: {
+        ...Object.fromEntries(customVariants.map((v) => [v.replace(/;$/, ""), {}])),
+        "@layer base": {
+          "*": { "@apply border-border outline-ring/50": {} },
+          body: { "@apply bg-background text-foreground font-sans": {} },
+          "h1, h2, h3, h4": { "@apply font-heading": {} },
+        },
+      },
+      files: [],
+    },
+    {
       name: "icons",
       type: "registry:ui",
       title: "Icons",
@@ -188,7 +213,7 @@ function navigationItems() {
     item("pagination", "Pagination", "Pages in 48px targets with a selected current page and Previous/Next.", [icons, button]),
     item("menubar", "Menubar", "Application File/Edit/View menubar sharing the Menu spec.", [icons, button]),
     item("navigation-menu", "Navigation Menu", "Site navigation with disclosure panels of Navigation Items.", [icons, button, navItem]),
-    item("sidebar", "Sidebar", "Expanded/collapsed sidebar of Navigation Items; Sheet on mobile.", [icons, button, navItem, sheet]),
+    item("sidebar", "Sidebar", "shadcn-compatible sidebar: offcanvas or icon collapse, floating/inset variants, Sheet on mobile.", [icons, button, sheet]),
   ]
 }
 
@@ -212,6 +237,21 @@ function actionItems() {
     item("toggle", "Toggle", "48px pressed/unpressed button, Default or Outline.", ["class-variance-authority", "radix-ui"], [button]),
     item("toggle-group", "Toggle Group", "Single or multiple Toggle selection, horizontal or vertical.", ["class-variance-authority", "radix-ui"], [toggle]),
   ]
+}
+
+// Registry dependencies come from each file's imports, so they can't drift
+// from the code (e.g. a component starting to use Tooltip).
+for (const item of registry.items as { files?: { path: string }[]; registryDependencies?: string[] }[]) {
+  for (const file of item.files ?? []) {
+    const src = readFileSync(file.path, "utf8")
+    for (const m of src.matchAll(/from "@\/registry\/main\/ui\/([\w-]+)"/g)) {
+      const url = `${BASE_URL}/r/${m[1]}.json`
+      const self = file.path.endsWith(`/${m[1]}.tsx`)
+      if (!self && !item.registryDependencies?.includes(url)) {
+        item.registryDependencies = [...(item.registryDependencies ?? []), url]
+      }
+    }
+  }
 }
 
 // The shadcn CLI (4.23) drops a theme's custom variants when the theme is

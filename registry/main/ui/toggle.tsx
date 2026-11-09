@@ -11,6 +11,7 @@ import { buttonVariants } from "@/registry/main/ui/button"
  * Toggle — Figma "Toggle" (143:4586)
  * Variant Default (Ghost face) / Outline, Selected true/false,
  * States Default · Hover · Pressed · Focus · Disabled. 48px, 8px radius.
+ * Sizes (shadcn names): sm 40 · default 48 · lg 56.
  * Selected = Ghost Selected tint + border (Default) or selected border (Outline).
  * Hover/Pressed on a selected toggle show the neutral hover/pressed face,
  * as in the Figma masters. Radix sets aria-pressed and data-state="on".
@@ -18,7 +19,7 @@ import { buttonVariants } from "@/registry/main/ui/button"
  */
 
 const toggleVariants = cva(
-  "h-12 min-w-12 px-[11px] [&_svg:not([class*='size-'])]:size-6",
+  "",
   {
     variants: {
       variant: {
@@ -33,6 +34,13 @@ const toggleVariants = cva(
           "selected:active:border-[var(--button-outline-pressed-border)]",
         ],
       },
+      // Heights match Button: sm = Small 40 · default = Large 48 · lg = XL 56.
+      // Padding keeps an icon-only toggle square (Figma value minus the 1px border).
+      size: {
+        sm: "h-10 min-w-10 px-[11px] [&_svg:not([class*='size-'])]:size-4 after:absolute after:inset-x-0 after:top-1/2 after:h-12 after:min-w-12 after:-translate-y-1/2",
+        default: "h-12 min-w-12 px-[11px] [&_svg:not([class*='size-'])]:size-6",
+        lg: "h-14 min-w-14 px-[15px] [&_svg:not([class*='size-'])]:size-6",
+      },
       corner: {
         default: "rounded-lg",
         soft: "rounded-xl",
@@ -41,6 +49,7 @@ const toggleVariants = cva(
     },
     defaultVariants: {
       variant: "default",
+      size: "default",
       corner: "default",
     },
   }
@@ -49,6 +58,7 @@ const toggleVariants = cva(
 function Toggle({
   className,
   variant = "default",
+  size = "default",
   corner = "default",
   ...props
 }: React.ComponentProps<typeof TogglePrimitive.Root> & VariantProps<typeof toggleVariants>) {
@@ -56,7 +66,8 @@ function Toggle({
     <TogglePrimitive.Root
       data-slot="toggle"
       data-variant={variant}
-      className={cn(toggleVariants({ variant, corner }), className)}
+      data-size={size}
+      className={cn(toggleVariants({ variant, size, corner }), className)}
       {...props}
     />
   )

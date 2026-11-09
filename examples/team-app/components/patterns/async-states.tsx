@@ -53,7 +53,7 @@ export function ErrorState({
   onRetry?: () => void
 }) {
   return (
-    <Alert status="error">
+    <Alert variant="destructive">
       <AlertTitle>{title}</AlertTitle>
       <AlertDescription className="flex flex-col items-start gap-3">
         {description ?? "Please try again. If it keeps happening, contact support."}

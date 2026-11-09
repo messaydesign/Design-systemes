@@ -42,9 +42,23 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               Main Brand UI
             </Link>
             <nav aria-label="Site" className="flex min-w-0 flex-1 items-center gap-5 overflow-x-auto text-sm">
-              <Link href="/docs" className="text-[var(--text-secondary)] hover:text-foreground">
-                Docs
-              </Link>
+              {[
+                ["/docs", "Docs"],
+                ["/docs/components", "Components"],
+                ["/docs/theming", "Theming"],
+              ].map(([href, label]) => (
+                <Link key={href} href={href} className="text-muted-foreground hover:text-foreground">
+                  {label}
+                </Link>
+              ))}
+              <a
+                href="https://github.com/messaydesign/Design-systemes"
+                className="ms-auto text-muted-foreground hover:text-foreground"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
             </nav>
             <ThemeToggle />
           </div>

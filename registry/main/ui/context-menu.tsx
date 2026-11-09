@@ -14,19 +14,36 @@ import { CheckIcon, ChevronRightIcon } from "@/registry/main/ui/icons"
  * Kinds: Action · Destructive (variant) · Checkbox · Radio · Submenu.
  * Opens on right-click / long-press / Shift+F10 at the pointer.
  * Action-menu semantics (menuitem*), not a listbox.
+ * `inset` on Item, Label and SubTrigger (shadcn) adds 40px start padding so
+ * text lines up with items that have a 16px leading icon.
  */
 
 const panel =
   "z-50 flex w-80 max-w-[calc(100vw-2rem)] flex-col gap-2 overflow-y-auto rounded-lg border border-border bg-popover p-[7px] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)] outline-none"
 
 const item =
-  "relative flex h-12 w-full cursor-pointer items-center gap-2 rounded-lg px-4 font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none select-none data-[highlighted]:bg-accent data-[disabled]:pointer-events-none data-[disabled]:text-[var(--disabled-text)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+  "relative flex h-12 w-full cursor-pointer items-center gap-2 rounded-lg px-4 font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none select-none data-[inset]:ps-10 data-[highlighted]:bg-accent data-[disabled]:pointer-events-none data-[disabled]:text-[var(--disabled-text)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
 
-const ContextMenu = ContextMenuPrimitive.Root
-const ContextMenuTrigger = ContextMenuPrimitive.Trigger
-const ContextMenuPortal = ContextMenuPrimitive.Portal
-const ContextMenuSub = ContextMenuPrimitive.Sub
-const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup
+function ContextMenu(props: React.ComponentProps<typeof ContextMenuPrimitive.Root>) {
+  return <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />
+}
+
+function ContextMenuTrigger(props: React.ComponentProps<typeof ContextMenuPrimitive.Trigger>) {
+  return <ContextMenuPrimitive.Trigger data-slot="context-menu-trigger" {...props} />
+}
+
+function ContextMenuPortal(props: React.ComponentProps<typeof ContextMenuPrimitive.Portal>) {
+  return <ContextMenuPrimitive.Portal data-slot="context-menu-portal" {...props} />
+}
+
+function ContextMenuSub(props: React.ComponentProps<typeof ContextMenuPrimitive.Sub>) {
+  return <ContextMenuPrimitive.Sub data-slot="context-menu-sub" {...props} />
+}
+
+function ContextMenuRadioGroup(props: React.ComponentProps<typeof ContextMenuPrimitive.RadioGroup>) {
+  return <ContextMenuPrimitive.RadioGroup data-slot="context-menu-radio-group" {...props} />
+}
+
 
 function ContextMenuContent({ className, ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Content>) {
   return (
@@ -52,12 +69,18 @@ function ContextMenuGroup({ className, ...props }: React.ComponentProps<typeof C
 
 function ContextMenuItem({
   className,
+  inset,
   variant = "default",
   ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.Item> & { variant?: "default" | "destructive" }) {
+}: React.ComponentProps<typeof ContextMenuPrimitive.Item> & {
+  /** Adds start padding so text lines up with items that have a leading icon. */
+  inset?: boolean
+  variant?: "default" | "destructive"
+}) {
   return (
     <ContextMenuPrimitive.Item
       data-slot="context-menu-item"
+      data-inset={inset}
       data-variant={variant}
       className={cn(item, "data-[variant=destructive]:text-[var(--status-error-text)] data-[variant=destructive]:[&_svg]:text-foreground", className)}
       {...props}
@@ -103,11 +126,18 @@ function ContextMenuRadioItem({
   )
 }
 
-function ContextMenuLabel({ className, ...props }: React.ComponentProps<typeof ContextMenuPrimitive.Label>) {
+function ContextMenuLabel({
+  className,
+  inset,
+  ...props
+}: React.ComponentProps<typeof ContextMenuPrimitive.Label> & {
+  inset?: boolean
+}) {
   return (
     <ContextMenuPrimitive.Label
       data-slot="context-menu-label"
-      className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-foreground", className)}
+      data-inset={inset}
+      className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-foreground data-[inset]:ps-10", className)}
       {...props}
     />
   )
@@ -138,12 +168,16 @@ function ContextMenuShortcut({ className, ...props }: React.ComponentProps<"span
 
 function ContextMenuSubTrigger({
   className,
+  inset,
   children,
   ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.SubTrigger>) {
+}: React.ComponentProps<typeof ContextMenuPrimitive.SubTrigger> & {
+  inset?: boolean
+}) {
   return (
     <ContextMenuPrimitive.SubTrigger
       data-slot="context-menu-sub-trigger"
+      data-inset={inset}
       className={cn(item, "data-[state=open]:bg-accent", className)}
       {...props}
     >

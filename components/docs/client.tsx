@@ -92,7 +92,7 @@ export function PreviewShell({
   return (
     <Tabs defaultValue="preview" className="gap-0">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <TabsList aria-label="Preview or code">
+        <TabsList variant="line" aria-label="Preview or code">
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
@@ -143,7 +143,7 @@ export function CodeView({ html, code, className }: { html: string; code: string
 export function InstallTabs({ cli, manual }: { cli: React.ReactNode; manual: React.ReactNode }) {
   return (
     <Tabs defaultValue="cli" className="gap-4">
-      <TabsList aria-label="Installation method">
+      <TabsList variant="line" aria-label="Installation method">
         <TabsTrigger value="cli">Command</TabsTrigger>
         <TabsTrigger value="manual">Manual</TabsTrigger>
       </TabsList>

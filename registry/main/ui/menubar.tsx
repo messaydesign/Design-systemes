@@ -14,13 +14,15 @@ import { CheckIcon, ChevronRightIcon } from "@/registry/main/ui/icons"
  * Inter SemiBold 16); the open trigger uses the Ghost Selected face.
  * Menus reuse "Menu / Content" + "Menu / Item" from Dropdown Menu, 8px below.
  * Radix supplies menubar/menuitem roles, roving focus, typeahead and RTL arrows.
+ * `inset` on Item, Label and SubTrigger (shadcn) adds 40px start padding so
+ * text lines up with items that have a 16px leading icon.
  */
 
 const panel =
   "z-50 flex w-80 max-w-[calc(100vw-2rem)] flex-col gap-2 overflow-y-auto rounded-lg border border-border bg-popover p-[7px] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)] outline-none"
 
 const item =
-  "relative flex h-12 w-full cursor-pointer items-center gap-2 rounded-lg px-4 font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none select-none data-[highlighted]:bg-accent data-[disabled]:pointer-events-none data-[disabled]:text-[var(--disabled-text)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+  "relative flex h-12 w-full cursor-pointer items-center gap-2 rounded-lg px-4 font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none select-none data-[inset]:ps-10 data-[highlighted]:bg-accent data-[disabled]:pointer-events-none data-[disabled]:text-[var(--disabled-text)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
 
 function Menubar({ className, ...props }: React.ComponentProps<typeof MenubarPrimitive.Root>) {
   return (
@@ -38,11 +40,26 @@ function Menubar({ className, ...props }: React.ComponentProps<typeof MenubarPri
   )
 }
 
-const MenubarMenu = MenubarPrimitive.Menu
-const MenubarGroup = MenubarPrimitive.Group
-const MenubarPortal = MenubarPrimitive.Portal
-const MenubarRadioGroup = MenubarPrimitive.RadioGroup
-const MenubarSub = MenubarPrimitive.Sub
+function MenubarMenu(props: React.ComponentProps<typeof MenubarPrimitive.Menu>) {
+  return <MenubarPrimitive.Menu data-slot="menubar-menu" {...props} />
+}
+
+function MenubarGroup(props: React.ComponentProps<typeof MenubarPrimitive.Group>) {
+  return <MenubarPrimitive.Group data-slot="menubar-group" {...props} />
+}
+
+function MenubarPortal(props: React.ComponentProps<typeof MenubarPrimitive.Portal>) {
+  return <MenubarPrimitive.Portal data-slot="menubar-portal" {...props} />
+}
+
+function MenubarRadioGroup(props: React.ComponentProps<typeof MenubarPrimitive.RadioGroup>) {
+  return <MenubarPrimitive.RadioGroup data-slot="menubar-radio-group" {...props} />
+}
+
+function MenubarSub(props: React.ComponentProps<typeof MenubarPrimitive.Sub>) {
+  return <MenubarPrimitive.Sub data-slot="menubar-sub" {...props} />
+}
+
 
 function MenubarTrigger({ className, ...props }: React.ComponentProps<typeof MenubarPrimitive.Trigger>) {
   return (
@@ -80,12 +97,18 @@ function MenubarContent({
 
 function MenubarItem({
   className,
+  inset,
   variant = "default",
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Item> & { variant?: "default" | "destructive" }) {
+}: React.ComponentProps<typeof MenubarPrimitive.Item> & {
+  /** Adds start padding so text lines up with items that have a leading icon. */
+  inset?: boolean
+  variant?: "default" | "destructive"
+}) {
   return (
     <MenubarPrimitive.Item
       data-slot="menubar-item"
+      data-inset={inset}
       data-variant={variant}
       className={cn(
         item,
@@ -127,11 +150,18 @@ function MenubarRadioItem({ className, children, ...props }: React.ComponentProp
   )
 }
 
-function MenubarLabel({ className, ...props }: React.ComponentProps<typeof MenubarPrimitive.Label>) {
+function MenubarLabel({
+  className,
+  inset,
+  ...props
+}: React.ComponentProps<typeof MenubarPrimitive.Label> & {
+  inset?: boolean
+}) {
   return (
     <MenubarPrimitive.Label
       data-slot="menubar-label"
-      className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-foreground", className)}
+      data-inset={inset}
+      className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-foreground data-[inset]:ps-10", className)}
       {...props}
     />
   )
@@ -159,12 +189,16 @@ function MenubarShortcut({ className, ...props }: React.ComponentProps<"span">) 
 
 function MenubarSubTrigger({
   className,
+  inset,
   children,
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.SubTrigger>) {
+}: React.ComponentProps<typeof MenubarPrimitive.SubTrigger> & {
+  inset?: boolean
+}) {
   return (
     <MenubarPrimitive.SubTrigger
       data-slot="menubar-sub-trigger"
+      data-inset={inset}
       className={cn(item, "data-[state=open]:bg-accent", className)}
       {...props}
     >

@@ -17,8 +17,8 @@ function Card({
     <div
       data-slot="card"
       className={cn(
-        "flex flex-col gap-6 border border-[var(--border-subtle)] bg-[var(--surface-elevated)] p-[15px] font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground",
-        corner === "soft" ? "rounded-[var(--radius-soft)]" : corner === "pill" ? "rounded-full" : "rounded-[var(--radius)]",
+        "flex flex-col gap-6 border border-border bg-card p-[15px] font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground",
+        corner === "soft" ? "rounded-xl" : corner === "pill" ? "rounded-full" : "rounded-lg",
         className
       )}
       {...props}
@@ -44,7 +44,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
-  return <div data-slot="card-description" className={cn("text-[var(--text-secondary)]", className)} {...props} />
+  return <div data-slot="card-description" className={cn("text-muted-foreground", className)} {...props} />
 }
 
 function CardAction({ className, ...props }: React.ComponentProps<"div">) {

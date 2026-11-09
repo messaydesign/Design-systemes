@@ -13,19 +13,36 @@ import { CheckIcon, ChevronRightIcon } from "@/components/ui/icons"
  * Item: 48px, 16px inline padding, 16px icon, DM Sans 16/24.
  * Kinds: Action · Destructive (variant) · Checkbox · Radio · Submenu.
  * Action-menu semantics (menuitem*), not a listbox.
+ * `inset` on Item, Label and SubTrigger (shadcn) adds 40px start padding so
+ * text lines up with items that have a 16px leading icon.
  */
 
 const panel =
-  "z-50 flex w-80 max-w-[calc(100vw-2rem)] flex-col gap-2 overflow-y-auto rounded-[var(--radius)] border border-[var(--border-subtle)] bg-[var(--surface-elevated)] p-[7px] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)] outline-none"
+  "z-50 flex w-80 max-w-[calc(100vw-2rem)] flex-col gap-2 overflow-y-auto rounded-lg border border-border bg-popover p-[7px] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)] outline-none"
 
 const item =
-  "relative flex h-12 w-full cursor-pointer items-center gap-2 rounded-[var(--radius)] px-4 font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none select-none data-[highlighted]:bg-[var(--surface-hover)] data-[disabled]:pointer-events-none data-[disabled]:text-[var(--disabled-text)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+  "relative flex h-12 w-full cursor-pointer items-center gap-2 rounded-lg px-4 font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none select-none data-[inset]:ps-10 data-[highlighted]:bg-accent data-[disabled]:pointer-events-none data-[disabled]:text-[var(--disabled-text)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
 
-const DropdownMenu = DropdownMenuPrimitive.Root
-const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
-const DropdownMenuPortal = DropdownMenuPrimitive.Portal
-const DropdownMenuSub = DropdownMenuPrimitive.Sub
-const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
+function DropdownMenu(props: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
+  return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />
+}
+
+function DropdownMenuTrigger(props: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
+  return <DropdownMenuPrimitive.Trigger data-slot="dropdown-menu-trigger" {...props} />
+}
+
+function DropdownMenuPortal(props: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>) {
+  return <DropdownMenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />
+}
+
+function DropdownMenuSub(props: React.ComponentProps<typeof DropdownMenuPrimitive.Sub>) {
+  return <DropdownMenuPrimitive.Sub data-slot="dropdown-menu-sub" {...props} />
+}
+
+function DropdownMenuRadioGroup(props: React.ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>) {
+  return <DropdownMenuPrimitive.RadioGroup data-slot="dropdown-menu-radio-group" {...props} />
+}
+
 
 function DropdownMenuContent({
   className,
@@ -56,12 +73,18 @@ function DropdownMenuGroup({ className, ...props }: React.ComponentProps<typeof 
 
 function DropdownMenuItem({
   className,
+  inset,
   variant = "default",
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Item> & { variant?: "default" | "destructive" }) {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
+  /** Adds start padding so text lines up with items that have a leading icon. */
+  inset?: boolean
+  variant?: "default" | "destructive"
+}) {
   return (
     <DropdownMenuPrimitive.Item
       data-slot="dropdown-menu-item"
+      data-inset={inset}
       data-variant={variant}
       className={cn(item, "data-[variant=destructive]:text-[var(--status-error-text)] data-[variant=destructive]:[&_svg]:text-foreground", className)}
       {...props}
@@ -107,11 +130,18 @@ function DropdownMenuRadioItem({
   )
 }
 
-function DropdownMenuLabel({ className, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Label>) {
+function DropdownMenuLabel({
+  className,
+  inset,
+  ...props
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Label> & {
+  inset?: boolean
+}) {
   return (
     <DropdownMenuPrimitive.Label
       data-slot="dropdown-menu-label"
-      className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-foreground", className)}
+      data-inset={inset}
+      className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-foreground data-[inset]:ps-10", className)}
       {...props}
     />
   )
@@ -124,7 +154,7 @@ function DropdownMenuSeparator({
   return (
     <DropdownMenuPrimitive.Separator
       data-slot="dropdown-menu-separator"
-      className={cn("-mx-2 h-px bg-[var(--border-subtle)]", className)}
+      className={cn("-mx-2 h-px bg-border", className)}
       {...props}
     />
   )
@@ -134,7 +164,7 @@ function DropdownMenuShortcut({ className, ...props }: React.ComponentProps<"spa
   return (
     <span
       data-slot="dropdown-menu-shortcut"
-      className={cn("ms-auto font-sans text-sm leading-6 md:leading-5 font-medium text-[var(--text-secondary)]", className)}
+      className={cn("ms-auto font-sans text-sm leading-6 md:leading-5 font-medium text-muted-foreground", className)}
       {...props}
     />
   )
@@ -142,13 +172,17 @@ function DropdownMenuShortcut({ className, ...props }: React.ComponentProps<"spa
 
 function DropdownMenuSubTrigger({
   className,
+  inset,
   children,
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger>) {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
+  inset?: boolean
+}) {
   return (
     <DropdownMenuPrimitive.SubTrigger
       data-slot="dropdown-menu-sub-trigger"
-      className={cn(item, "data-[state=open]:bg-[var(--surface-hover)]", className)}
+      data-inset={inset}
+      className={cn(item, "data-[state=open]:bg-accent", className)}
       {...props}
     >
       {children}

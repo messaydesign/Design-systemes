@@ -28,21 +28,39 @@ npm install
 npm run dev`} />
       <P>Then <Link className="underline" href="/docs/theming">change the brand colour</Link> and start adding pages.</P>
 
+      <H2>New project with the CLI</H2>
+      <P>
+        Create a Next.js app already set up with the Main Brand style — dependencies, <InlineCode>cn()</InlineCode>,
+        theme tokens and base styles — exactly like <InlineCode>shadcn init</InlineCode>:
+      </P>
+      <CodeBlock lang="bash" code={`npx shadcn@latest init ${REGISTRY_URL}/r/style.json --template next --base radix`} />
+      <P>
+        The Next template includes shadcn’s default Button; replace it with ours and add the{" "}
+        <InlineCode>@main</InlineCode> namespace (next step) so you can add components by name.
+      </P>
+      <CodeBlock lang="bash" code={`npx shadcn@latest add ${REGISTRY_URL}/r/button.json --overwrite`} />
+
       <H2>Existing project</H2>
-      <H3>1. Initialise shadcn</H3>
-      <CodeBlock lang="bash" code="npx shadcn@latest init --base radix" />
-      <P>Choose the Radix base: these components import from <InlineCode>radix-ui</InlineCode>.</P>
-      <H3>2. Add the registry</H3>
-      <P>In <InlineCode>components.json</InlineCode>, register the namespace so you can write <InlineCode>@main/button</InlineCode>:</P>
+      <H3>1. Initialise with the Main Brand style</H3>
+      <CodeBlock lang="bash" code={`npx shadcn@latest init ${REGISTRY_URL}/r/style.json --base radix`} />
+      <P>
+        Choose the Radix base: these components import from <InlineCode>radix-ui</InlineCode>. If the project already uses
+        shadcn, run <InlineCode>npx shadcn@latest add {REGISTRY_URL}/r/style.json</InlineCode> instead — it adds our tokens
+        and keeps values you have already set.
+      </P>
+      <H3>2. Add the registry namespace</H3>
+      <P>In <InlineCode>components.json</InlineCode>, so you can write <InlineCode>@main/button</InlineCode>:</P>
       <CodeBlock lang="json" code={`{
   "registries": {
     "@main": "${REGISTRY_URL}/r/{name}.json"
   }
 }`} />
-      <H3>3. Add the theme and components</H3>
-      <CodeBlock lang="bash" code={`npx shadcn@latest add @main/theme
-npx shadcn@latest add @main/button @main/input @main/field @main/select @main/dialog @main/card`} />
-      <P>The theme writes the colour, radius and font tokens into your CSS. Each component also pulls in what it depends on.</P>
+      <H3>3. Add components</H3>
+      <CodeBlock lang="bash" code={`npx shadcn@latest add @main/button @main/input @main/field @main/select @main/dialog @main/card`} />
+      <P>
+        Names, props and parts follow shadcn/ui, so shadcn examples and blocks work with these components; Main Brand adds
+        Figma-specific extras (corner styles, loading, validation states, more sizes).
+      </P>
       <H3>4. Load the fonts</H3>
       <P>The theme expects DM Sans, Manrope, Inter and Roboto Mono as CSS variables; without them it falls back to system fonts.</P>
       <CodeBlock code={`// app/layout.tsx

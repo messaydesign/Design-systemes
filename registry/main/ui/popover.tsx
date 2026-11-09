@@ -9,12 +9,24 @@ import { cn } from "@/lib/utils"
  * Popover — Figma "Popover" (135:792)
  * Anchored, non-modal surface: 16px padding, 8px gap, subtle border, outer shadow.
  * Corner: Default 8 · Soft 16 · Pill (short content only).
+ * Optional PopoverHeader: SemiBold title + secondary description, 8px apart.
  */
 
-const Popover = PopoverPrimitive.Root
-const PopoverTrigger = PopoverPrimitive.Trigger
-const PopoverAnchor = PopoverPrimitive.Anchor
-const PopoverClose = PopoverPrimitive.Close
+function Popover(props: React.ComponentProps<typeof PopoverPrimitive.Root>) {
+  return <PopoverPrimitive.Root data-slot="popover" {...props} />
+}
+
+function PopoverTrigger(props: React.ComponentProps<typeof PopoverPrimitive.Trigger>) {
+  return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...props} />
+}
+
+function PopoverAnchor(props: React.ComponentProps<typeof PopoverPrimitive.Anchor>) {
+  return <PopoverPrimitive.Anchor data-slot="popover-anchor" {...props} />
+}
+
+function PopoverClose(props: React.ComponentProps<typeof PopoverPrimitive.Close>) {
+  return <PopoverPrimitive.Close data-slot="popover-close" {...props} />
+}
 
 function PopoverContent({
   className,
@@ -41,4 +53,37 @@ function PopoverContent({
   )
 }
 
-export { Popover, PopoverAnchor, PopoverClose, PopoverContent, PopoverTrigger }
+function PopoverHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return <div data-slot="popover-header" className={cn("flex flex-col gap-2", className)} {...props} />
+}
+
+function PopoverTitle({ className, ...props }: React.ComponentProps<"h2">) {
+  return (
+    <div
+      data-slot="popover-title"
+      className={cn("font-sans text-base leading-6 md:text-sm md:leading-5 font-semibold text-foreground", className)}
+      {...props}
+    />
+  )
+}
+
+function PopoverDescription({ className, ...props }: React.ComponentProps<"p">) {
+  return (
+    <p
+      data-slot="popover-description"
+      className={cn("font-sans text-sm leading-6 md:leading-5 text-muted-foreground", className)}
+      {...props}
+    />
+  )
+}
+
+export {
+  Popover,
+  PopoverAnchor,
+  PopoverClose,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+}

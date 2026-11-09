@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/registry/main/ui/button"
+import { buttonVariants, type Button } from "@/registry/main/ui/button"
 import { ChevronLeftIcon } from "@/registry/main/ui/icons"
 
 /*
@@ -13,6 +13,11 @@ import { ChevronLeftIcon } from "@/registry/main/ui/icons"
  * current page uses the selected outline (aria-current="page").
  * Previous/Next: 48px ghost icon buttons with 24px directional icons that
  * mirror in RTL. Disabled boundary controls render without an href.
+ *
+ * shadcn API: PaginationLink `size` takes Button size names. It defaults to
+ * "xs" (the XS page-number face) rather than shadcn's "icon", so plain
+ * shadcn page links keep the Figma look. Previous/Next accept PaginationLink
+ * props but stay icon-only (size "icon", 48px) with an aria-label.
  */
 
 function Pagination({ className, "aria-label": ariaLabel = "Pagination", ...props }: React.ComponentProps<"nav">) {
@@ -40,18 +45,19 @@ function PaginationItem({ className, ...props }: React.ComponentProps<"li">) {
   )
 }
 
-type PaginationLinkProps = React.ComponentProps<"a"> & {
+type PaginationLinkProps = {
   isActive?: boolean
   /** Boundary controls: rendered without href and skipped by Tab. */
   disabled?: boolean
-  size?: "page" | "icon"
-}
+} & Pick<React.ComponentProps<typeof Button>, "size"> &
+  React.ComponentProps<"a">
 
-function PaginationLink({ className, isActive, disabled, size = "page", href, ...props }: PaginationLinkProps) {
+function PaginationLink({ className, isActive, disabled, size = "xs", href, ...props }: PaginationLinkProps) {
   return (
     <a
       data-slot="pagination-link"
       data-active={isActive || undefined}
+      data-size={size}
       aria-current={isActive ? "page" : undefined}
       aria-disabled={disabled || undefined}
       href={disabled ? undefined : href}
@@ -59,7 +65,7 @@ function PaginationLink({ className, isActive, disabled, size = "page", href, ..
       className={cn(
         buttonVariants({
           variant: isActive ? "outline" : "ghost",
-          size: size === "icon" ? "icon" : "xs",
+          size,
         }),
         // The 48px wrapper is the touch target; drop Button's own extender.
         "after:hidden",
@@ -70,7 +76,10 @@ function PaginationLink({ className, isActive, disabled, size = "page", href, ..
   )
 }
 
-function PaginationPrevious({ "aria-label": ariaLabel = "Previous page", ...props }: PaginationLinkProps) {
+function PaginationPrevious({
+  "aria-label": ariaLabel = "Previous page",
+  ...props
+}: React.ComponentProps<typeof PaginationLink>) {
   return (
     <PaginationLink data-slot="pagination-previous" aria-label={ariaLabel} size="icon" {...props}>
       <ChevronLeftIcon />
@@ -78,7 +87,10 @@ function PaginationPrevious({ "aria-label": ariaLabel = "Previous page", ...prop
   )
 }
 
-function PaginationNext({ "aria-label": ariaLabel = "Next page", ...props }: PaginationLinkProps) {
+function PaginationNext({
+  "aria-label": ariaLabel = "Next page",
+  ...props
+}: React.ComponentProps<typeof PaginationLink>) {
   return (
     <PaginationLink data-slot="pagination-next" aria-label={ariaLabel} size="icon" {...props}>
       <ChevronLeftIcon className="-scale-x-100 rtl:scale-x-100" />

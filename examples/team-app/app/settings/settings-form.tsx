@@ -59,7 +59,7 @@ export function SettingsForm() {
               <FieldMessage id="ws-tz-help">Used for due dates and reminders.</FieldMessage>
             </Field>
             {saved ? (
-              <Alert status="success" role="status">
+              <Alert variant="success" role="status">
                 <AlertDescription>Settings saved.</AlertDescription>
               </Alert>
             ) : null}

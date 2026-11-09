@@ -11,38 +11,57 @@ import { CheckIcon, ChevronDownIcon } from "@/components/ui/icons"
  * "Option List" (31:284) and "Forms/Option" (30:20).
  * Listbox semantics (not an action menu); keyboard, typeahead and focus return
  * come from Radix Select.
+ *
+ * shadcn API: SelectTrigger `size` "sm" | "default". Figma has a single 32px
+ * control height, so both sizes are 32px today; `size` is accepted (and exposed
+ * as data-size) so shadcn examples work and a smaller step can be added later.
+ * Extras: `shape` on the trigger, `showCheck` on items (shadcn always shows it).
  */
 
-const Select = SelectPrimitive.Root
-const SelectGroup = SelectPrimitive.Group
-const SelectValue = SelectPrimitive.Value
+function Select(props: React.ComponentProps<typeof SelectPrimitive.Root>) {
+  return <SelectPrimitive.Root data-slot="select" {...props} />
+}
+
+function SelectGroup(props: React.ComponentProps<typeof SelectPrimitive.Group>) {
+  return <SelectPrimitive.Group data-slot="select-group" {...props} />
+}
+
+function SelectValue(props: React.ComponentProps<typeof SelectPrimitive.Value>) {
+  return <SelectPrimitive.Value data-slot="select-value" {...props} />
+}
 
 function SelectTrigger({
   className,
+  size = "default",
   shape = "default",
   children,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Trigger> & { shape?: "default" | "rounded" }) {
+}: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
+  size?: "sm" | "default"
+  shape?: "default" | "rounded"
+}) {
   return (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
+      data-size={size}
       className={cn(
-        "group/select flex h-8 w-full min-w-0 cursor-pointer items-center justify-between gap-2 border border-[var(--input-outline)] bg-[var(--input-surface)] px-[7px] text-start",
-        "font-sans text-base leading-6 md:text-sm md:leading-5 text-[var(--input-text)] data-[placeholder]:text-[var(--input-placeholder)]",
+        // data-[size=sm] and data-[size=default] are both 32px (Figma has one size).
+        "group/select flex h-8 w-full min-w-0 cursor-pointer items-center justify-between gap-2 border border-input bg-[var(--input-surface)] px-[7px] text-start",
+        "font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground data-[placeholder]:text-[var(--input-placeholder)]",
         "transition-[color,background-color,border-color] duration-150 outline-none",
-        "hover:border-[var(--input-outline-hover)] hover:bg-[var(--surface-hover)]",
+        "hover:border-[var(--input-outline-hover)] hover:bg-accent",
         "focus-visible:border-[var(--input-outline-focus)] focus-visible:bg-[var(--input-surface)]",
         "data-[state=open]:border-[var(--input-outline-focus)] data-[state=open]:bg-[var(--input-surface)]",
         "aria-invalid:border-[var(--status-error-border)]",
         "disabled:pointer-events-none disabled:border-[var(--disabled-border)] disabled:bg-[var(--input-surface-disabled)] disabled:text-[var(--disabled-text)]",
-        "[&>span]:line-clamp-1",
-        shape === "rounded" ? "rounded-[var(--radius-input-pill)] px-[15px]" : "rounded-[var(--radius)]",
+        "[&>span]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2",
+        shape === "rounded" ? "rounded-[var(--radius-input-pill)] px-[15px]" : "rounded-lg",
         className
       )}
       {...props}
     >
       {children}
-      <SelectPrimitive.Icon className="flex shrink-0 text-[var(--icon-secondary)] transition-transform duration-150 group-data-[state=open]/select:rotate-180 group-disabled/select:text-[var(--disabled-text)]">
+      <SelectPrimitive.Icon className="flex shrink-0 text-muted-foreground transition-transform duration-150 group-data-[state=open]/select:rotate-180 group-disabled/select:text-[var(--disabled-text)]">
         <ChevronDownIcon className="size-4" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
@@ -64,13 +83,15 @@ function SelectContent({
         sideOffset={sideOffset}
         className={cn(
           "relative z-50 max-h-(--radix-select-content-available-height) min-w-32 overflow-hidden",
-          "rounded-[var(--radius)] border border-[var(--border-control)] bg-[var(--surface-elevated)] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)]",
+          "rounded-lg border border-[var(--border-control)] bg-popover text-foreground shadow-[0_2px_8px_0_var(--effect-outer)]",
           position === "popper" && "w-full min-w-(--radix-select-trigger-width)",
           className
         )}
         {...props}
       >
+        <SelectScrollUpButton />
         <SelectPrimitive.Viewport className="flex flex-col gap-2 p-[7px]">{children}</SelectPrimitive.Viewport>
+        <SelectScrollDownButton />
       </SelectPrimitive.Content>
     </SelectPrimitive.Portal>
   )
@@ -80,7 +101,7 @@ function SelectLabel({ className, ...props }: React.ComponentProps<typeof Select
   return (
     <SelectPrimitive.Label
       data-slot="select-label"
-      className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-[var(--text-secondary)]", className)}
+      className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-muted-foreground", className)}
       {...props}
     />
   )
@@ -99,11 +120,11 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "relative flex h-8 w-full cursor-pointer items-center gap-2 rounded-[var(--radius)] border border-transparent px-[7px] select-none",
+        "relative flex h-8 w-full cursor-pointer items-center gap-2 rounded-lg border border-transparent px-[7px] select-none",
         "font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none transition-colors duration-100",
-        "data-[highlighted]:bg-[var(--surface-hover)]",
-        "data-[state=checked]:bg-[var(--brand-primary)] data-[state=checked]:text-[var(--brand-on-primary)]",
-        "data-[state=checked]:data-[highlighted]:bg-[var(--brand-primary-hover)] data-[state=checked]:data-[highlighted]:text-[var(--brand-on-primary-active)]",
+        "data-[highlighted]:bg-accent",
+        "data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
+        "data-[state=checked]:data-[highlighted]:bg-primary-hover data-[state=checked]:data-[highlighted]:text-[var(--primary-active-foreground)]",
         "data-[disabled]:pointer-events-none data-[disabled]:bg-[var(--disabled-background)] data-[disabled]:text-[var(--disabled-text)]",
         className
       )}
@@ -123,9 +144,36 @@ function SelectSeparator({ className, ...props }: React.ComponentProps<typeof Se
   return (
     <SelectPrimitive.Separator
       data-slot="select-separator"
-      className={cn("-mx-2 h-px bg-[var(--border)]", className)}
+      className={cn("-mx-2 h-px bg-border", className)}
       {...props}
     />
+  )
+}
+
+const scrollButtonClass =
+  "flex h-8 cursor-default items-center justify-center text-muted-foreground [&_svg:not([class*='size-'])]:size-4"
+
+function SelectScrollUpButton({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.ScrollUpButton>) {
+  return (
+    <SelectPrimitive.ScrollUpButton
+      data-slot="select-scroll-up-button"
+      className={cn(scrollButtonClass, className)}
+      {...props}
+    >
+      <ChevronDownIcon className="rotate-180" />
+    </SelectPrimitive.ScrollUpButton>
+  )
+}
+
+function SelectScrollDownButton({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.ScrollDownButton>) {
+  return (
+    <SelectPrimitive.ScrollDownButton
+      data-slot="select-scroll-down-button"
+      className={cn(scrollButtonClass, className)}
+      {...props}
+    >
+      <ChevronDownIcon />
+    </SelectPrimitive.ScrollDownButton>
   )
 }
 
@@ -135,6 +183,8 @@ export {
   SelectGroup,
   SelectItem,
   SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
   SelectSeparator,
   SelectTrigger,
   SelectValue,

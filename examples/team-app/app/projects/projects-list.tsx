@@ -45,7 +45,7 @@ export function ProjectsList() {
   return (
     <div className="flex flex-col gap-6">
       {created ? (
-        <Alert status="success">
+        <Alert variant="success">
           <AlertTitle>Project created</AlertTitle>
           <AlertDescription>“{created}” is now in the list.</AlertDescription>
         </Alert>

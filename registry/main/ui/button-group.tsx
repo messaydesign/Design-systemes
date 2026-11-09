@@ -1,7 +1,9 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
+import { Separator } from "@/registry/main/ui/separator"
 
 /*
  * Button Group — Figma "Button Group" (143:3704)
@@ -10,12 +12,17 @@ import { cn } from "@/lib/utils"
  * Pill, LTR/RTL (logical corners, so RTL mirrors automatically).
  * Focused segments rise above their neighbours so the focus ring stays
  * visible. Not a selection set: use Toggle Group.
+ *
+ * shadcn parts: ButtonGroupText (a static label segment, `asChild` supported)
+ * and ButtonGroupSeparator (a visible 1px divider, vertical by default).
+ * Nested groups are spaced 8px apart, as in shadcn.
  */
 
 const buttonGroupVariants = cva(
   [
-    "flex w-fit items-stretch",
+    "flex w-fit items-stretch has-[>[data-slot=button-group]]:gap-2",
     "[&>*]:relative [&>*:focus-visible]:z-10",
+    "[&>input]:flex-1 [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit",
     // Higher specificity than a Button's own corner class.
     "[&>*:not(:first-child):not(:last-child)]:rounded-none",
   ],
@@ -72,4 +79,41 @@ function ButtonGroup({
   )
 }
 
-export { ButtonGroup, buttonGroupVariants }
+function ButtonGroupText({
+  className,
+  asChild = false,
+  ...props
+}: React.ComponentProps<"div"> & {
+  asChild?: boolean
+}) {
+  const Comp = asChild ? Slot.Root : "div"
+  return (
+    <Comp
+      data-slot="button-group-text"
+      className={cn(
+        "flex items-center gap-2 rounded-lg border border-border bg-muted px-[15px]",
+        "font-sans text-base leading-6 md:text-sm md:leading-5 font-medium text-foreground",
+        "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function ButtonGroupSeparator({
+  className,
+  orientation = "vertical",
+  ...props
+}: React.ComponentProps<typeof Separator>) {
+  return (
+    <Separator
+      data-slot="button-group-separator"
+      orientation={orientation}
+      className={cn("relative m-0! self-stretch bg-input data-[orientation=vertical]:h-auto", className)}
+      {...props}
+    />
+  )
+}
+
+export { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, buttonGroupVariants }

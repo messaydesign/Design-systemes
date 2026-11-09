@@ -12,7 +12,7 @@ function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="skeleton"
       aria-hidden="true"
-      className={cn("rounded-[var(--radius)] bg-[var(--skeleton)] motion-safe:animate-pulse", className)}
+      className={cn("rounded-lg bg-[var(--skeleton)] motion-safe:animate-pulse", className)}
       {...props}
     />
   )

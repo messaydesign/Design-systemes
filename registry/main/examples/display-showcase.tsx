@@ -141,18 +141,18 @@ function Feedback() {
     ["info", "Status update"],
     ["success", "Changes saved"],
     ["warning", "Storage almost full"],
-    ["error", "Upload failed"],
+    ["destructive", "Upload failed"],
   ] as const
   return (
     <div className="flex flex-col gap-12">
       <div className={grid}>
         {statuses.map(([status, title]) => (
           <React.Fragment key={status}>
-            <Alert status={status}>
+            <Alert variant={status}>
               <AlertTitle>{title}</AlertTitle>
               <AlertDescription>Explain what happened and what to do next.</AlertDescription>
             </Alert>
-            <Alert status={status} appearance="outline">
+            <Alert variant={status} appearance="outline">
               <AlertTitle>{title}</AlertTitle>
               <AlertDescription>Outline appearance.</AlertDescription>
             </Alert>

@@ -78,7 +78,7 @@ export function ProjectForm() {
         </ValidationSummary>
       ) : null}
       {serverError ? (
-        <Alert status="error">
+        <Alert variant="destructive">
           <AlertTitle>Couldn’t create the project</AlertTitle>
           <AlertDescription>{serverError}</AlertDescription>
         </Alert>

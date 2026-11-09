@@ -16,16 +16,32 @@ import { navItemClasses } from "@/registry/main/ui/nav-item"
  * button variant. Content panel: surface-elevated, 1px subtle border,
  * 8px radius, 16px padding, 8px gap, Navigation / Item rows (240px), 8px
  * below the trigger, aligned to the inline start.
+ *
+ * shadcn API: `viewport` on NavigationMenu, plus NavigationMenuViewport and
+ * NavigationMenuIndicator. Deliberate deviation: `viewport` defaults to false
+ * (shadcn: true) so each panel opens inline below its own trigger, which is
+ * the Figma design. `viewport` (true) renders one shared shadcn-style viewport
+ * below the whole row; the panel styling (border, surface, radius) moves to
+ * the viewport and its size animates between panels.
  */
 
-function NavigationMenu({ className, children, ...props }: React.ComponentProps<typeof NavigationMenuPrimitive.Root>) {
+function NavigationMenu({
+  className,
+  children,
+  viewport = false,
+  ...props
+}: React.ComponentProps<typeof NavigationMenuPrimitive.Root> & {
+  viewport?: boolean
+}) {
   return (
     <NavigationMenuPrimitive.Root
       data-slot="navigation-menu"
-      className={cn("relative flex max-w-max flex-1 items-center", className)}
+      data-viewport={viewport}
+      className={cn("group/navigation-menu relative flex max-w-max flex-1 items-center", className)}
       {...props}
     >
       {children}
+      {viewport && <NavigationMenuViewport />}
     </NavigationMenuPrimitive.Root>
   )
 }
@@ -76,13 +92,55 @@ function NavigationMenuContent({
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
       className={cn(
-        "absolute start-0 top-full z-50 mt-2 flex w-max flex-col gap-2",
-        "rounded-lg border border-border bg-popover p-[15px] text-foreground",
+        "absolute start-0 flex w-max flex-col gap-2 p-[15px] text-foreground",
+        // Inline (viewport={false}): the content is the panel, 8px below its trigger.
+        "group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:z-50 group-data-[viewport=false]/navigation-menu:mt-2",
+        "group-data-[viewport=false]/navigation-menu:rounded-lg group-data-[viewport=false]/navigation-menu:border group-data-[viewport=false]/navigation-menu:border-border group-data-[viewport=false]/navigation-menu:bg-popover",
+        // In a viewport: the viewport draws the panel; content sits at its origin.
+        "group-data-[viewport=true]/navigation-menu:top-0",
         "[&_[data-slot=navigation-menu-link]]:w-60",
         className
       )}
       {...props}
     />
+  )
+}
+
+function NavigationMenuViewport({
+  className,
+  ...props
+}: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
+  return (
+    <div className="absolute start-0 top-full isolate z-50 flex">
+      <NavigationMenuPrimitive.Viewport
+        data-slot="navigation-menu-viewport"
+        className={cn(
+          "relative mt-2 h-(--radix-navigation-menu-viewport-height) w-(--radix-navigation-menu-viewport-width) max-w-[calc(100vw-2rem)] overflow-hidden",
+          "rounded-lg border border-border bg-popover text-foreground",
+          "transition-[width,height] duration-150 motion-reduce:transition-none",
+          className
+        )}
+        {...props}
+      />
+    </div>
+  )
+}
+
+function NavigationMenuIndicator({
+  className,
+  ...props
+}: React.ComponentProps<typeof NavigationMenuPrimitive.Indicator>) {
+  return (
+    <NavigationMenuPrimitive.Indicator
+      data-slot="navigation-menu-indicator"
+      className={cn(
+        "top-full z-[1] flex h-2 items-end justify-center overflow-hidden transition-opacity duration-150 data-[state=hidden]:opacity-0",
+        className
+      )}
+      {...props}
+    >
+      <div className="relative top-[60%] size-2 rotate-45 rounded-tl-sm bg-border" />
+    </NavigationMenuPrimitive.Indicator>
   )
 }
 
@@ -109,9 +167,11 @@ function NavigationMenuLink({
 export {
   NavigationMenu,
   NavigationMenuContent,
+  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  NavigationMenuViewport,
   navigationMenuTriggerStyle,
 }

@@ -89,7 +89,7 @@ function AccountFields() {
   )
 }
 
-function TabsDemo({ variant, orientation }: { variant: "line" | "pill"; orientation?: "horizontal" | "vertical" }) {
+function TabsDemo({ variant, orientation }: { variant: "line" | "default"; orientation?: "horizontal" | "vertical" }) {
   return (
     <Tabs defaultValue="account" orientation={orientation}>
       <TabsList variant={variant} aria-label="Account settings">
@@ -321,42 +321,46 @@ function NavigationMenuDemo() {
 function SidebarDemo() {
   const [current, setCurrent] = React.useState("Projects")
   return (
-    <SidebarProvider className="h-[640px]">
-      <Sidebar aria-label="Workspace">
+    // Contained demo: the sidebar is positioned inside this frame instead of the viewport.
+    <SidebarProvider className="relative isolate min-h-0 h-[640px] overflow-hidden rounded-lg border border-border">
+      <Sidebar collapsible="icon" variant="floating" className="absolute h-full">
         <SidebarHeader>
           <SidebarTrigger />
         </SidebarHeader>
         <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Workspace</SidebarGroupLabel>
-            <SidebarMenu>
-              {["Projects", "Activity", "Settings"].map((label) => (
-                <SidebarMenuItem key={label}>
-                  <SidebarMenuButton
-                    href={`#${label.toLowerCase()}`}
-                    isActive={current === label}
-                    tooltip={label}
-                    onClick={(event) => {
-                      event.preventDefault()
-                      setCurrent(label)
-                    }}
-                  >
-                    <FileIcon />
-                    <span>{label}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroup>
+          <nav aria-label="Workspace">
+            <SidebarGroup>
+              <SidebarGroupLabel>Workspace</SidebarGroupLabel>
+              <SidebarMenu>
+                {["Projects", "Activity", "Settings"].map((label) => (
+                  <SidebarMenuItem key={label}>
+                    <SidebarMenuButton asChild isActive={current === label} tooltip={label}>
+                      <a
+                        href={`#${label.toLowerCase()}`}
+                        aria-current={current === label ? "page" : undefined}
+                        onClick={(event) => {
+                          event.preventDefault()
+                          setCurrent(label)
+                        }}
+                      >
+                        <FileIcon />
+                        <span>{label}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroup>
+          </nav>
         </SidebarContent>
       </Sidebar>
-      <SidebarInset className="flex flex-col gap-4">
+      <SidebarInset className="flex flex-col gap-4 p-6">
         <div className="md:hidden">
-          <SidebarTrigger variant="outline" />
+          <SidebarTrigger />
         </div>
         <p className="font-semibold">{current}</p>
         <p className="text-muted-foreground">
-          Collapse the sidebar with its button or ⌘B / Ctrl+B. Below 768px it opens as a Sheet.
+          Collapse to icons with the button or ⌘B / Ctrl+B. Below 768px it opens as a Sheet.
         </p>
       </SidebarInset>
     </SidebarProvider>
@@ -366,10 +370,10 @@ function SidebarDemo() {
 export function NavigationShowcase() {
   return (
     <PreviewFrame>
-      <Section title="Tabs · Line / Pill · Horizontal / Vertical">
+      <Section title="Tabs · Line / Default (pill) · Horizontal / Vertical">
         <div className="flex flex-col gap-12">
           <TabsDemo variant="line" />
-          <TabsDemo variant="pill" />
+          <TabsDemo variant="default" />
           <TabsDemo variant="line" orientation="vertical" />
         </div>
       </Section>
