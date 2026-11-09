@@ -16,6 +16,7 @@ const steps = [
 
 export default function DocsHome() {
   const built = INVENTORY.filter((i) => i.status !== "design-only").length
+  const documented = INVENTORY.filter((i) => i.status === "documented")
   return (
     <>
       <DocHeader
@@ -50,8 +51,8 @@ export default function DocsHome() {
 
       <H2>What’s included</H2>
       <P>
-        {built} of {INVENTORY.length} Figma components have code. Five have full documentation so far (Button, Input,
-        Select, Dialog, Card); the rest are listed on the coverage page with what is missing.
+        {built} of {INVENTORY.length} Figma components have code. {documented.length} have full documentation so far (
+        {documented.map((d) => d.name).join(", ")}); the rest are listed on the coverage page with what is missing.
       </P>
       <Callout title="Scope">
         The library gives you building blocks and patterns, not every screen. Keep business logic — validation rules,

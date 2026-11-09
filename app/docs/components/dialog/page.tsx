@@ -82,7 +82,7 @@ import {
       <P>
         The panel is centred and up to 480px wide (<InlineCode>max-w-[calc(100%-2rem)]</InlineCode> on small screens).
         Change width with <InlineCode>className</InlineCode> on DialogContent. On phones consider a{" "}
-        <Link className="underline" href="/overlays">Sheet</Link> for long forms.
+        <Link className="underline" href="/docs/playground/overlays">Sheet</Link> for long forms.
       </P>
       <Callout tone="missing" title="Loading and error states">
         Figma shows Dialog Loading and Error masters; there are no dedicated props. Compose them with Button{" "}

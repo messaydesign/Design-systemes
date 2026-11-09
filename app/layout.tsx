@@ -18,14 +18,6 @@ export const metadata: Metadata = {
 // Apply the saved theme before first paint (no flash).
 const themeScript = `try{if(localStorage.getItem("theme")==="dark")document.documentElement.classList.add("dark")}catch(e){}`
 
-const playground = [
-  ["/", "Button"],
-  ["/actions", "Actions"],
-  ["/forms", "Forms"],
-  ["/navigation", "Navigation"],
-  ["/overlays", "Overlays"],
-  ["/display", "Display"],
-] as const
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -53,16 +45,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <Link href="/docs" className="text-[var(--text-secondary)] hover:text-foreground">
                 Docs
               </Link>
-              <span className="hidden text-[var(--text-secondary)] md:inline">Playground:</span>
-              {playground.map(([href, label]) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="hidden whitespace-nowrap text-[var(--text-secondary)] hover:text-foreground md:inline"
-                >
-                  {label}
-                </Link>
-              ))}
             </nav>
             <ThemeToggle />
           </div>

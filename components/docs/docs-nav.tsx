@@ -17,6 +17,16 @@ const GUIDES = [
   { href: "/docs/contributing", label: "Contributing" },
 ]
 
+const PLAYGROUND = [
+  { href: "/docs/playground/button", label: "Button" },
+  { href: "/docs/playground/actions", label: "Actions" },
+  { href: "/docs/playground/forms", label: "Forms" },
+  { href: "/docs/playground/forms/more", label: "More form controls" },
+  { href: "/docs/playground/navigation", label: "Navigation" },
+  { href: "/docs/playground/overlays", label: "Overlays" },
+  { href: "/docs/playground/display", label: "Content and feedback" },
+]
+
 const compact = "h-9 text-sm"
 
 function NavList({ onNavigate }: { onNavigate?: () => void }) {
@@ -29,6 +39,18 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
           <NavItem key={g.href} asChild isActive={pathname === g.href} className={compact}>
             <Link href={g.href} onClick={onNavigate}>
               <span>{g.label}</span>
+            </Link>
+          </NavItem>
+        ))}
+      </section>
+      <section className="flex flex-col gap-1">
+        <h2 className="px-4 text-xs font-semibold tracking-wide text-[var(--text-secondary)] uppercase">
+          Playground · all states
+        </h2>
+        {PLAYGROUND.map((p) => (
+          <NavItem key={p.href} asChild isActive={pathname === p.href} className={compact}>
+            <Link href={p.href} onClick={onNavigate}>
+              <span>{p.label}</span>
             </Link>
           </NavItem>
         ))}

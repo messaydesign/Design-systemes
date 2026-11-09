@@ -62,7 +62,7 @@ export default function InputPage() {
       <ComponentPreview name="input-form" />
       <Callout title="Add-ons, search and password controls">
         Prefixes, icons and inline buttons use <InlineCode>Input Group</InlineCode>; it is built but not documented yet —
-        see the <Link className="underline" href="/forms/more">playground</Link>.
+        see the <Link className="underline" href="/docs/playground/forms/more">playground</Link>.
       </Callout>
       <Callout tone="missing" title="Comfortable 48px density">
         Figma’s optional 48px control density is not implemented; inputs are always Compact 32px.

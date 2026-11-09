@@ -114,7 +114,7 @@ export const INVENTORY: InventoryItem[] = [
     "shape, aria-invalid, data-validation, readOnly, disabled", "Default/Hover/Focus/Pressed/Read only/Disabled × validation × 8px/Rounded",
     "Docs page; Comfortable 48px density"),
   i("Forms", "Textarea", "187:18173", ["textarea"], "built", "shape, validation", "Textarea control states", "Docs page"),
-  i("Forms", "Field", "187:17007", ["field"], "built",
+  i("Forms", "Field", "187:17007", ["field"], "documented",
     "validation, orientation; Label, Control, Description, Message, Error, Counter", "Text field Validation None/Error/Warning/Success; Field message statuses", "Docs page"),
   i("Forms", "Field Set", "187:17060", ["field"], "built", "FieldSet, FieldLegend, FieldGroup orientation", "Vertical/Horizontal", "Docs page"),
   i("Forms", "Field Group", "187:17290", ["field"], "built", "orientation", "Vertical/Horizontal", "Docs page"),
@@ -168,8 +168,8 @@ export const INVENTORY: InventoryItem[] = [
 
   // 06 · Content and layout
   i("Content and layout", "Card", "187:22361", ["card"], "documented", "corner; Header, Title, Description, Content, Footer", "Default/Soft/Pill", "Docs page"),
-  i("Content and layout", "Item", "187:22312", ["item"], "built", "variant; Media, Content, Title, Description, Actions", "Default/Outline/Muted", "Docs page"),
-  i("Content and layout", "Avatar", "187:22285", ["avatar"], "built", "size; Image, Fallback, Badge", "32/48/64 × Initials/Icon/Image/Loading/Error", "Docs page"),
+  i("Content and layout", "Item", "187:22312", ["item"], "documented", "variant; Media, Content, Title, Description, Actions", "Default/Outline/Muted", "Docs page"),
+  i("Content and layout", "Avatar", "187:22285", ["avatar"], "documented", "size; Image, Fallback, Badge", "32/48/64 × Initials/Icon/Image/Loading/Error", "Docs page"),
   i("Content and layout", "Accordion", "187:22469", ["accordion"], "built", "type single/multiple, collapsible", "Single/Multiple; item states", "Docs page"),
   i("Content and layout", "Collapsible", "187:22530", ["collapsible"], "built", "open, onOpenChange", "Closed/Open", "Docs page"),
   i("Content and layout", "Separator", "187:22260", ["separator"], "built", "orientation, decorative", "Horizontal/Vertical", "Docs page"),
@@ -182,7 +182,7 @@ export const INVENTORY: InventoryItem[] = [
 
   // 07 · Feedback
   i("Feedback", "Alert", "187:23822", ["alert"], "built", "status, appearance; Title, Description", "Info/Success/Warning/Error × Default/Outline", "Docs page"),
-  i("Feedback", "Badge", "187:23764", ["badge"], "built", "variant, asChild", "Default/Secondary/Outline/Destructive", "Docs page"),
+  i("Feedback", "Badge", "187:23764", ["badge"], "documented", "variant, asChild", "Default/Secondary/Outline/Destructive", "Docs page"),
   i("Feedback", "Progress", "187:23733", ["progress"], "built", "value (null = indeterminate)", "0/25/50/75/100/Indeterminate", "Docs page"),
   i("Feedback", "Skeleton", "187:23793", ["skeleton"], "built", "className", "Text/Avatar/Card", "Docs page"),
   i("Feedback", "Spinner", "187:23961", ["spinner"], "built", "size", "16/24/32", "Docs page"),
