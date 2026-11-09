@@ -6,7 +6,8 @@ import { cn } from "@/lib/utils"
 /*
  * Text control — Figma ".Building blocks/Text control" (27:1946)
  * States: Default · Hover · Focus · Pressed · Read only · Disabled
- * Compact 32px, 8px padding (inside a 1px stroke), DM Sans 16/24.
+ * Compact 32px, 8px padding (inside a 1px stroke) on both shapes,
+ * Controls/Field/Value DM Sans 14/20 (16/24 below 768px).
  * Validation comes from aria-invalid (error) or data-validation
  * ("warning" | "success"), usually set by <Field>.
  * Shape: default 8px radius · rounded = pill (Figma Shape=Rounded).
@@ -18,7 +19,7 @@ const inputVariants = cva(
     "transition-[color,background-color,border-color] duration-150 outline-none",
     "hover:border-[var(--input-outline-hover)] hover:bg-accent",
     "focus:border-[var(--input-outline-focus)] focus:bg-[var(--input-surface)]",
-    "read-only:bg-muted read-only:hover:border-input",
+    "read-only:bg-secondary read-only:hover:border-input read-only:hover:bg-secondary",
     "aria-invalid:border-[var(--status-error-border)]",
     "data-[validation=warning]:border-[var(--status-warning-border)]",
     "data-[validation=success]:border-[var(--status-success-border)]",
@@ -30,7 +31,7 @@ const inputVariants = cva(
     variants: {
       shape: {
         default: "rounded-lg",
-        rounded: "rounded-[var(--radius-input-pill)] px-[15px]",
+        rounded: "rounded-[var(--radius-input-pill)]",
       },
     },
     defaultVariants: { shape: "default" },

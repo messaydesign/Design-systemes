@@ -284,7 +284,7 @@ function SidebarTrigger({ className, onClick, ...props }: React.ComponentProps<t
       }}
       {...props}
     >
-      {expanded ? <ChevronLeftIcon className="size-4" /> : <ChevronRightIcon className="size-4" />}
+      {expanded ? <ChevronLeftIcon /> : <ChevronRightIcon />}
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )
@@ -413,7 +413,7 @@ function SidebarGroupLabel({
       data-slot="sidebar-group-label"
       data-sidebar="group-label"
       className={cn(
-        "flex shrink-0 items-center gap-2 rounded-lg font-sans text-sm leading-6 font-medium text-sidebar-foreground outline-none md:leading-5",
+        "flex shrink-0 items-center gap-2 rounded-lg font-sans text-sm leading-6 font-medium text-sidebar-foreground outline-none",
         "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ring",
         "[&>svg]:size-4 [&>svg]:shrink-0",
         "group-data-[collapsible=icon]:sr-only",
@@ -509,9 +509,9 @@ const sidebarMenuButtonVariants = cva(
         outline: "bg-background shadow-[0_0_0_1px_var(--sidebar-border)] hover:shadow-[0_0_0_1px_var(--sidebar-accent)]",
       },
       size: {
-        default: "h-12 text-base leading-6 md:text-sm md:leading-5",
+        default: "h-12 text-base leading-6",
         sm: "h-10 text-sm leading-5",
-        lg: "h-14 text-base leading-6 md:text-sm md:leading-5 group-data-[collapsible=icon]:px-2!",
+        lg: "h-14 text-base leading-6 group-data-[collapsible=icon]:px-2!",
       },
     },
     defaultVariants: {

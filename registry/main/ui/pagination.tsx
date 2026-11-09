@@ -9,7 +9,8 @@ import { ChevronLeftIcon } from "@/registry/main/ui/icons"
 /*
  * Pagination — Figma "Pagination" (150:1350), First/Middle/Last × LTR/RTL.
  * Every control sits in a 48×48 wrapper; wrappers are 8px apart.
- * Page numbers: XS Button face (32px, Inter SemiBold 12) — Ghost, and the
+ * Page numbers: XS Button face (32px, 8px inline padding, Inter SemiBold
+ * Button/XS type) — Ghost, and the
  * current page uses the selected outline (aria-current="page").
  * Previous/Next: 48px ghost icon buttons with 24px directional icons that
  * mirror in RTL. Disabled boundary controls render without an href.
@@ -103,7 +104,7 @@ function PaginationEllipsis({ className, ...props }: React.ComponentProps<"span"
     <span
       data-slot="pagination-ellipsis"
       aria-hidden="true"
-      className={cn("flex size-12 items-center justify-center font-button text-xs leading-6 font-semibold", className)}
+      className={cn("flex size-12 items-center justify-center font-button text-base leading-6 font-semibold md:text-sm md:leading-5", className)}
       {...props}
     >
       …

@@ -6,7 +6,8 @@ import { CloseIcon } from "@/registry/main/ui/icons"
 /*
  * Chip — Figma "Forms/Chip" (30:21)
  * 32px, 8px inline padding inside a 1px subtle stroke, 8px gap, 8px radius,
- * surface fill, DM Sans Medium 14/24, optional 16px remove icon.
+ * surface fill, Controls/Field/Label type (Medium 14/20 from md, 14/24 on
+ * phones), optional 16px remove icon.
  * States: Default · Hover/Pressed (surface-hover) · Focus (brand stroke,
  * from the remove button) · Disabled (disabled fill and text).
  * The remove control is a real button with its own name and a 48px hit area.
@@ -27,9 +28,9 @@ function Chip({ className, children, onRemove, removeLabel, disabled, ...props }
       data-slot="chip"
       data-disabled={disabled || undefined}
       className={cn(
-        "inline-flex h-8 max-w-full items-center gap-2 rounded-lg border border-border bg-muted px-[7px]",
+        "inline-flex h-8 max-w-full items-center gap-2 rounded-lg border border-border bg-[var(--surface)] px-[7px]",
         "font-sans text-sm leading-6 md:leading-5 font-medium text-foreground transition-[background-color,border-color] duration-150",
-        "[&:has(button:enabled):hover]:bg-accent has-[button:focus-visible]:border-primary",
+        "[&:has(button:enabled):hover]:bg-accent [&:has(button:enabled:active)]:bg-accent has-[button:focus-visible]:border-primary",
         "data-[disabled]:bg-[var(--disabled-background)] data-[disabled]:text-[var(--disabled-text)]",
         className
       )}

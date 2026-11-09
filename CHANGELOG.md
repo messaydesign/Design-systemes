@@ -6,6 +6,19 @@ so teams can review them with `npx shadcn@latest add @main/<name> --diff`.
 
 ## Unreleased
 
+### Changed — aligned with the updated Figma file
+- Type follows the Figma text styles: controls (Button/*, Controls/Field/*:
+  buttons, inputs, selects, field label/value/helper) are 16/24 on phones and
+  14/20 from 768px — every Button size is now 14/20 (was 12–20). Body text
+  (menus, navigation, tabs, cards, alerts, dialogs) is 16/24 at all widths.
+- Dialog/Sheet header is 48px with the description at full width; tooltip
+  arrow, menu separators, Select list (no shadow, focus border), Radio Group
+  16px spacing, Accordion 8px trigger–content gap, Tabs line indicator inside
+  the 48px trigger, Breadcrumb ellipsis as a Large ghost button, Split Button
+  disabled seam, Chip/Badge/read-only Input surface colour, rounded Input
+  8px padding, Checkbox/Switch warning and success borders, Popover Pill
+  (8px panel, pill controls). — most items
+
 ### Breaking — aligned with shadcn/ui
 - Theme: shadcn tokens hold the values (`--primary`, `--muted-foreground`,
   `--border`, `--input`, `--ring`, `--chart-*`, `--sidebar-*`); brand

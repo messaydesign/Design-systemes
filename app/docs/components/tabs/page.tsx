@@ -118,8 +118,8 @@ export default function TabsPage() {
 
       <H2>Responsive</H2>
       <P>
-        Triggers keep their height at every size; text drops from 16px to 14px from the <InlineCode>md</InlineCode>{" "}
-        breakpoint. On phones prefer a horizontal list (vertical lists take width from the panel).
+        Triggers keep their 48px height and 16px text at every size.
+        On phones prefer a horizontal list (vertical lists take width from the panel).
       </P>
 
       <H2>RTL</H2>

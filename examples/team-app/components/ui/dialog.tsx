@@ -10,7 +10,8 @@ import { CloseIcon } from "@/components/ui/icons"
 /*
  * Dialog — Figma "Overlay / Panel" Kind=Dialog (148:322) and "Dialog" (148:1264)
  * 480px panel · 24px padding · 16px gap · 1px subtle border · Default 8 / Soft 16.
- * Header: SemiBold 16/24 title + 48px ghost close (start-aligned row).
+ * Header: SemiBold 16/24 title + 48px ghost close (start-aligned row; the
+ * title reserves the 48px row height when the close button is shown).
  * Footer: actions start-aligned, 8px gap. Backdrop rgba(0,0,0,.64).
  * Radix owns focus trap, inert background, scroll lock and focus return.
  */
@@ -75,7 +76,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="dialog-header"
-      className={cn("flex flex-col gap-4 group-data-[close=true]/dialog:pe-14", className)}
+      className={cn("flex flex-col gap-4", className)}
       {...props}
     />
   )
@@ -91,7 +92,7 @@ function DialogTitle({ className, ...props }: React.ComponentProps<typeof Dialog
   return (
     <DialogPrimitive.Title
       data-slot="dialog-title"
-      className={cn("font-sans text-base leading-6 md:text-sm md:leading-5 font-semibold text-foreground", className)}
+      className={cn("font-sans text-base leading-6 font-semibold text-foreground group-data-[close=true]/dialog:min-h-12 group-data-[close=true]/dialog:pe-14", className)}
       {...props}
     />
   )
@@ -101,7 +102,7 @@ function DialogDescription({ className, ...props }: React.ComponentProps<typeof 
   return (
     <DialogPrimitive.Description
       data-slot="dialog-description"
-      className={cn("font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground", className)}
+      className={cn("font-sans text-base leading-6 text-foreground", className)}
       {...props}
     />
   )

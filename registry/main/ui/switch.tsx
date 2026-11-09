@@ -35,6 +35,8 @@ function Switch({
         "data-[state=checked]:hover:bg-primary-hover data-[state=checked]:hover:[--thumb:var(--primary-active-foreground)]",
         "data-[state=checked]:active:bg-primary-active data-[state=checked]:active:[--thumb:var(--primary-active-foreground)]",
         "aria-invalid:border-[var(--status-error-border)]",
+        // Figma Forms/Switch Warning/Success: status outline, taken from a parent Field.
+        "in-data-[validation=warning]:border-[var(--status-warning-border)] in-data-[validation=success]:border-[var(--status-success-border)]",
         "disabled:pointer-events-none disabled:border-[var(--disabled-border)] disabled:bg-[var(--disabled-background)] disabled:[--thumb:var(--disabled-text)]",
         "disabled:data-[state=checked]:border-[var(--disabled-border)] disabled:data-[state=checked]:bg-[var(--disabled-background)] disabled:data-[state=checked]:[--thumb:var(--disabled-text)]",
         className

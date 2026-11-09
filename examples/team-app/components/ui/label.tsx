@@ -5,7 +5,7 @@ import { Label as LabelPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 
-/* Figma "Brand Typography/Forms/Label": DM Sans Medium 14/24. */
+/* Figma "Controls/Field/Label": DM Sans Medium 14/20 (14/24 below 768px). */
 function Label({ className, ...props }: React.ComponentProps<typeof LabelPrimitive.Root>) {
   return (
     <LabelPrimitive.Root

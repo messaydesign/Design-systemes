@@ -30,6 +30,8 @@ function Checkbox({ className, ...props }: React.ComponentProps<typeof CheckboxP
         "data-[state=checked]:active:[--cb-bg:var(--brand-primary-pressed)] data-[state=checked]:active:[--cb-ink:var(--primary-active-foreground)]",
         "data-[state=indeterminate]:active:[--cb-bg:var(--brand-primary-pressed)] data-[state=indeterminate]:active:[--cb-ink:var(--primary-active-foreground)]",
         "aria-invalid:[--cb-border:var(--status-error-border)]",
+        // Figma Forms/Checkbox Warning/Success: status outline, taken from a parent Field.
+        "in-data-[validation=warning]:[--cb-border:var(--status-warning-border)] in-data-[validation=success]:[--cb-border:var(--status-success-border)]",
         "disabled:pointer-events-none disabled:[--cb-bg:var(--disabled-background)] disabled:[--cb-border:var(--disabled-border)] disabled:[--cb-ink:var(--disabled-text)]",
         "disabled:data-[state=checked]:[--cb-bg:var(--disabled-background)] disabled:data-[state=checked]:[--cb-border:var(--disabled-border)]",
         "disabled:data-[state=indeterminate]:[--cb-bg:var(--disabled-background)] disabled:data-[state=indeterminate]:[--cb-border:var(--disabled-border)]",

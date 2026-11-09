@@ -17,7 +17,7 @@ function Card({
     <div
       data-slot="card"
       className={cn(
-        "flex flex-col gap-6 border border-border bg-card p-[15px] font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground",
+        "flex flex-col gap-6 border border-border bg-card p-[15px] font-sans text-base leading-6 text-foreground",
         corner === "soft" ? "rounded-xl" : corner === "pill" ? "rounded-full" : "rounded-lg",
         className
       )}

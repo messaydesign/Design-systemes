@@ -83,7 +83,8 @@ function SelectContent({
         sideOffset={sideOffset}
         className={cn(
           "relative z-50 max-h-(--radix-select-content-available-height) min-w-32 overflow-hidden",
-          "rounded-lg border border-[var(--border-control)] bg-popover text-foreground shadow-[0_2px_8px_0_var(--effect-outer)]",
+          // Figma Option List: surface-elevated fill, 1px control border, no shadow.
+          "rounded-lg border border-[var(--border-control)] bg-popover text-foreground",
           position === "popper" && "w-full min-w-(--radix-select-trigger-width)",
           className
         )}
@@ -123,8 +124,10 @@ function SelectItem({
         "relative flex h-8 w-full cursor-pointer items-center gap-2 rounded-lg border border-transparent px-[7px] select-none",
         "font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none transition-colors duration-100",
         "data-[highlighted]:bg-accent",
+        // Figma Forms/Option Focus: keyboard focus is a 1px brand outline, no fill.
+        "focus-visible:border-[var(--brand-primary)] focus-visible:data-[highlighted]:bg-transparent",
         "data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
-        "data-[state=checked]:data-[highlighted]:bg-primary-hover data-[state=checked]:data-[highlighted]:text-[var(--primary-active-foreground)]",
+        "data-[state=checked]:focus-visible:border-transparent data-[state=checked]:data-[highlighted]:bg-primary-hover data-[state=checked]:data-[highlighted]:text-[var(--primary-active-foreground)]",
         "data-[disabled]:pointer-events-none data-[disabled]:bg-[var(--disabled-background)] data-[disabled]:text-[var(--disabled-text)]",
         className
       )}

@@ -7,7 +7,7 @@ export default function ProgressLabel() {
   const total = 5
   return (
     <div className="flex w-full max-w-sm flex-col gap-2">
-      <div className="flex items-baseline justify-between gap-4 text-sm">
+      <div className="flex items-baseline justify-between gap-4 text-sm leading-6">
         <span id="onboarding-label" className="font-medium">
           Profile setup
         </span>

@@ -109,7 +109,7 @@ import { NavItem } from "@/components/ui/nav-item"
 
       <H2>Responsive</H2>
       <P>
-        Rows stay 48px tall; text drops from 16px to 14px from the <InlineCode>md</InlineCode> breakpoint. Items fill
+        Rows stay 48px tall with 16px text at every size. Items fill
         their container, so set the list width on the parent.
       </P>
 

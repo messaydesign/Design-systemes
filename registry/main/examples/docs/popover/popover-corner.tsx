@@ -8,7 +8,7 @@ import {
   PopoverTrigger,
 } from "@/registry/main/ui/popover"
 
-// Figma Corner: Default (8px), Soft (16px) and Pill — keep pill to one short line.
+// Figma Corner: Default (8px), Soft (16px) and Pill (8px panel, pill-shaped controls).
 export default function PopoverCorner() {
   return (
     <div className="flex flex-wrap gap-2">
@@ -38,8 +38,12 @@ export default function PopoverCorner() {
         <PopoverTrigger asChild>
           <Button variant="outline">Pill</Button>
         </PopoverTrigger>
-        <PopoverContent corner="pill" className="w-auto px-6" aria-label="Link copied">
-          <p>Link copied to your clipboard.</p>
+        <PopoverContent corner="pill" className="w-72" aria-labelledby="popover-pill-title">
+          <PopoverHeader>
+            <PopoverTitle id="popover-pill-title">Share link</PopoverTitle>
+            <PopoverDescription>Anyone with the link can view.</PopoverDescription>
+          </PopoverHeader>
+          <Button size="sm">Copy link</Button>
         </PopoverContent>
       </Popover>
     </div>

@@ -83,7 +83,7 @@ export default function ChipPage() {
 
       <H2>Customization</H2>
       <P>
-        Uses <InlineCode>--muted</InlineCode> (fill), <InlineCode>--border</InlineCode>, <InlineCode>--accent</InlineCode>{" "}
+        Uses <InlineCode>--surface</InlineCode> (fill), <InlineCode>--border</InlineCode>, <InlineCode>--accent</InlineCode>{" "}
         (hover), <InlineCode>--primary</InlineCode> (focus) and the <InlineCode>--disabled-*</InlineCode> tokens. Style
         the button with <InlineCode>[data-slot=chip-remove]</InlineCode>.
       </P>

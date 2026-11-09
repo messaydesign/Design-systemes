@@ -82,9 +82,10 @@ export default function ThemingPage() {
 
       <H2>Text size</H2>
       <P>
-        Component text is responsive. Below 768px body text is 16px on a 24px line (so phones don’t zoom into form
-        fields); from 768px it is 14px on a 20px line. Labels and helper text stay 14px and tighten to a 20px line.
-        Buttons keep their own size scale (XS 12 → XXL 20).
+        Text follows the Figma text styles. Controls — buttons, inputs, selects and field label/value/helper text, which
+        use Figma’s <InlineCode>Controls/*</InlineCode> and <InlineCode>Button/*</InlineCode> styles at 14/20 — are 16px on
+        a 24px line on phones (so phones don’t zoom into form fields) and 14/20 from 768px. Body text in menus,
+        navigation, tabs, cards and alerts uses Figma’s 16/24 body styles at every width.
       </P>
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
@@ -98,16 +99,22 @@ export default function ThemingPage() {
           </thead>
           <tbody>
             <tr className="border-t border-border">
-              <td className="px-4 py-2">Body, values, menu items</td>
+              <td className="px-4 py-2">Control value, button label</td>
               <td className="px-4 py-2">16 / 24</td>
               <td className="px-4 py-2">14 / 20</td>
               <td className="px-4 py-2 font-mono text-[13px]">text-base leading-6 md:text-sm md:leading-5</td>
             </tr>
             <tr className="border-t border-border">
-              <td className="px-4 py-2">Labels, helper, badges</td>
+              <td className="px-4 py-2">Field label, helper, message</td>
               <td className="px-4 py-2">14 / 24</td>
               <td className="px-4 py-2">14 / 20</td>
               <td className="px-4 py-2 font-mono text-[13px]">text-sm leading-6 md:leading-5</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Body: menu items, nav, tabs, cards, alerts</td>
+              <td className="px-4 py-2">16 / 24</td>
+              <td className="px-4 py-2">16 / 24</td>
+              <td className="px-4 py-2 font-mono text-[13px]">text-base leading-6</td>
             </tr>
           </tbody>
         </table>

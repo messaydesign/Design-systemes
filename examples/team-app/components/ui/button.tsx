@@ -15,6 +15,7 @@ import { SpinnerIcon } from "@/components/ui/icons"
  *     Default · Hover · Pressed (:active) · Selected (persistent) · Disabled
  *   Content (125:168)  Size × Content × Loading
  *     XXL 64 · XL 56 · Large 48 · Small 40 · XS 32, label+icons or icon only
+ *     Text is Button/* (Inter SemiBold 14/20, 16/24 below 768px) on every size.
  *
  * Size names follow shadcn so existing blocks keep working:
  *   xs = XS 32 · sm = Small 40 · default = Large 48 · lg = XL 56 · xl = XXL 64
@@ -27,8 +28,10 @@ const buttonVariants = cva(
   [
     "group/button relative inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap select-none",
     "border border-transparent font-button font-semibold",
+    // Figma Button/* text styles: 14/20 on every size from 768px, 16/24 on phones.
+    "text-base leading-6 md:text-sm md:leading-5",
     "transition-[color,background-color,border-color,box-shadow] duration-150",
-    "focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-ring",
+    "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ring",
     "disabled:pointer-events-none aria-disabled:pointer-events-none",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
@@ -68,9 +71,9 @@ const buttonVariants = cva(
         ],
         destructive: [
           "border-[var(--button-destructive-default-border)] bg-[var(--button-destructive-default-background)] text-[var(--button-destructive-default-text)]",
-          "hover:bg-[var(--button-destructive-hover-background)] hover:text-[var(--button-destructive-active-text)]",
+          "hover:border-[var(--button-destructive-hover-background)] hover:bg-[var(--button-destructive-hover-background)] hover:text-[var(--button-destructive-active-text)]",
           "active:bg-[var(--button-destructive-pressed-background)] active:text-[var(--button-destructive-active-text)] active:shadow-[inset_0_1px_2px_-1px_var(--effect-pressed-inner)]",
-          "selected:bg-[var(--button-destructive-selected-background)] selected:text-[var(--button-destructive-active-text)]",
+          "selected:border-[var(--button-destructive-selected-background)] selected:bg-[var(--button-destructive-selected-background)] selected:text-[var(--button-destructive-active-text)]",
           "disabled:border-[var(--border-disabled)] disabled:bg-[var(--button-disabled-background)] disabled:text-[var(--button-disabled-text)]",
           "aria-disabled:border-[var(--border-disabled)] aria-disabled:bg-[var(--button-disabled-background)] aria-disabled:text-[var(--button-disabled-text)]",
         ],
@@ -85,11 +88,11 @@ const buttonVariants = cva(
       // Horizontal padding is Figma's value minus the 1px border, because
       // Figma strokes sit inside the frame (XS 8 · Small 16 · Large 24 · XL 24 · XXL 32).
       size: {
-        xs: "h-8 gap-2 px-[7px] text-xs leading-6 [&_svg:not([class*='size-'])]:size-4",
-        sm: "h-10 gap-2 px-[15px] text-sm leading-6 [&_svg:not([class*='size-'])]:size-4",
-        default: "h-12 gap-2 px-[23px] text-base leading-6 [&_svg:not([class*='size-'])]:size-6",
-        lg: "h-14 gap-4 px-[23px] text-lg leading-6 [&_svg:not([class*='size-'])]:size-6",
-        xl: "h-16 gap-4 px-[31px] text-xl leading-6 [&_svg:not([class*='size-'])]:size-6",
+        xs: "h-8 gap-2 px-[7px] [&_svg:not([class*='size-'])]:size-4",
+        sm: "h-10 gap-2 px-[15px] [&_svg:not([class*='size-'])]:size-4",
+        default: "h-12 gap-2 px-[23px] [&_svg:not([class*='size-'])]:size-6",
+        lg: "h-14 gap-4 px-[23px] [&_svg:not([class*='size-'])]:size-6",
+        xl: "h-16 gap-4 px-[31px] [&_svg:not([class*='size-'])]:size-6",
         "icon-xs": "size-8 [&_svg:not([class*='size-'])]:size-4",
         "icon-sm": "size-10 [&_svg:not([class*='size-'])]:size-4",
         icon: "size-12 [&_svg:not([class*='size-'])]:size-6",

@@ -327,7 +327,7 @@ function FieldLegend({
         "mb-2 p-0 font-sans text-foreground",
         variant === "label"
           ? "text-sm leading-6 md:leading-5 font-medium"
-          : "text-base leading-6 md:text-sm md:leading-5 font-semibold",
+          : "text-base leading-6 font-semibold", // Figma UI/Title 16/24 at all widths
         className
       )}
       {...props}

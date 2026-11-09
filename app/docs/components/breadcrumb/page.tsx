@@ -120,7 +120,7 @@ export default function BreadcrumbPage() {
           <>Renders <InlineCode>&lt;nav aria-label=&quot;Breadcrumb&quot;&gt;</InlineCode> with an ordered list; override the label if a page has more than one.</>,
           <>The current page has <InlineCode>aria-current=&quot;page&quot;</InlineCode> and is not a link.</>,
           <>Separators are <InlineCode>role=&quot;presentation&quot;</InlineCode> and <InlineCode>aria-hidden</InlineCode>, so they aren’t read out.</>,
-          <>The ellipsis button is labelled “Show hidden pages” and has a 48×48px target.</>,
+          <>The ellipsis button is labelled “Show hidden pages” and is 48px tall with a target at least 48px wide.</>,
           "Links show a 1px focus outline with a 2px offset; each row is at least 48px tall.",
         ]}
       />

@@ -19,9 +19,9 @@ const alertVariants = cva(
   [
     // Grid like shadcn: a 16px icon column appears only when an svg child is
     // present (our status icon or one passed by the caller); text parts sit in column 2.
-    "grid w-full grid-cols-[0_1fr] items-start gap-y-2 rounded-lg border p-[15px] font-sans text-base leading-6 md:text-sm md:leading-5",
+    "grid w-full grid-cols-[0_1fr] items-start gap-y-2 rounded-lg border p-[15px] font-sans text-base leading-6",
     "has-[>svg]:grid-cols-[--spacing(4)_1fr] has-[>svg]:gap-x-4 [&>:not(svg)]:col-start-2",
-    "[&>svg]:row-span-full [&>svg]:mt-1 [&>svg]:size-4 [&>svg]:shrink-0 md:[&>svg]:mt-0.5",
+    "[&>svg]:row-span-full [&>svg]:size-4 [&>svg]:shrink-0",
   ],
   {
     variants: {

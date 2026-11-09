@@ -11,12 +11,12 @@ import { cn } from "@/lib/utils"
  * (no fill, accent on hover when rendered as a link) and Link. Non-interactive by default.
  */
 const badgeVariants = cva(
-  "inline-flex h-6 w-fit shrink-0 items-center gap-2 rounded-full border border-transparent px-[7px] font-sans text-sm leading-6 md:leading-5 font-medium whitespace-nowrap [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:pointer-events-none focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ring",
+  "inline-flex h-6 w-fit shrink-0 items-center gap-2 rounded-full border border-transparent px-[7px] font-sans text-sm leading-6 font-medium whitespace-nowrap [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:pointer-events-none focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ring",
   {
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground",
-        secondary: "bg-muted text-foreground",
+        secondary: "bg-secondary text-foreground",
         outline: "border-input text-foreground",
         destructive: "bg-[var(--status-error-background)] text-[var(--status-error-text)]",
         ghost: "text-foreground [a&]:hover:bg-accent",

@@ -25,7 +25,7 @@ function NativeSelect({
         data-slot="native-select"
         data-size={size}
         className={cn(
-          "flex h-8 w-full min-w-0 cursor-pointer appearance-none border border-input bg-[var(--input-surface)] ps-[7px] pe-8",
+          "flex h-8 w-full min-w-0 cursor-pointer appearance-none border border-input bg-[var(--input-surface)] ps-[7px] pe-[31px]",
           "font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground",
           "transition-[color,background-color,border-color] duration-150 outline-none",
           "hover:border-[var(--input-outline-hover)] hover:bg-accent",

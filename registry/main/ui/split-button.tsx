@@ -77,7 +77,13 @@ function SplitButtonTrigger({
       size="icon"
       aria-label={ariaLabel}
       disabled={disabled || loading}
-      className={cn("rounded-none border-s-primary-foreground", endCorner[corner], className)}
+      className={cn(
+        "rounded-none border-s-primary-foreground",
+        // Figma: the seam turns subtle grey when disabled, stays dark while loading.
+        disabled && "border-s-[var(--border-subtle)]",
+        endCorner[corner],
+        className
+      )}
       {...props}
     >
       {children ?? <ChevronDownIcon />}

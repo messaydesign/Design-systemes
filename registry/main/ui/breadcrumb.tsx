@@ -12,7 +12,8 @@ import { ChevronRightIcon } from "@/registry/main/ui/icons"
  * 8px gap, 48px-tall rows, DM Sans 16/24 in text-primary.
  * Ancestors are underlined links; the current page is plain text with
  * aria-current="page". Separators are decorative 16px chevrons that mirror
- * in RTL. Collapsed ancestors sit behind a 48px "…" disclosure control.
+ * in RTL. Collapsed ancestors sit behind a "…" disclosure control: a Large
+ * Ghost button with a text label (48px tall, 24px inline padding, ~60px wide).
  */
 
 function Breadcrumb({ "aria-label": ariaLabel = "Breadcrumb", ...props }: React.ComponentProps<"nav">) {
@@ -23,7 +24,7 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
   return (
     <ol
       data-slot="breadcrumb-list"
-      className={cn("flex flex-wrap items-center gap-2 font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground", className)}
+      className={cn("flex flex-wrap items-center gap-2 font-sans text-base leading-6 text-foreground", className)}
       {...props}
     />
   )
@@ -88,7 +89,7 @@ function BreadcrumbEllipsis({
       type="button"
       data-slot="breadcrumb-ellipsis"
       aria-label={ariaLabel}
-      className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "rounded-lg text-base", className)}
+      className={cn(buttonVariants({ variant: "ghost" }), className)}
       {...props}
     >
       <span aria-hidden="true">…</span>

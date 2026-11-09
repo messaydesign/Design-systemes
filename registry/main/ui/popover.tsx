@@ -43,8 +43,13 @@ function PopoverContent({
         sideOffset={sideOffset}
         className={cn(
           "z-50 flex w-[400px] max-w-[calc(100vw-2rem)] flex-col gap-2 p-[15px] outline-none",
-          "border border-border bg-popover font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground shadow-[0_2px_8px_0_var(--effect-outer)]",
-          corner === "soft" ? "rounded-xl" : corner === "pill" ? "rounded-full" : "rounded-lg",
+          "border border-border bg-popover font-sans text-base leading-6 text-foreground shadow-[0_2px_8px_0_var(--effect-outer)]",
+          corner === "soft"
+            ? "rounded-xl"
+            : corner === "pill"
+              ? // Figma Pill: the panel keeps 8px; controls inside become pills.
+                "rounded-lg [&_[data-slot=button]]:rounded-full [&_[data-slot=input]]:rounded-full [&_[data-slot=select-trigger]]:rounded-full"
+              : "rounded-lg",
           className
         )}
         {...props}
@@ -61,7 +66,7 @@ function PopoverTitle({ className, ...props }: React.ComponentProps<"h2">) {
   return (
     <div
       data-slot="popover-title"
-      className={cn("font-sans text-base leading-6 md:text-sm md:leading-5 font-semibold text-foreground", className)}
+      className={cn("font-sans text-base leading-6 font-semibold text-foreground", className)}
       {...props}
     />
   )
@@ -71,7 +76,7 @@ function PopoverDescription({ className, ...props }: React.ComponentProps<"p">) 
   return (
     <p
       data-slot="popover-description"
-      className={cn("font-sans text-sm leading-6 md:leading-5 text-muted-foreground", className)}
+      className={cn("font-sans text-sm leading-6 text-muted-foreground", className)}
       {...props}
     />
   )

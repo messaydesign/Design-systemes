@@ -79,7 +79,7 @@ export default function LabelPage() {
       <H2>Customization</H2>
       <P>
         Text uses <InlineCode>--foreground</InlineCode> and <InlineCode>--disabled-text</InlineCode> with the Figma
-        “Forms/Label” type style (Medium 14/24). Add icons as children — the label is a flex row with an 8px gap.
+        “Controls/Field/Label” type style (Medium 14/20, 14/24 on phones). Add icons as children — the label is a flex row with an 8px gap.
       </P>
 
       <H2>API reference</H2>

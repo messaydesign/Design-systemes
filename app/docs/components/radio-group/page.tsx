@@ -52,7 +52,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
       <H3>Horizontal</H3>
       <P>
-        <InlineCode>orientation=&quot;horizontal&quot;</InlineCode> lays items out in a row that wraps, 24px apart, and
+        <InlineCode>orientation=&quot;horizontal&quot;</InlineCode> lays items out in a row that wraps, 16px apart, and
         makes Left/Right the arrow keys. Use it for two or three short options.
       </P>
       <ComponentPreview name="radio-group-horizontal" />

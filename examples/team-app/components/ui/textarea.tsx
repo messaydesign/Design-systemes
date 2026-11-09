@@ -15,7 +15,7 @@ const textareaVariants = cva(
     "transition-[color,background-color,border-color] duration-150 outline-none",
     "hover:border-[var(--input-outline-hover)] hover:bg-accent",
     "focus:border-[var(--input-outline-focus)] focus:bg-[var(--input-surface)]",
-    "read-only:bg-muted read-only:hover:border-input",
+    "read-only:bg-secondary read-only:hover:border-input read-only:hover:bg-secondary",
     "aria-invalid:border-[var(--status-error-border)]",
     "data-[validation=warning]:border-[var(--status-warning-border)]",
     "data-[validation=success]:border-[var(--status-success-border)]",

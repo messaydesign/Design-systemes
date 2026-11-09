@@ -6,7 +6,7 @@ export default function EmptyDemo() {
   return (
     <Empty className="max-w-lg">
       <EmptyHeader>
-        <EmptyMedia variant="icon">
+        <EmptyMedia>
           <FileIcon />
         </EmptyMedia>
         <EmptyTitle>No projects yet</EmptyTitle>

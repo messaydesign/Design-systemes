@@ -8,7 +8,8 @@ import { MinusIcon } from "@/registry/main/ui/icons"
 
 /*
  * OTP — Figma ".Building blocks/OTP control" (27:1959) and "Forms/OTP field".
- * Digit cells 40×32, 8px apart, 8px radius, 1px input outline, DM Sans 16/24.
+ * Digit cells 40×32, 8px apart, 8px radius, 1px input outline, Controls/Field/Value
+ * type (14/20 from md, 16/24 on phones).
  * States: Default · Hover (surface-hover, darker outline) · Focus (active
  * cell gets the brand outline) · Read only · Disabled · Loading.
  * One real <input> underneath (input-otp) keeps paste, autofill

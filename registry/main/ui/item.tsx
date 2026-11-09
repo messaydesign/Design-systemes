@@ -17,7 +17,7 @@ import { Separator } from "@/registry/main/ui/separator"
  */
 const itemVariants = cva(
   [
-    "group/item flex w-full flex-wrap items-center rounded-lg border border-transparent font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground",
+    "group/item flex w-full flex-wrap items-center rounded-lg border border-transparent font-sans text-base leading-6 text-foreground",
     "transition-colors duration-150",
     "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ring",
     "[a]:hover:bg-accent",

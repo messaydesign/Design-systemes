@@ -57,8 +57,8 @@ import {
       <H2>Examples</H2>
       <H3>Corner</H3>
       <P>
-        Figma Default, Soft and Pill map to <InlineCode>corner</InlineCode>. Use pill only for a single short line — wrapped
-        text and form controls look wrong inside a capsule.
+        Figma Default, Soft and Pill map to <InlineCode>corner</InlineCode>. As in Figma, Pill keeps the 8px panel and
+        rounds the controls inside it (buttons, inputs, select triggers) into pills.
       </P>
       <ComponentPreview name="popover-corner" />
 
@@ -141,7 +141,7 @@ import {
           { name: "Popover open / defaultOpen", type: "boolean", description: "Controlled or initial open state." },
           { name: "Popover onOpenChange", type: "(open: boolean) => void", description: "Called when it opens or closes." },
           { name: "Popover modal", type: "boolean", default: "false", description: "Trap focus and block the page (Radix)." },
-          { name: "PopoverContent corner", type: '"default" | "soft" | "pill"', default: '"default"', description: "8px, 16px or fully rounded corners (Main Brand)." },
+          { name: "PopoverContent corner", type: '"default" | "soft" | "pill"', default: '"default"', description: "Default 8px, Soft 16px; Pill keeps the 8px panel and makes buttons and inputs inside fully rounded (Figma)." },
           { name: "PopoverContent side", type: '"top" | "right" | "bottom" | "left"', default: '"bottom"', description: "Preferred edge of the trigger." },
           { name: "PopoverContent align", type: '"start" | "center" | "end"', default: '"center"', description: "Alignment along that edge." },
           { name: "PopoverContent sideOffset", type: "number", default: "8", description: "Gap from the trigger in px." },

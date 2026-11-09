@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 /*
  * Radio — Figma ".Building blocks/Radio" (28:1015), "Forms/Radio group" (29:228)
  * 24px circle inside a 48×32 touch target; selected = brand fill + 8px dot.
+ * Options sit 16px apart in both layouts (Figma Stacked / Inline).
  */
 function RadioGroup({
   className,
@@ -18,7 +19,7 @@ function RadioGroup({
     <RadioGroupPrimitive.Root
       data-slot="radio-group"
       orientation={orientation}
-      className={cn("flex gap-x-6 gap-y-2", orientation === "vertical" ? "flex-col" : "flex-row flex-wrap", className)}
+      className={cn("flex gap-4", orientation === "vertical" ? "flex-col" : "flex-row flex-wrap", className)}
       {...props}
     />
   )

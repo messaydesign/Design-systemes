@@ -36,10 +36,11 @@ const toggleVariants = cva(
       },
       // Heights match Button: sm = Small 40 · default = Large 48 · lg = XL 56.
       // Padding keeps an icon-only toggle square (Figma value minus the 1px border).
+      // Text toggles use the Button type style (14/20, 16/24 below 768px) and an 8px icon gap.
       size: {
-        sm: "h-10 min-w-10 px-[11px] [&_svg:not([class*='size-'])]:size-4 after:absolute after:inset-x-0 after:top-1/2 after:h-12 after:min-w-12 after:-translate-y-1/2",
-        default: "h-12 min-w-12 px-[11px] [&_svg:not([class*='size-'])]:size-6",
-        lg: "h-14 min-w-14 px-[15px] [&_svg:not([class*='size-'])]:size-6",
+        sm: "h-10 min-w-10 gap-2 px-[11px] text-base leading-6 md:text-sm md:leading-5 [&_svg:not([class*='size-'])]:size-4 after:absolute after:inset-x-0 after:top-1/2 after:h-12 after:min-w-12 after:-translate-y-1/2",
+        default: "h-12 min-w-12 gap-2 px-[11px] text-base leading-6 md:text-sm md:leading-5 [&_svg:not([class*='size-'])]:size-6",
+        lg: "h-14 min-w-14 gap-2 px-[15px] text-base leading-6 md:text-sm md:leading-5 [&_svg:not([class*='size-'])]:size-6",
       },
       corner: {
         default: "rounded-lg",
