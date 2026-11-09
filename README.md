@@ -4,13 +4,27 @@ A shadcn-compatible component registry built from the **Main Brand** Figma
 design system (`qpIsumHqsH59PzDoG0CDlC`). Components are copied into
 consuming apps with the shadcn CLI, so teams own the code.
 
+## Where to start
+
+| You want to… | Go to |
+| --- | --- |
+| Learn and copy components | Docs: `http://localhost:3000/docs` |
+| Start a new app | `templates/starter` (see its README) |
+| See a complete small app | `examples/team-app` (navigation, validated form, loading/empty/error) |
+| Contribute, report bugs, release | `CONTRIBUTING.md`, `CHANGELOG.md` |
+| Roadmap and what's missing | `PLAN.md` and `/docs/coverage` |
+
 ## Develop
 
 ```bash
 bun install
-bun run dev              # preview at http://localhost:3000
+bun run dev              # docs + playground at http://localhost:3000
 bun run registry:build   # regenerate registry.json + public/r/*.json
 ```
+
+Docs pages live in `app/docs`; their live examples are files in
+`registry/main/examples/docs`, rendered and shown as source from the same file.
+`lib/docs/inventory.ts` maps every Figma component to its code and docs status.
 
 ## Install into another app
 
@@ -53,6 +67,20 @@ Consuming apps should load Inter, DM Sans, Manrope and Roboto Mono
 | Loading On + loading text | `loading` + `loadingText` |
 | Focus visible | 1px outline, 2px offset, `--button-focus-color` |
 
+## Actions ↔ Figma mapping (phase 6)
+
+| Figma | Code |
+| --- | --- |
+| Button Group Horizontal/Vertical × Default/Soft/Pill, LTR/RTL | `<ButtonGroup orientation=… corner=…>` around `Button`s |
+| Split Button Default/Disabled/Loading × corners, LTR/RTL | `<SplitButton corner loading disabled>` + `SplitButtonAction` + `SplitButtonTrigger` |
+| Toggle Default/Outline × Selected × State | `<Toggle variant="default" \| "outline" pressed>` |
+| Toggle Group Single/Multiple × Horizontal/Vertical | `<ToggleGroup type orientation variant>` + `ToggleGroupItem` |
+
+Button Group shares one 1px seam: later segments drop their leading border
+and get that pixel back as padding, so segment sizes match Figma. Split Button
+disables its trigger while the main action is loading. A selected Toggle shows
+the neutral hover/pressed face, as in the Figma masters.
+
 ## Forms ↔ Figma mapping (phase 2)
 
 | Figma | Code |
@@ -67,6 +95,18 @@ Consuming apps should load Inter, DM Sans, Manrope and Roboto Mono
 | .Building blocks/Checkbox, Radio, Switch | `<Checkbox>`, `<RadioGroup>/<RadioGroupItem>`, `<Switch>` |
 | Select, Option List, Forms/Option | `<Select>`, `<SelectContent>`, `<SelectLabel>`, `<SelectItem showCheck>` |
 | Native Select | `<NativeSelect>` / `<NativeSelectOption>` |
+
+Phase 7 (preview at `/forms/more`):
+
+| Figma | Code |
+| --- | --- |
+| Input Group Addon Text/Icon/Button/Combined | `<InputGroup>` + `InputGroupText`, an icon, `InputGroupInput`, `InputGroupButton` (also Search/Password controls) |
+| Slider Single/Range × Default/Focus/Disabled | `<Slider value thumbLabels>` (one thumb per value) |
+| .Building blocks/OTP control | `<InputOTP maxLength>` + `InputOTPGroup` + `InputOTPSlot` (uses `input-otp`) |
+| Forms/Chip | `<Chip onRemove disabled>` |
+| Field Set Vertical/Horizontal | `<FieldSet>` + `FieldLegend` + `FieldDescription` + `<FieldGroup orientation>` |
+| Forms/Counter Normal/Limit reached/Exceeded/Disabled | `<FieldCounter value max disabled>` |
+| Forms/Validation summary Info/Success/Warning/Error | `<ValidationSummary status>` + `Title` / `Description` / `List` |
 
 Notes on Figma inconsistencies, resolved in code:
 - Checkbox check/minus glyphs are offset to the top-left in the Figma masters; code centres them.
@@ -109,6 +149,29 @@ Menu checkbox/radio items always reserve the 16px mark slot so labels align
 
 Not yet built from these pages: Toast (needs `sonner`), Scroll Area, Resizable
 and Carousel (need extra libraries).
+
+## Navigation ↔ Figma mapping (phase 5)
+
+| Figma | Code |
+| --- | --- |
+| Navigation / Item Default/Current/Hover/Focus/Disabled, LTR/RTL | `<NavItem href isActive disabled>` (icon + `<span>` label) |
+| Tabs / Trigger Variant Line/Pill × Selected × State | `<TabsList variant="line" \| "pill">` + `<TabsTrigger>` (`disabled`) |
+| Tabs Orientation Horizontal/Vertical | `<Tabs orientation=…>` + `<TabsContent>` |
+| Breadcrumb Default/Collapsed, LTR/RTL | `Breadcrumb*`; `<BreadcrumbEllipsis>` is a 48px button for a dropdown of hidden pages |
+| Pagination First/Middle/Last, LTR/RTL | `Pagination*`; `<PaginationLink isActive>`, `<PaginationPrevious disabled>` |
+| Menubar Closed/Open | `Menubar*` (Menu / Content + Menu / Item spec) |
+| Navigation Menu Closed/Open | `NavigationMenu*`; `<NavigationMenuLink variant="item" \| "link">` |
+| Sidebar Expanded/Collapsed, LTR/RTL | `SidebarProvider`, `Sidebar`, `SidebarTrigger`, `SidebarGroup*`, `SidebarMenu*` (`isActive`, `tooltip`) |
+
+Notes on Figma inconsistencies, resolved in code:
+- Navigation / Item's description promises an underline on Current, but the
+  masters only use the tint and colour; code follows the masters.
+- Pagination uses a chevron for Previous and an arrow for Next; code uses
+  matching chevrons.
+- The RTL Breadcrumb master draws separators pointing right; code mirrors
+  them in RTL, as the description asks.
+- The Navigation Menu chevron does not rotate when open (as in Figma).
+- The Sidebar becomes a Sheet below 768px; ⌘B / Ctrl+B toggles collapse.
 
 **Stroke compensation:** Figma draws strokes inside frames; CSS borders add to
 the box. Every bordered component subtracts 1px from its padding so outer sizes

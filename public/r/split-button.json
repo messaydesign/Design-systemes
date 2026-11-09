@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "split-button",
+  "title": "Split Button",
+  "description": "Primary action plus dropdown trigger; default, disabled and loading.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json",
+    "http://localhost:3000/r/icons.json",
+    "http://localhost:3000/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/split-button.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button, type ButtonProps } from \"@/registry/main/ui/button\"\nimport { ChevronDownIcon } from \"@/registry/main/ui/icons\"\n\n/*\n * Split Button — Figma \"Split Button\" (143:4065)\n * Primary main action + 48px dropdown trigger joined by a 1px\n * brand-on-primary seam; outer corners only (Default 8 / Soft 16 / Pill).\n * States: Default · Disabled · Loading. While loading the main action keeps\n * its width and the trigger is disabled, so actions can't conflict.\n * Two native buttons with their own names; the trigger sits at the logical\n * end, so RTL mirrors automatically. Wrap SplitButtonTrigger in a\n * DropdownMenuTrigger (asChild) for the menu.\n */\n\ntype SplitButtonContextValue = {\n  corner: \"default\" | \"soft\" | \"pill\"\n  loading: boolean\n  disabled: boolean\n}\n\nconst SplitButtonContext = React.createContext<SplitButtonContextValue>({\n  corner: \"default\",\n  loading: false,\n  disabled: false,\n})\n\nconst startCorner = { default: \"rounded-s-[var(--radius)]\", soft: \"rounded-s-[var(--radius-soft)]\", pill: \"rounded-s-full\" }\nconst endCorner = { default: \"rounded-e-[var(--radius)]\", soft: \"rounded-e-[var(--radius-soft)]\", pill: \"rounded-e-full\" }\n\nfunction SplitButton({\n  className,\n  corner = \"default\",\n  loading = false,\n  disabled = false,\n  ...props\n}: React.ComponentProps<\"div\"> & Partial<SplitButtonContextValue>) {\n  return (\n    <SplitButtonContext.Provider value={{ corner, loading, disabled }}>\n      <div\n        role=\"group\"\n        data-slot=\"split-button\"\n        className={cn(\"flex w-fit items-stretch [&>*:focus-visible]:z-10\", className)}\n        {...props}\n      />\n    </SplitButtonContext.Provider>\n  )\n}\n\nfunction SplitButtonAction({ className, ...props }: Omit<ButtonProps, \"variant\" | \"corner\" | \"asChild\">) {\n  const { corner, loading, disabled } = React.useContext(SplitButtonContext)\n  return (\n    <Button\n      data-slot=\"split-button-action\"\n      loading={loading}\n      disabled={disabled}\n      className={cn(\"rounded-none\", startCorner[corner], className)}\n      {...props}\n    />\n  )\n}\n\nfunction SplitButtonTrigger({\n  className,\n  children,\n  \"aria-label\": ariaLabel = \"More options\",\n  ...props\n}: Omit<ButtonProps, \"variant\" | \"corner\" | \"asChild\" | \"loading\">) {\n  const { corner, loading, disabled } = React.useContext(SplitButtonContext)\n  return (\n    <Button\n      data-slot=\"split-button-trigger\"\n      size=\"icon\"\n      aria-label={ariaLabel}\n      disabled={disabled || loading}\n      className={cn(\"rounded-none border-s-[var(--brand-on-primary)]\", endCorner[corner], className)}\n      {...props}\n    >\n      {children ?? <ChevronDownIcon />}\n    </Button>\n  )\n}\n\nexport { SplitButton, SplitButtonAction, SplitButtonTrigger }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group",
+  "title": "Button Group",
+  "description": "Connected Buttons with single seams and outer corners only.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json",
+    "http://localhost:3000/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/button-group.tsx",
+      "content": "import * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\n/*\n * Button Group — Figma \"Button Group\" (143:3704)\n * Connected Buttons: zero spacing, one 1px seam between segments and\n * rounded outer corners only. Horizontal/Vertical × Default 8 / Soft 16 /\n * Pill, LTR/RTL (logical corners, so RTL mirrors automatically).\n * Focused segments rise above their neighbours so the focus ring stays\n * visible. Not a selection set: use Toggle Group.\n */\n\nconst buttonGroupVariants = cva(\n  [\n    \"flex w-fit items-stretch\",\n    \"[&>*]:relative [&>*:focus-visible]:z-10\",\n    // Higher specificity than a Button's own corner class.\n    \"[&>*:not(:first-child):not(:last-child)]:rounded-none\",\n  ],\n  {\n    variants: {\n      orientation: {\n        // One shared 1px seam: later segments drop their leading border and\n        // get that pixel back as padding, so each segment is as wide as in\n        // Figma (strokes drawn inside). Heights are fixed, so vertical\n        // segments only drop the top border.\n        horizontal: [\n          \"[&>*:not(:first-child)]:border-s-0\",\n          \"[&>[data-size=xs]:not(:first-child)]:ps-2 [&>[data-size=sm]:not(:first-child)]:ps-4\",\n          \"[&>[data-size=default]:not(:first-child)]:ps-6 [&>[data-size=lg]:not(:first-child)]:ps-6\",\n          \"[&>[data-size=xl]:not(:first-child)]:ps-8\",\n        ],\n        vertical: \"flex-col [&>*:not(:first-child)]:border-t-0\",\n      },\n      corner: {\n        default: \"\",\n        soft: \"\",\n        pill: \"\",\n      },\n    },\n    compoundVariants: [\n      { orientation: \"horizontal\", corner: \"default\", className: \"[&>*:first-child]:rounded-e-none [&>*:first-child]:rounded-s-[var(--radius)] [&>*:last-child]:rounded-s-none [&>*:last-child]:rounded-e-[var(--radius)]\" },\n      { orientation: \"horizontal\", corner: \"soft\", className: \"[&>*:first-child]:rounded-e-none [&>*:first-child]:rounded-s-[var(--radius-soft)] [&>*:last-child]:rounded-s-none [&>*:last-child]:rounded-e-[var(--radius-soft)]\" },\n      { orientation: \"horizontal\", corner: \"pill\", className: \"[&>*:first-child]:rounded-e-none [&>*:first-child]:rounded-s-full [&>*:last-child]:rounded-s-none [&>*:last-child]:rounded-e-full\" },\n      { orientation: \"vertical\", corner: \"default\", className: \"[&>*:first-child]:rounded-b-none [&>*:first-child]:rounded-t-[var(--radius)] [&>*:last-child]:rounded-t-none [&>*:last-child]:rounded-b-[var(--radius)]\" },\n      { orientation: \"vertical\", corner: \"soft\", className: \"[&>*:first-child]:rounded-b-none [&>*:first-child]:rounded-t-[var(--radius-soft)] [&>*:last-child]:rounded-t-none [&>*:last-child]:rounded-b-[var(--radius-soft)]\" },\n      { orientation: \"vertical\", corner: \"pill\", className: \"[&>*:first-child]:rounded-b-none [&>*:first-child]:rounded-t-[24px] [&>*:last-child]:rounded-t-none [&>*:last-child]:rounded-b-[24px]\" },\n    ],\n    defaultVariants: {\n      orientation: \"horizontal\",\n      corner: \"default\",\n    },\n  }\n)\n\nfunction ButtonGroup({\n  className,\n  orientation = \"horizontal\",\n  corner = \"default\",\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof buttonGroupVariants>) {\n  return (\n    <div\n      role=\"group\"\n      data-slot=\"button-group\"\n      data-orientation={orientation}\n      className={cn(buttonGroupVariants({ orientation, corner }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { ButtonGroup, buttonGroupVariants }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

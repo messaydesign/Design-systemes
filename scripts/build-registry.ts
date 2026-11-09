@@ -68,6 +68,8 @@ const registry = {
     ...formItems(),
     ...overlayItems(),
     ...displayItems(),
+    ...navigationItems(),
+    ...actionItems(),
   ],
 }
 
@@ -75,6 +77,7 @@ function formItems() {
   const theme = `${BASE_URL}/r/theme.json`
   const icons = `${BASE_URL}/r/icons.json`
   const label = `${BASE_URL}/r/label.json`
+  const button = `${BASE_URL}/r/button.json`
   const item = (
     name: string,
     title: string,
@@ -100,6 +103,11 @@ function formItems() {
     item("switch", "Switch", "48×32 switch with brand on-state.", ["radix-ui"], []),
     item("select", "Select", "Listbox select with Figma option states.", ["radix-ui"], [icons]),
     item("native-select", "Native Select", "Styled native <select>.", [], [icons]),
+    item("input-group", "Input Group", "Bordered input with text, icon and button add-ons (search, password, URL).", [], [button]),
+    item("slider", "Slider", "Single or range slider: 8px track, 24px thumb, 48px targets.", ["radix-ui"], []),
+    item("input-otp", "Input OTP", "One-time-code input with 40×32 digit cells.", ["input-otp"], [icons]),
+    item("chip", "Chip", "32px removable chip with an accessible remove button.", [], [icons]),
+    item("validation-summary", "Validation Summary", "Form-level info/success/warning/error summary.", ["class-variance-authority"], [icons]),
   ]
 }
 
@@ -156,6 +164,63 @@ function displayItems() {
     item("spinner", "Spinner", "16/24/32px loading indicator.", [], [icons]),
     item("empty", "Empty", "Empty / no-results / error state with recovery action.", []),
   ]
+}
+
+function navigationItems() {
+  const theme = `${BASE_URL}/r/theme.json`
+  const icons = `${BASE_URL}/r/icons.json`
+  const button = `${BASE_URL}/r/button.json`
+  const navItem = `${BASE_URL}/r/nav-item.json`
+  const sheet = `${BASE_URL}/r/sheet.json`
+  const item = (name: string, title: string, description: string, registryDeps: string[]) => ({
+    name,
+    type: "registry:ui",
+    title,
+    description,
+    dependencies: ["radix-ui"],
+    registryDependencies: ["utils", theme, ...registryDeps],
+    files: [{ path: `registry/main/ui/${name}.tsx`, type: "registry:ui" }],
+  })
+  return [
+    item("nav-item", "Navigation Item", "48px navigation link with current, disabled and focus states.", []),
+    item("tabs", "Tabs", "Line or Pill tabs, horizontal or vertical.", []),
+    item("breadcrumb", "Breadcrumb", "Breadcrumb trail with mirrored separators and a collapsed ellipsis control.", [icons, button]),
+    item("pagination", "Pagination", "Pages in 48px targets with a selected current page and Previous/Next.", [icons, button]),
+    item("menubar", "Menubar", "Application File/Edit/View menubar sharing the Menu spec.", [icons, button]),
+    item("navigation-menu", "Navigation Menu", "Site navigation with disclosure panels of Navigation Items.", [icons, button, navItem]),
+    item("sidebar", "Sidebar", "Expanded/collapsed sidebar of Navigation Items; Sheet on mobile.", [icons, button, navItem, sheet]),
+  ]
+}
+
+function actionItems() {
+  const theme = `${BASE_URL}/r/theme.json`
+  const icons = `${BASE_URL}/r/icons.json`
+  const button = `${BASE_URL}/r/button.json`
+  const toggle = `${BASE_URL}/r/toggle.json`
+  const item = (name: string, title: string, description: string, deps: string[], registryDeps: string[]) => ({
+    name,
+    type: "registry:ui",
+    title,
+    description,
+    dependencies: deps,
+    registryDependencies: ["utils", theme, ...registryDeps],
+    files: [{ path: `registry/main/ui/${name}.tsx`, type: "registry:ui" }],
+  })
+  return [
+    item("button-group", "Button Group", "Connected Buttons with single seams and outer corners only.", ["class-variance-authority"], [button]),
+    item("split-button", "Split Button", "Primary action plus dropdown trigger; default, disabled and loading.", [], [icons, button]),
+    item("toggle", "Toggle", "48px pressed/unpressed button, Default or Outline.", ["class-variance-authority", "radix-ui"], [button]),
+    item("toggle-group", "Toggle Group", "Single or multiple Toggle selection, horizontal or vertical.", ["class-variance-authority", "radix-ui"], [toggle]),
+  ]
+}
+
+// The shadcn CLI (4.23) drops a theme's custom variants when the theme is
+// installed as a dependency, so every item whose source uses `selected:`
+// carries the variant itself (the CLI de-duplicates it).
+const variantCss = Object.fromEntries(customVariants.map((v) => [v.replace(/;$/, ""), {}]))
+for (const item of registry.items as { files?: { path: string }[]; css?: object }[]) {
+  const usesSelected = item.files?.some((f) => readFileSync(f.path, "utf8").includes("selected:"))
+  if (usesSelected) item.css = { ...variantCss, ...item.css }
 }
 
 writeFileSync("registry.json", JSON.stringify(registry, null, 2) + "\n")

@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 
 /*
  * Progress — Figma "Forms/Progress" (31:656)
- * 8px pill track (--surface-pressed) with a brand-orange value.
+ * 8px pill track (--surface-pressed) with a brand-primary value.
  * value={null} renders Figma's Indeterminate state (a 1/3 bar that slides,
  * static when reduced motion is preferred).
  */

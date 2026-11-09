@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { FormsShowcase } from "@/registry/main/examples/forms-showcase"
 
 export default function FormsPage() {
@@ -8,7 +10,8 @@ export default function FormsPage() {
         <h1 className="text-4xl font-bold tracking-tight">Forms</h1>
         <p className="max-w-2xl text-muted-foreground">
           Label, Input, Textarea, Field, Checkbox, Radio Group, Switch, Select and Native Select —
-          built from the Figma “03 · Forms” page.
+          built from the Figma “03 · Forms” page.{" "}
+          <Link href="/forms/more" className="underline">More form controls</Link>
         </p>
       </header>
       <FormsShowcase />

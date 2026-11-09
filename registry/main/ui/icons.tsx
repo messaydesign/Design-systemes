@@ -127,6 +127,15 @@ function ChevronRightIcon({ className, ...props }: IconProps) {
   )
 }
 
+/* Figma Icons/left (26:56), 24px grid; mirrors in RTL. */
+function ChevronLeftIcon({ className, ...props }: IconProps) {
+  return (
+    <Icon data-slot="icon" className={cn("rtl:-scale-x-100", className)} {...props}>
+      <path vectorEffect="non-scaling-stroke" d="M15 5l-7 7 7 7" />
+    </Icon>
+  )
+}
+
 function UserIcon(props: IconProps) {
   return (
     <Icon data-slot="icon" viewBox="0 0 16 16" {...props}>
@@ -135,6 +144,16 @@ function UserIcon(props: IconProps) {
         d="M13.333 14v-1.333A4.667 4.667 0 0 0 8.667 8 4.667 4.667 0 0 0 4 12.667V14"
       />
       <circle vectorEffect="non-scaling-stroke" cx="8" cy="4.667" r="2.667" />
+    </Icon>
+  )
+}
+
+/* Figma Icons/search (26:5), 16px grid. */
+function SearchIcon(props: IconProps) {
+  return (
+    <Icon data-slot="icon" viewBox="0 0 16 16" {...props}>
+      <path vectorEffect="non-scaling-stroke" d="m14 14-3.333-3.333" />
+      <circle vectorEffect="non-scaling-stroke" cx="6.667" cy="6.667" r="5.333" />
     </Icon>
   )
 }
@@ -159,6 +178,8 @@ export {
   InfoIcon,
   CloseIcon,
   ChevronRightIcon,
+  ChevronLeftIcon,
   UserIcon,
   FileIcon,
+  SearchIcon,
 }

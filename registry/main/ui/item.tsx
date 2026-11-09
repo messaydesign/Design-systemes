@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
@@ -24,6 +26,8 @@ const itemVariants = cva(
   }
 )
 
+const ItemGroupContext = React.createContext(false)
+
 function Item({
   className,
   variant,
@@ -31,7 +35,16 @@ function Item({
   ...props
 }: React.ComponentProps<"div"> & VariantProps<typeof itemVariants> & { asChild?: boolean }) {
   const Comp = asChild ? Slot.Root : "div"
-  return <Comp data-slot="item" className={cn(itemVariants({ variant }), className)} {...props} />
+  // Inside an ItemGroup (role="list") each Item is a list item.
+  const inGroup = React.useContext(ItemGroupContext)
+  return (
+    <Comp
+      data-slot="item"
+      role={inGroup ? "listitem" : undefined}
+      className={cn(itemVariants({ variant }), className)}
+      {...props}
+    />
+  )
 }
 
 function ItemMedia({ className, ...props }: React.ComponentProps<"div">) {
@@ -55,7 +68,11 @@ function ItemActions({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
-  return <div role="list" data-slot="item-group" className={cn("flex flex-col gap-2", className)} {...props} />
+  return (
+    <ItemGroupContext.Provider value={true}>
+      <div role="list" data-slot="item-group" className={cn("flex flex-col gap-2", className)} {...props} />
+    </ItemGroupContext.Provider>
+  )
 }
 
 export { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle, itemVariants }

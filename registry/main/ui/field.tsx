@@ -54,9 +54,9 @@ function Field({
         className={cn(
           fieldVariants({ orientation }),
           // Pass validation down to the control without prop drilling.
-          "data-[validation=error]:[&_[data-slot=input]]:border-[var(--status-error-border)] data-[validation=error]:[&_[data-slot=textarea]]:border-[var(--status-error-border)] data-[validation=error]:[&_[data-slot=select-trigger]]:border-[var(--status-error-border)] data-[validation=error]:[&_[data-slot=native-select]]:border-[var(--status-error-border)]",
-          "data-[validation=warning]:[&_[data-slot=input]]:border-[var(--status-warning-border)] data-[validation=warning]:[&_[data-slot=textarea]]:border-[var(--status-warning-border)] data-[validation=warning]:[&_[data-slot=select-trigger]]:border-[var(--status-warning-border)] data-[validation=warning]:[&_[data-slot=native-select]]:border-[var(--status-warning-border)]",
-          "data-[validation=success]:[&_[data-slot=input]]:border-[var(--status-success-border)] data-[validation=success]:[&_[data-slot=textarea]]:border-[var(--status-success-border)] data-[validation=success]:[&_[data-slot=select-trigger]]:border-[var(--status-success-border)] data-[validation=success]:[&_[data-slot=native-select]]:border-[var(--status-success-border)]",
+          "data-[validation=error]:[&_[data-slot=input]]:border-[var(--status-error-border)] data-[validation=error]:[&_[data-slot=textarea]]:border-[var(--status-error-border)] data-[validation=error]:[&_[data-slot=select-trigger]]:border-[var(--status-error-border)] data-[validation=error]:[&_[data-slot=native-select]]:border-[var(--status-error-border)] data-[validation=error]:[&_[data-slot=input-group]]:border-[var(--status-error-border)]",
+          "data-[validation=warning]:[&_[data-slot=input]]:border-[var(--status-warning-border)] data-[validation=warning]:[&_[data-slot=textarea]]:border-[var(--status-warning-border)] data-[validation=warning]:[&_[data-slot=select-trigger]]:border-[var(--status-warning-border)] data-[validation=warning]:[&_[data-slot=native-select]]:border-[var(--status-warning-border)] data-[validation=warning]:[&_[data-slot=input-group]]:border-[var(--status-warning-border)]",
+          "data-[validation=success]:[&_[data-slot=input]]:border-[var(--status-success-border)] data-[validation=success]:[&_[data-slot=textarea]]:border-[var(--status-success-border)] data-[validation=success]:[&_[data-slot=select-trigger]]:border-[var(--status-success-border)] data-[validation=success]:[&_[data-slot=native-select]]:border-[var(--status-success-border)] data-[validation=success]:[&_[data-slot=input-group]]:border-[var(--status-success-border)]",
           className
         )}
         {...props}
@@ -162,8 +162,86 @@ function FieldError(props: Omit<React.ComponentProps<typeof FieldMessage>, "stat
   return <FieldMessage status="error" {...props} />
 }
 
-function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
-  return <div data-slot="field-group" className={cn("flex w-full flex-col gap-6", className)} {...props} />
+/** Figma "Field Group" (136:1956): fields 24px apart; horizontal stacks below 640px. */
+function FieldGroup({
+  className,
+  orientation = "vertical",
+  ...props
+}: React.ComponentProps<"div"> & { orientation?: "vertical" | "horizontal" }) {
+  return (
+    <div
+      data-slot="field-group"
+      data-orientation={orientation}
+      className={cn(
+        "flex w-full flex-col gap-6",
+        orientation === "horizontal" && "sm:flex-row sm:[&>*]:min-w-0 sm:[&>*]:flex-1",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+/*
+ * Field Set — Figma "Field Set" (135:2096): a real <fieldset> with a
+ * SemiBold 16 legend, an optional Regular 16 description and a FieldGroup,
+ * 8px apart. Child controls keep their own labels.
+ */
+function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
+  return (
+    <fieldset
+      data-slot="field-set"
+      className={cn(
+        "m-0 flex min-w-0 flex-col gap-2 border-0 p-0",
+        "[&>[data-slot=field-description]]:text-base [&>[data-slot=field-description]]:text-foreground",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function FieldLegend({ className, ...props }: React.ComponentProps<"legend">) {
+  return (
+    <legend
+      data-slot="field-legend"
+      // A rendered <legend> sits outside the fieldset's flex flow, so it
+      // carries its own 8px gap.
+      className={cn("mb-2 p-0 font-sans text-base leading-6 font-semibold text-foreground", className)}
+      {...props}
+    />
+  )
+}
+
+/*
+ * Counter — Figma "Forms/Counter" (31:659): "n / max" in Helper style.
+ * Normal and Limit reached use secondary text, Exceeded uses error text.
+ * Announced politely; pair it with the control via aria-describedby.
+ */
+function FieldCounter({
+  className,
+  value,
+  max,
+  disabled,
+  ...props
+}: React.ComponentProps<"p"> & { value: number; max: number; disabled?: boolean }) {
+  const exceeded = value > max
+  return (
+    <p
+      data-slot="field-counter"
+      data-state={exceeded ? "exceeded" : value === max ? "limit" : "normal"}
+      aria-live="polite"
+      className={cn(
+        "ms-auto shrink-0 font-sans text-sm leading-6 whitespace-nowrap text-[var(--text-secondary)]",
+        exceeded && "text-[var(--status-error-text)]",
+        disabled && "text-[var(--disabled-text)]",
+        className
+      )}
+      {...props}
+    >
+      {value} / {max}
+    </p>
+  )
 }
 
 export {
@@ -174,5 +252,8 @@ export {
   FieldMessage,
   FieldError,
   FieldGroup,
+  FieldSet,
+  FieldLegend,
+  FieldCounter,
   type Validation,
 }

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "validation-summary",
+  "title": "Validation Summary",
+  "description": "Form-level info/success/warning/error summary.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json",
+    "http://localhost:3000/r/icons.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/validation-summary.tsx",
+      "content": "import * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\nimport { CheckIcon, InfoIcon, WarningIcon } from \"@/registry/main/ui/icons\"\n\n/*\n * Validation Summary — Figma \"Forms/Validation summary\" (31:660)\n * Info · Success · Warning · Error. 16px padding inside a 1px status\n * stroke, 8px gap, 8px radius, status background, 16px status icon,\n * Medium 14 title and Regular 14 details in the status text colour.\n * Error summaries are focusable (tabIndex -1) so forms can move focus here\n * on submit; list each problem as a link to its field.\n */\n\nconst summaryVariants = cva(\n  \"flex w-full flex-col gap-2 rounded-[var(--radius)] border p-[15px] font-sans text-sm leading-6 outline-none [&>svg]:size-4\",\n  {\n    variants: {\n      status: {\n        info: \"border-[var(--status-info-border)] bg-[var(--status-info-background)] text-[var(--status-info-text)] [&>svg]:text-[var(--status-info-icon)]\",\n        success: \"border-[var(--status-success-border)] bg-[var(--status-success-background)] text-[var(--status-success-text)] [&>svg]:text-[var(--status-success-icon)]\",\n        warning: \"border-[var(--status-warning-border)] bg-[var(--status-warning-background)] text-[var(--status-warning-text)] [&>svg]:text-[var(--status-warning-icon)]\",\n        error: \"border-[var(--status-error-border)] bg-[var(--status-error-background)] text-[var(--status-error-text)] [&>svg]:text-[var(--status-error-icon)]\",\n      },\n    },\n    defaultVariants: { status: \"info\" },\n  }\n)\n\nconst icons = { info: InfoIcon, success: CheckIcon, warning: WarningIcon, error: WarningIcon }\n\nfunction ValidationSummary({\n  className,\n  status = \"info\",\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof summaryVariants>) {\n  const Icon = icons[status ?? \"info\"]\n  return (\n    <div\n      data-slot=\"validation-summary\"\n      data-status={status}\n      role={status === \"error\" ? \"alert\" : \"status\"}\n      tabIndex={status === \"error\" ? -1 : undefined}\n      className={cn(summaryVariants({ status }), className)}\n      {...props}\n    >\n      <Icon />\n      {children}\n    </div>\n  )\n}\n\nfunction ValidationSummaryTitle({ className, ...props }: React.ComponentProps<\"p\">) {\n  return <p data-slot=\"validation-summary-title\" className={cn(\"font-medium\", className)} {...props} />\n}\n\nfunction ValidationSummaryDescription({ className, ...props }: React.ComponentProps<\"p\">) {\n  return <p data-slot=\"validation-summary-description\" className={className} {...props} />\n}\n\n/** List of problems; each item usually links to the field (href=\"#field-id\"). */\nfunction ValidationSummaryList({ className, ...props }: React.ComponentProps<\"ul\">) {\n  return (\n    <ul\n      data-slot=\"validation-summary-list\"\n      className={cn(\"flex flex-col gap-2 [&_a]:underline [&_a]:decoration-from-font\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { ValidationSummary, ValidationSummaryDescription, ValidationSummaryList, ValidationSummaryTitle }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp",
+  "title": "Input OTP",
+  "description": "One-time-code input with 40×32 digit cells.",
+  "dependencies": [
+    "input-otp"
+  ],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json",
+    "http://localhost:3000/r/icons.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/input-otp.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { OTPInput, OTPInputContext } from \"input-otp\"\n\nimport { cn } from \"@/lib/utils\"\nimport { MinusIcon } from \"@/registry/main/ui/icons\"\n\n/*\n * OTP — Figma \".Building blocks/OTP control\" (27:1959) and \"Forms/OTP field\".\n * Digit cells 40×32, 8px apart, 8px radius, 1px input outline, DM Sans 16/24.\n * States: Default · Hover (surface-hover, darker outline) · Focus (active\n * cell gets the brand outline) · Read only · Disabled · Loading.\n * One real <input> underneath (input-otp) keeps paste, autofill\n * (autoComplete=\"one-time-code\") and screen readers working.\n */\n\nfunction InputOTP({\n  className,\n  containerClassName,\n  value: valueProp,\n  defaultValue,\n  onChange,\n  ...props\n}: React.ComponentProps<typeof OTPInput> & { containerClassName?: string }) {\n  // input-otp forwards defaultValue to its <input> while also controlling\n  // value, which React warns about; own the uncontrolled state here instead.\n  const [internal, setInternal] = React.useState(String(defaultValue ?? \"\"))\n  const value = valueProp ?? internal\n  return (\n    <OTPInput\n      data-slot=\"input-otp\"\n      autoComplete=\"one-time-code\"\n      value={value}\n      onChange={(next: string) => {\n        if (valueProp === undefined) setInternal(next)\n        onChange?.(next)\n      }}\n      containerClassName={cn(\"group/otp flex items-center gap-2 has-disabled:pointer-events-none\", containerClassName)}\n      className={cn(\"disabled:cursor-not-allowed\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction InputOTPGroup({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div data-slot=\"input-otp-group\" className={cn(\"flex items-center gap-2\", className)} {...props} />\n}\n\nfunction InputOTPSlot({ index, className, ...props }: React.ComponentProps<\"div\"> & { index: number }) {\n  const context = React.useContext(OTPInputContext)\n  const { char, hasFakeCaret, isActive } = context?.slots[index] ?? {}\n\n  return (\n    <div\n      data-slot=\"input-otp-slot\"\n      data-active={isActive || undefined}\n      className={cn(\n        \"relative flex h-8 w-10 items-center justify-center rounded-[var(--radius)] border border-[var(--input-outline)] bg-[var(--input-surface)]\",\n        \"font-sans text-base leading-6 text-[var(--input-text)] transition-[background-color,border-color] duration-150\",\n        \"group-hover/otp:border-[var(--input-outline-hover)] group-hover/otp:bg-[var(--surface-hover)]\",\n        \"data-[active]:border-[var(--input-outline-focus)] data-[active]:bg-[var(--input-surface)]\",\n        \"group-hover/otp:data-[active]:border-[var(--input-outline-focus)] group-hover/otp:data-[active]:bg-[var(--input-surface)]\",\n        \"group-has-[[aria-invalid=true]]/otp:border-[var(--status-error-border)]\",\n        \"group-has-disabled/otp:border-[var(--disabled-border)] group-has-disabled/otp:bg-[var(--input-surface-disabled)] group-has-disabled/otp:text-[var(--disabled-text)]\",\n        className\n      )}\n      {...props}\n    >\n      {char}\n      {hasFakeCaret && (\n        <div className=\"pointer-events-none absolute inset-0 flex items-center justify-center\">\n          <div className=\"h-4 w-px animate-pulse bg-[var(--input-text)] motion-reduce:animate-none\" />\n        </div>\n      )}\n    </div>\n  )\n}\n\nfunction InputOTPSeparator(props: React.ComponentProps<\"div\">) {\n  return (\n    <div data-slot=\"input-otp-separator\" role=\"separator\" className=\"text-[var(--text-secondary)]\" {...props}>\n      <MinusIcon className=\"size-4\" />\n    </div>\n  )\n}\n\nexport { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

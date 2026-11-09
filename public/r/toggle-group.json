@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group",
+  "title": "Toggle Group",
+  "description": "Single or multiple Toggle selection, horizontal or vertical.",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json",
+    "http://localhost:3000/r/toggle.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/toggle-group.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { type VariantProps } from \"class-variance-authority\"\nimport { ToggleGroup as ToggleGroupPrimitive } from \"radix-ui\"\n\nimport { cn } from \"@/lib/utils\"\nimport { toggleVariants } from \"@/registry/main/ui/toggle\"\n\n/*\n * Toggle Group — Figma \"Toggle Group\" (143:4687)\n * Single/Multiple selection, Horizontal/Vertical, Toggle items 8px apart.\n * Radix enforces the selection policy and gives a roving tab stop with\n * arrows/Home/End (logical in RTL). Label the group with aria-label.\n * Use Radio Group, not this, for choosing form data.\n */\n\ntype ToggleGroupStyle = VariantProps<typeof toggleVariants>\n\nconst ToggleGroupContext = React.createContext<ToggleGroupStyle>({ variant: \"outline\", corner: \"default\" })\n\nfunction ToggleGroup({\n  className,\n  variant = \"outline\",\n  corner = \"default\",\n  children,\n  ...props\n}: React.ComponentProps<typeof ToggleGroupPrimitive.Root> & ToggleGroupStyle) {\n  return (\n    <ToggleGroupPrimitive.Root\n      data-slot=\"toggle-group\"\n      data-variant={variant}\n      className={cn(\"flex w-fit items-start gap-2 data-[orientation=vertical]:flex-col\", className)}\n      {...props}\n    >\n      <ToggleGroupContext.Provider value={{ variant, corner }}>{children}</ToggleGroupContext.Provider>\n    </ToggleGroupPrimitive.Root>\n  )\n}\n\nfunction ToggleGroupItem({\n  className,\n  variant,\n  corner,\n  ...props\n}: React.ComponentProps<typeof ToggleGroupPrimitive.Item> & ToggleGroupStyle) {\n  const context = React.useContext(ToggleGroupContext)\n  return (\n    <ToggleGroupPrimitive.Item\n      data-slot=\"toggle-group-item\"\n      className={cn(\n        toggleVariants({ variant: variant ?? context.variant, corner: corner ?? context.corner }),\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { ToggleGroup, ToggleGroupItem }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

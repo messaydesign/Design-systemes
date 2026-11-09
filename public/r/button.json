@@ -19,5 +19,8 @@
       "type": "registry:ui"
     }
   ],
+  "css": {
+    "@custom-variant selected (&:is([aria-pressed=\"true\"], [aria-current=\"page\"], [data-state=\"on\"]):not(:disabled, [aria-disabled=\"true\"]))": {}
+  },
   "type": "registry:ui"
 }
