@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "title": "Accordion",
+  "description": "Bordered disclosure items with 48px triggers.",
+  "dependencies": [
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json",
+    "http://localhost:3000/r/icons.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/accordion.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Accordion as AccordionPrimitive } from \"radix-ui\"\n\nimport { cn } from \"@/lib/utils\"\nimport { ChevronRightIcon } from \"@/registry/main/ui/icons\"\n\n/*\n * Accordion — Figma \"Accordion\" (142:493), \"Accordion / Item\" (142:448)\n * Each item is its own bordered box (subtle border, 8px radius), 8px apart.\n * Trigger: 48px, 16px padding, SemiBold 16/24, chevron right → down when open.\n * Content: 16px inline padding, 16px bottom.\n */\nfunction Accordion({ className, ...props }: React.ComponentProps<typeof AccordionPrimitive.Root>) {\n  return <AccordionPrimitive.Root data-slot=\"accordion\" className={cn(\"flex flex-col gap-2\", className)} {...props} />\n}\n\nfunction AccordionItem({ className, ...props }: React.ComponentProps<typeof AccordionPrimitive.Item>) {\n  return (\n    <AccordionPrimitive.Item\n      data-slot=\"accordion-item\"\n      className={cn(\"rounded-[var(--radius)] border border-[var(--border-subtle)]\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AccordionTrigger({ className, children, ...props }: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {\n  return (\n    <AccordionPrimitive.Header className=\"flex\">\n      <AccordionPrimitive.Trigger\n        data-slot=\"accordion-trigger\"\n        className={cn(\n          \"group/accordion flex min-h-12 flex-1 cursor-pointer items-center gap-2 rounded-[var(--radius)] px-4 py-3 text-start font-sans text-base leading-6 font-semibold text-foreground outline-none\",\n          \"focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[var(--button-focus-color)] disabled:pointer-events-none disabled:text-[var(--disabled-text)]\",\n          className\n        )}\n        {...props}\n      >\n        <span className=\"flex-1\">{children}</span>\n        <ChevronRightIcon className=\"size-4 shrink-0 transition-transform duration-150 group-data-[state=open]/accordion:rotate-90 motion-reduce:transition-none\" />\n      </AccordionPrimitive.Trigger>\n    </AccordionPrimitive.Header>\n  )\n}\n\nfunction AccordionContent({ className, children, ...props }: React.ComponentProps<typeof AccordionPrimitive.Content>) {\n  return (\n    <AccordionPrimitive.Content\n      data-slot=\"accordion-content\"\n      className=\"overflow-hidden font-sans text-base leading-6 text-foreground\"\n      {...props}\n    >\n      <div className={cn(\"px-4 pb-4\", className)}>{children}</div>\n    </AccordionPrimitive.Content>\n  )\n}\n\nexport { Accordion, AccordionContent, AccordionItem, AccordionTrigger }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

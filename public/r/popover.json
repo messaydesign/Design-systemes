@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "title": "Popover",
+  "description": "Anchored non-modal surface with Default/Soft/Pill corners.",
+  "dependencies": [
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/popover.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Popover as PopoverPrimitive } from \"radix-ui\"\n\nimport { cn } from \"@/lib/utils\"\n\n/*\n * Popover — Figma \"Popover\" (135:792)\n * Anchored, non-modal surface: 16px padding, 8px gap, subtle border, outer shadow.\n * Corner: Default 8 · Soft 16 · Pill (short content only).\n */\n\nconst Popover = PopoverPrimitive.Root\nconst PopoverTrigger = PopoverPrimitive.Trigger\nconst PopoverAnchor = PopoverPrimitive.Anchor\nconst PopoverClose = PopoverPrimitive.Close\n\nfunction PopoverContent({\n  className,\n  align = \"center\",\n  sideOffset = 8,\n  corner = \"default\",\n  ...props\n}: React.ComponentProps<typeof PopoverPrimitive.Content> & { corner?: \"default\" | \"soft\" | \"pill\" }) {\n  return (\n    <PopoverPrimitive.Portal>\n      <PopoverPrimitive.Content\n        data-slot=\"popover-content\"\n        align={align}\n        sideOffset={sideOffset}\n        className={cn(\n          \"z-50 flex w-[400px] max-w-[calc(100vw-2rem)] flex-col gap-2 p-[15px] outline-none\",\n          \"border border-[var(--border-subtle)] bg-[var(--surface-elevated)] font-sans text-base leading-6 text-foreground shadow-[0_2px_8px_0_var(--effect-outer)]\",\n          corner === \"soft\" ? \"rounded-[var(--radius-soft)]\" : corner === \"pill\" ? \"rounded-full\" : \"rounded-[var(--radius)]\",\n          className\n        )}\n        {...props}\n      />\n    </PopoverPrimitive.Portal>\n  )\n}\n\nexport { Popover, PopoverAnchor, PopoverClose, PopoverContent, PopoverTrigger }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

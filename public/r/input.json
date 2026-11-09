@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "title": "Input",
+  "description": "Compact 32px text control with hover, focus, read-only, disabled and validation states.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/input.tsx",
+      "content": "import * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\n/*\n * Text control — Figma \".Building blocks/Text control\" (27:1946)\n * States: Default · Hover · Focus · Pressed · Read only · Disabled\n * Compact 32px, 8px padding (inside a 1px stroke), DM Sans 16/24.\n * Validation comes from aria-invalid (error) or data-validation\n * (\"warning\" | \"success\"), usually set by <Field>.\n * Shape: default 8px radius · rounded = pill (Figma Shape=Rounded).\n */\nconst inputVariants = cva(\n  [\n    \"flex h-8 w-full min-w-0 border border-[var(--input-outline)] bg-[var(--input-surface)] px-[7px]\",\n    \"font-sans text-base leading-6 text-[var(--input-text)] placeholder:text-[var(--input-placeholder)]\",\n    \"transition-[color,background-color,border-color] duration-150 outline-none\",\n    \"hover:border-[var(--input-outline-hover)] hover:bg-[var(--surface-hover)]\",\n    \"focus:border-[var(--input-outline-focus)] focus:bg-[var(--input-surface)]\",\n    \"read-only:bg-[var(--surface)] read-only:hover:border-[var(--input-outline)]\",\n    \"aria-invalid:border-[var(--status-error-border)]\",\n    \"data-[validation=warning]:border-[var(--status-warning-border)]\",\n    \"data-[validation=success]:border-[var(--status-success-border)]\",\n    \"disabled:cursor-not-allowed disabled:border-[var(--disabled-border)] disabled:bg-[var(--input-surface-disabled)]\",\n    \"disabled:text-[var(--disabled-text)] disabled:placeholder:text-[var(--disabled-text)]\",\n    \"file:mr-2 file:border-0 file:bg-transparent file:font-sans file:text-sm file:font-medium file:text-foreground\",\n  ],\n  {\n    variants: {\n      shape: {\n        default: \"rounded-[var(--radius)]\",\n        rounded: \"rounded-[var(--radius-input-pill)] px-[15px]\",\n      },\n    },\n    defaultVariants: { shape: \"default\" },\n  }\n)\n\nfunction Input({\n  className,\n  type,\n  shape,\n  ...props\n}: React.ComponentProps<\"input\"> & VariantProps<typeof inputVariants>) {\n  return (\n    <input\n      type={type}\n      data-slot=\"input\"\n      className={cn(inputVariants({ shape }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { Input, inputVariants }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

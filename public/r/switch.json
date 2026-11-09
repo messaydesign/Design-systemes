@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "title": "Switch",
+  "description": "48×32 switch with brand on-state.",
+  "dependencies": [
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/switch.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Switch as SwitchPrimitive } from \"radix-ui\"\n\nimport { cn } from \"@/lib/utils\"\n\n/*\n * Switch — Figma \".Building blocks/Switch\" (28:1016)\n * 48×32 pill track (also the touch target), 16px thumb 8px from the edge.\n * Focus: brand border plus a neutral 3px backplate.\n */\nfunction Switch({ className, ...props }: React.ComponentProps<typeof SwitchPrimitive.Root>) {\n  return (\n    <SwitchPrimitive.Root\n      data-slot=\"switch\"\n      className={cn(\n        \"peer group/switch relative inline-flex h-8 w-12 shrink-0 cursor-pointer items-center rounded-full border outline-none\",\n        \"transition-[background-color,border-color,box-shadow] duration-150\",\n        \"border-[var(--border-control)] bg-[var(--input-surface)] [--thumb:var(--icon-secondary)]\",\n        \"hover:bg-[var(--surface-hover)]\",\n        \"focus-visible:border-[var(--brand-primary)] focus-visible:shadow-[0_0_0_3px_var(--selected-background)]\",\n        \"data-[state=checked]:border-[var(--brand-primary)] data-[state=checked]:bg-[var(--brand-primary)] data-[state=checked]:[--thumb:var(--brand-on-primary)]\",\n        \"data-[state=checked]:hover:bg-[var(--brand-primary-hover)] data-[state=checked]:hover:[--thumb:var(--brand-on-primary-active)]\",\n        \"data-[state=checked]:active:bg-[var(--brand-primary-pressed)] data-[state=checked]:active:[--thumb:var(--brand-on-primary-active)]\",\n        \"aria-invalid:border-[var(--status-error-border)]\",\n        \"disabled:pointer-events-none disabled:border-[var(--disabled-border)] disabled:bg-[var(--disabled-background)] disabled:[--thumb:var(--disabled-text)]\",\n        \"disabled:data-[state=checked]:border-[var(--disabled-border)] disabled:data-[state=checked]:bg-[var(--disabled-background)] disabled:data-[state=checked]:[--thumb:var(--disabled-text)]\",\n        className\n      )}\n      {...props}\n    >\n      <SwitchPrimitive.Thumb\n        data-slot=\"switch-thumb\"\n        className=\"pointer-events-none block size-4 translate-x-[7px] rounded-full bg-[var(--thumb)] transition-[translate,background-color] duration-150 data-[state=checked]:translate-x-[23px] rtl:-translate-x-[7px] rtl:data-[state=checked]:-translate-x-[23px] motion-reduce:transition-none\"\n      />\n    </SwitchPrimitive.Root>\n  )\n}\n\nexport { Switch }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

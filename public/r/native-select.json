@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select",
+  "title": "Native Select",
+  "description": "Styled native <select>.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json",
+    "http://localhost:3000/r/icons.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/native-select.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { ChevronDownIcon } from \"@/registry/main/ui/icons\"\n\n/*\n * Native Select — Figma \"Native Select\" (136:1957)\n * A real <select> styled like the Select control; best on mobile.\n */\nfunction NativeSelect({\n  className,\n  shape = \"default\",\n  ...props\n}: React.ComponentProps<\"select\"> & { shape?: \"default\" | \"rounded\" }) {\n  return (\n    <div data-slot=\"native-select-wrapper\" className=\"group/native-select relative w-full\">\n      <select\n        data-slot=\"native-select\"\n        className={cn(\n          \"flex h-8 w-full min-w-0 cursor-pointer appearance-none border border-[var(--input-outline)] bg-[var(--input-surface)] ps-[7px] pe-8\",\n          \"font-sans text-base leading-6 text-[var(--input-text)]\",\n          \"transition-[color,background-color,border-color] duration-150 outline-none\",\n          \"hover:border-[var(--input-outline-hover)] hover:bg-[var(--surface-hover)]\",\n          \"focus-visible:border-[var(--input-outline-focus)] focus-visible:bg-[var(--input-surface)]\",\n          \"aria-invalid:border-[var(--status-error-border)]\",\n          \"disabled:cursor-not-allowed disabled:border-[var(--disabled-border)] disabled:bg-[var(--input-surface-disabled)] disabled:text-[var(--disabled-text)]\",\n          shape === \"rounded\" ? \"rounded-[var(--radius-input-pill)] ps-[15px]\" : \"rounded-[var(--radius)]\",\n          className\n        )}\n        {...props}\n      />\n      <ChevronDownIcon className=\"pointer-events-none absolute end-2 top-1/2 size-4 -translate-y-1/2 text-[var(--icon-secondary)] group-has-disabled/native-select:text-[var(--disabled-text)]\" />\n    </div>\n  )\n}\n\nfunction NativeSelectOption(props: React.ComponentProps<\"option\">) {\n  return <option data-slot=\"native-select-option\" {...props} />\n}\n\nexport { NativeSelect, NativeSelectOption }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

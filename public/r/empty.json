@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty",
+  "title": "Empty",
+  "description": "Empty / no-results / error state with recovery action.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/empty.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n/*\n * Empty — Figma \"Empty\" (144:357): first use, filtered no-results and error.\n * 32px padding, 16px gap, centred; 32px icon, SemiBold title, secondary\n * description, explicit recovery action. Don't show while still loading.\n */\nfunction Empty({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"empty\"\n      className={cn(\n        \"flex w-full flex-col items-center gap-4 rounded-[var(--radius)] border border-[var(--border-subtle)] bg-[var(--background)] p-[31px] text-center font-sans text-base leading-6 text-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction EmptyMedia({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div data-slot=\"empty-media\" className={cn(\"flex items-center justify-center [&_svg]:size-8\", className)} {...props} />\n}\n\nfunction EmptyTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div data-slot=\"empty-title\" className={cn(\"font-semibold\", className)} {...props} />\n}\n\nfunction EmptyDescription({ className, ...props }: React.ComponentProps<\"p\">) {\n  return <p data-slot=\"empty-description\" className={cn(\"max-w-[400px] text-[var(--text-secondary)]\", className)} {...props} />\n}\n\nfunction EmptyContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div data-slot=\"empty-content\" className={cn(\"flex flex-wrap justify-center gap-2\", className)} {...props} />\n}\n\nexport { Empty, EmptyContent, EmptyDescription, EmptyMedia, EmptyTitle }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

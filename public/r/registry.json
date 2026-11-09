@@ -1,0 +1,878 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "main-brand",
+  "homepage": "http://localhost:3000",
+  "items": [
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Main Brand theme",
+      "description": "Semantic + Button tokens from the Main Brand Figma file (light/dark), fonts, radii and the `selected` variant.",
+      "cssVars": {
+        "theme": {
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "color-card": "var(--card)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-popover": "var(--popover)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-primary": "var(--primary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-muted": "var(--muted)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-accent": "var(--accent)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-destructive": "var(--destructive)",
+          "color-destructive-foreground": "var(--destructive-foreground)",
+          "color-border": "var(--border)",
+          "color-input": "var(--input)",
+          "color-ring": "var(--ring)",
+          "radius-sm": "calc(var(--radius) - 4px)",
+          "radius-md": "var(--radius)",
+          "radius-lg": "var(--radius)",
+          "radius-xl": "var(--radius-soft)",
+          "font-sans": "var(--font-dm-sans, \"DM Sans\"), ui-sans-serif, system-ui, sans-serif",
+          "font-heading": "var(--font-manrope, \"Manrope\"), var(--font-dm-sans, \"DM Sans\"), sans-serif",
+          "font-button": "var(--font-inter, \"Inter\"), ui-sans-serif, system-ui, sans-serif",
+          "font-mono": "var(--font-roboto-mono, \"Roboto Mono\"), ui-monospace, monospace"
+        },
+        "light": {
+          "brand-primary": "#ff4800",
+          "brand-on-primary": "#150a07",
+          "text-primary": "#1c1c1c",
+          "surface": "#f5f5f5",
+          "surface-elevated": "#ffffff",
+          "surface-hover": "#eeeeee",
+          "muted-background": "#f5f5f5",
+          "status-error-text": "#991b1b",
+          "status-error-background": "#fef2f2",
+          "border-disabled": "#d4d4d4",
+          "background": "#ffffff",
+          "foreground": "var(--text-primary)",
+          "card": "var(--surface-elevated)",
+          "card-foreground": "var(--text-primary)",
+          "popover": "var(--surface-elevated)",
+          "popover-foreground": "var(--text-primary)",
+          "primary": "var(--brand-primary)",
+          "primary-foreground": "var(--brand-on-primary)",
+          "secondary": "var(--surface)",
+          "secondary-foreground": "var(--text-primary)",
+          "muted": "var(--muted-background)",
+          "muted-foreground": "#666666",
+          "accent": "var(--surface-hover)",
+          "accent-foreground": "var(--text-primary)",
+          "destructive": "#b91c1c",
+          "destructive-foreground": "#ffffff",
+          "border": "#d4d4d4",
+          "input": "#767676",
+          "ring": "#b83200",
+          "radius": "8px",
+          "radius-soft": "16px",
+          "stroke": "1px",
+          "effect-outer": "rgb(0 0 0 / 0.08)",
+          "effect-pressed-inner": "rgb(0 0 0 / 0.04)",
+          "text-secondary": "#525252",
+          "icon-secondary": "#525252",
+          "input-surface": "#ffffff",
+          "input-text": "#1c1c1c",
+          "input-placeholder": "#666666",
+          "input-outline": "#929292",
+          "input-outline-hover": "#767676",
+          "input-outline-focus": "#ff4800",
+          "input-surface-disabled": "#f5f5f5",
+          "border-control": "#767676",
+          "disabled-border": "#d4d4d4",
+          "disabled-background": "#e5e5e5",
+          "disabled-text": "#858585",
+          "selected-background": "#e5e5e5",
+          "brand-primary-hover": "#d43b00",
+          "brand-primary-pressed": "#b83200",
+          "brand-on-primary-active": "#ffffff",
+          "radius-input-pill": "9999px",
+          "radius-input-multiline": "24px",
+          "status-error-border": "#b91c1c",
+          "status-error-icon": "#b91c1c",
+          "status-warning-border": "#a16207",
+          "status-warning-icon": "#a16207",
+          "status-warning-text": "#854d0e",
+          "status-success-border": "#15803d",
+          "status-success-icon": "#15803d",
+          "status-success-text": "#166534",
+          "status-info-icon": "#1d4ed8",
+          "status-info-text": "#1e40af",
+          "status-info-border": "#1d4ed8",
+          "status-info-background": "#eff6ff",
+          "status-success-background": "#f0fdf4",
+          "status-warning-background": "#fffbeb",
+          "skeleton": "#e5e5e5",
+          "surface-pressed": "#e5e5e5",
+          "border-subtle": "#d4d4d4",
+          "overlay": "rgb(0 0 0 / 0.64)",
+          "tooltip-background": "#111111",
+          "tooltip-text": "#f5f5f5",
+          "button-focus-color": "#b83200",
+          "button-disabled-background": "#e5e5e5",
+          "button-disabled-text": "#858585",
+          "button-primary-default-background": "#ff4800",
+          "button-primary-hover-background": "#d43b00",
+          "button-primary-pressed-background": "#b83200",
+          "button-primary-selected-background": "#d43b00",
+          "button-primary-default-text": "#150a07",
+          "button-primary-active-text": "#ffffff",
+          "button-neutral-text": "#000000",
+          "button-selected-text": "#b83200",
+          "button-secondary-default-background": "#f5f5f5",
+          "button-secondary-default-border": "#d4d4d4",
+          "button-secondary-hover-background": "#eeeeee",
+          "button-secondary-pressed-background": "#e5e5e5",
+          "button-secondary-selected-background": "#fff4ed",
+          "button-secondary-selected-border": "#b83200",
+          "button-outline-default-border": "#767676",
+          "button-outline-hover-border": "#525252",
+          "button-outline-pressed-border": "#000000",
+          "button-ghost-hover-background": "#f5f5f5",
+          "button-ghost-pressed-background": "#e5e5e5",
+          "button-ghost-selected-background": "#fff4ed",
+          "button-ghost-selected-border": "#b83200",
+          "button-destructive-default-background": "#fef2f2",
+          "button-destructive-default-border": "#b91c1c",
+          "button-destructive-default-text": "#991b1b",
+          "button-destructive-hover-background": "#b91c1c",
+          "button-destructive-pressed-background": "#991b1b",
+          "button-destructive-selected-background": "#b91c1c",
+          "button-destructive-active-text": "#ffffff",
+          "button-link-default-text": "#b83200",
+          "button-link-hover-text": "#8f2900",
+          "button-link-pressed-text": "#702100",
+          "button-link-selected-text": "#b83200"
+        },
+        "dark": {
+          "text-primary": "#f5f5f5",
+          "surface": "#1c1c1c",
+          "surface-elevated": "#262626",
+          "surface-hover": "#333333",
+          "muted-background": "#262626",
+          "status-error-text": "#fecaca",
+          "status-error-background": "#450a0a",
+          "border-disabled": "#404040",
+          "background": "#111111",
+          "foreground": "var(--text-primary)",
+          "card": "var(--surface-elevated)",
+          "card-foreground": "var(--text-primary)",
+          "popover": "var(--surface-elevated)",
+          "popover-foreground": "var(--text-primary)",
+          "secondary": "var(--surface)",
+          "secondary-foreground": "var(--text-primary)",
+          "muted": "var(--muted-background)",
+          "accent": "var(--surface-hover)",
+          "accent-foreground": "var(--text-primary)",
+          "muted-foreground": "#a3a3a3",
+          "destructive": "#dc2626",
+          "border": "#404040",
+          "input": "#8a8a8a",
+          "ring": "#ff753d",
+          "effect-outer": "rgb(0 0 0 / 0.4)",
+          "effect-pressed-inner": "rgb(0 0 0 / 0.3)",
+          "text-secondary": "#b0b0b0",
+          "icon-secondary": "#b0b0b0",
+          "input-surface": "#1c1c1c",
+          "input-text": "#f5f5f5",
+          "input-placeholder": "#a3a3a3",
+          "input-outline": "#707070",
+          "input-outline-hover": "#8a8a8a",
+          "input-surface-disabled": "#262626",
+          "border-control": "#8a8a8a",
+          "disabled-border": "#404040",
+          "disabled-background": "#333333",
+          "selected-background": "#333333",
+          "status-error-border": "#f87171",
+          "status-error-icon": "#f87171",
+          "status-warning-border": "#facc15",
+          "status-warning-icon": "#facc15",
+          "status-warning-text": "#fde68a",
+          "status-success-border": "#4ade80",
+          "status-success-icon": "#4ade80",
+          "status-success-text": "#bbf7d0",
+          "status-info-icon": "#60a5fa",
+          "status-info-text": "#bfdbfe",
+          "status-info-border": "#60a5fa",
+          "status-info-background": "#172554",
+          "status-success-background": "#052e16",
+          "status-warning-background": "#422006",
+          "skeleton": "#333333",
+          "surface-pressed": "#333333",
+          "border-subtle": "#404040",
+          "tooltip-background": "#f5f5f5",
+          "tooltip-text": "#000000",
+          "button-focus-color": "#ff753d",
+          "button-disabled-background": "#262626",
+          "button-disabled-text": "#6b6b6b",
+          "button-neutral-text": "#f5f5f5",
+          "button-selected-text": "#ff753d",
+          "button-secondary-default-background": "#1c1c1c",
+          "button-secondary-default-border": "#404040",
+          "button-secondary-hover-background": "#333333",
+          "button-secondary-pressed-background": "#262626",
+          "button-secondary-selected-background": "#2a1206",
+          "button-secondary-selected-border": "#ff753d",
+          "button-outline-default-border": "#8a8a8a",
+          "button-outline-hover-border": "#a3a3a3",
+          "button-outline-pressed-border": "#f5f5f5",
+          "button-ghost-hover-background": "#262626",
+          "button-ghost-pressed-background": "#333333",
+          "button-ghost-selected-background": "#2a1206",
+          "button-ghost-selected-border": "#ff753d",
+          "button-destructive-default-background": "#450a0a",
+          "button-destructive-default-border": "#f87171",
+          "button-destructive-default-text": "#fecaca",
+          "button-link-default-text": "#ff753d",
+          "button-link-hover-text": "#ff9a6e",
+          "button-link-pressed-text": "#ffbfa3",
+          "button-link-selected-text": "#ff753d"
+        }
+      },
+      "css": {
+        "@custom-variant selected (&:is([aria-pressed=\"true\"], [aria-current=\"page\"], [data-state=\"on\"]):not(:disabled, [aria-disabled=\"true\"]))": {},
+        "@keyframes progress-indeterminate": {
+          "0%": {
+            "transform": "translateX(-100%)"
+          },
+          "100%": {
+            "transform": "translateX(300%)"
+          }
+        }
+      }
+    },
+    {
+      "name": "icons",
+      "type": "registry:ui",
+      "title": "Icons",
+      "description": "Plus, ArrowRight (mirrors in RTL) and Spinner from Figma Icons/*.",
+      "files": [
+        {
+          "path": "registry/main/ui/icons.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Figma Button / Adaptive: 6 variants, 5 states, 5 sizes, 3 corner styles, loading and selected.",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/icons.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Forms label: DM Sans Medium 14/24.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Compact 32px text control with hover, focus, read-only, disabled and validation states.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multiline text control, 120px default height.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Field layout with label, requirement text, description and status messages.",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/label.json",
+        "http://localhost:3000/r/icons.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Checkbox with checked, indeterminate and disabled states in a 48×32 touch target.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/icons.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Radio group with 24px radios in 48×32 touch targets.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "48×32 switch with brand on-state.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Listbox select with Figma option states.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/icons.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "Styled native <select>.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/icons.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Modal Overlay / Panel: title, close, description, content, footer.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/icons.json",
+        "http://localhost:3000/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Modal confirmation with Cancel (outline) and Action (destructive).",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Edge panel (logical start/end, plus top/bottom).",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/icons.json",
+        "http://localhost:3000/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Anchored non-modal surface with Default/Soft/Pill corners.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Inverse text-only tooltip with arrow.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Supplementary preview card on hover/focus.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Action menu with action, destructive, checkbox, radio and submenu items.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/icons.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Right-click action menu sharing the Menu / Item spec.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/icons.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Header/title/description, content and footer; Default/Soft/Pill corners.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "32/48/64px avatar with image, initials fallback and error badge.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/icons.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "1px subtle rule.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Bordered disclosure items with 48px triggers.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/icons.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Single disclosure region.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "Media + title/description + action row; Default/Outline/Muted.",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Keyboard key and shortcut group.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Fixed-ratio media frame.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Info/Success/Warning/Error, Default or Outline.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/icons.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "24px status/category pill in 4 variants.",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "8px determinate or indeterminate progress bar.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Neutral loading placeholder.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "16/24/32px loading indicator.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json",
+        "http://localhost:3000/r/icons.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Empty / no-results / error state with recovery action.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "http://localhost:3000/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "registry/main/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

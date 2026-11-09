@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "title": "Collapsible",
+  "description": "Single disclosure region.",
+  "dependencies": [
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/collapsible.tsx",
+      "content": "\"use client\"\n\nimport { Collapsible as CollapsiblePrimitive } from \"radix-ui\"\n\n/*\n * Collapsible — Figma \"Collapsible\" (142:558)\n * Compose with an outline <Button> trigger + ChevronDownIcon and any content;\n * stack with an 8px gap (see the preview).\n */\nconst Collapsible = CollapsiblePrimitive.Root\nconst CollapsibleTrigger = CollapsiblePrimitive.Trigger\nconst CollapsibleContent = CollapsiblePrimitive.Content\n\nexport { Collapsible, CollapsibleContent, CollapsibleTrigger }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

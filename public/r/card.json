@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "title": "Card",
+  "description": "Header/title/description, content and footer; Default/Soft/Pill corners.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils",
+    "http://localhost:3000/r/theme.json"
+  ],
+  "files": [
+    {
+      "path": "registry/main/ui/card.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n/*\n * Card — Figma \"Card\" (142:433)\n * 16px padding, 24px gap, subtle border, no shadow.\n * Header: SemiBold 16/24 title + Regular 16/24 secondary description, 8px gap.\n * Corner: Default 8 · Soft 16 · Pill (compact custom content only).\n */\nfunction Card({\n  className,\n  corner = \"default\",\n  ...props\n}: React.ComponentProps<\"div\"> & { corner?: \"default\" | \"soft\" | \"pill\" }) {\n  return (\n    <div\n      data-slot=\"card\"\n      className={cn(\n        \"flex flex-col gap-6 border border-[var(--border-subtle)] bg-[var(--surface-elevated)] p-[15px] font-sans text-base leading-6 text-foreground\",\n        corner === \"soft\" ? \"rounded-[var(--radius-soft)]\" : corner === \"pill\" ? \"rounded-full\" : \"rounded-[var(--radius)]\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div data-slot=\"card-header\" className={cn(\"flex flex-col gap-2\", className)} {...props} />\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div data-slot=\"card-title\" className={cn(\"font-semibold text-foreground\", className)} {...props} />\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div data-slot=\"card-description\" className={cn(\"text-[var(--text-secondary)]\", className)} {...props} />\n}\n\nfunction CardAction({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div data-slot=\"card-action\" className={cn(\"ms-auto self-start\", className)} {...props} />\n}\n\nfunction CardContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div data-slot=\"card-content\" className={cn(className)} {...props} />\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div data-slot=\"card-footer\" className={cn(\"flex flex-wrap items-center gap-2\", className)} {...props} />\n}\n\nexport { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
