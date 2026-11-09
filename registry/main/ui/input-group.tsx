@@ -22,7 +22,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="input-group"
       className={cn(
         "relative flex h-8 w-full min-w-0 items-center gap-2 rounded-[var(--radius)] border border-[var(--input-outline)] bg-[var(--input-surface)] px-[15px]",
-        "font-sans text-base leading-6 text-[var(--input-text)]",
+        "font-sans text-base leading-6 md:text-sm md:leading-5 text-[var(--input-text)]",
         "transition-[background-color,border-color] duration-150",
         "hover:border-[var(--input-outline-hover)] hover:bg-[var(--surface-hover)]",
         "has-[[data-slot=input-group-control]:focus]:border-[var(--input-outline-focus)] has-[[data-slot=input-group-control]:focus]:bg-[var(--input-surface)]",
@@ -42,7 +42,7 @@ function InputGroupInput({ className, ...props }: React.ComponentProps<"input">)
     <input
       data-slot="input-group-control"
       className={cn(
-        "h-full min-w-0 flex-1 bg-transparent font-sans text-base leading-6 text-[var(--input-text)] outline-none",
+        "h-full min-w-0 flex-1 bg-transparent font-sans text-base leading-6 md:text-sm md:leading-5 text-[var(--input-text)] outline-none",
         "placeholder:text-[var(--input-placeholder)] disabled:cursor-not-allowed disabled:text-[var(--disabled-text)] disabled:placeholder:text-[var(--disabled-text)]",
         "[&::-webkit-search-cancel-button]:hidden",
         className

@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils"
 const inputVariants = cva(
   [
     "flex h-8 w-full min-w-0 border border-[var(--input-outline)] bg-[var(--input-surface)] px-[7px]",
-    "font-sans text-base leading-6 text-[var(--input-text)] placeholder:text-[var(--input-placeholder)]",
+    "font-sans text-base leading-6 md:text-sm md:leading-5 text-[var(--input-text)] placeholder:text-[var(--input-placeholder)]",
     "transition-[color,background-color,border-color] duration-150 outline-none",
     "hover:border-[var(--input-outline-hover)] hover:bg-[var(--surface-hover)]",
     "focus:border-[var(--input-outline-focus)] focus:bg-[var(--input-surface)]",

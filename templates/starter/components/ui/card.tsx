@@ -17,7 +17,7 @@ function Card({
     <div
       data-slot="card"
       className={cn(
-        "flex flex-col gap-6 border border-[var(--border-subtle)] bg-[var(--surface-elevated)] p-[15px] font-sans text-base leading-6 text-foreground",
+        "flex flex-col gap-6 border border-[var(--border-subtle)] bg-[var(--surface-elevated)] p-[15px] font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground",
         corner === "soft" ? "rounded-[var(--radius-soft)]" : corner === "pill" ? "rounded-full" : "rounded-[var(--radius)]",
         className
       )}

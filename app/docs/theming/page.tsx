@@ -69,6 +69,40 @@ export default function ThemingPage() {
         and <InlineCode>--font-mono</InlineCode> (Roboto Mono).
       </P>
 
+      <H2>Text size</H2>
+      <P>
+        Component text is responsive. Below 768px body text is 16px on a 24px line (so phones don’t zoom into form
+        fields); from 768px it is 14px on a 20px line. Labels and helper text stay 14px and tighten to a 20px line.
+        Buttons keep their own size scale (XS 12 → XXL 20).
+      </P>
+      <div className="overflow-x-auto rounded-[var(--radius)] border border-[var(--border-subtle)]">
+        <table className="w-full text-sm">
+          <thead className="bg-[var(--surface)]">
+            <tr>
+              <th scope="col" className="px-4 py-2 text-start font-medium">Text</th>
+              <th scope="col" className="px-4 py-2 text-start font-medium">Mobile</th>
+              <th scope="col" className="px-4 py-2 text-start font-medium">≥768px</th>
+              <th scope="col" className="px-4 py-2 text-start font-medium">Classes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-t border-[var(--border-subtle)]">
+              <td className="px-4 py-2">Body, values, menu items</td>
+              <td className="px-4 py-2">16 / 24</td>
+              <td className="px-4 py-2">14 / 20</td>
+              <td className="px-4 py-2 font-mono text-[13px]">text-base leading-6 md:text-sm md:leading-5</td>
+            </tr>
+            <tr className="border-t border-[var(--border-subtle)]">
+              <td className="px-4 py-2">Labels, helper, badges</td>
+              <td className="px-4 py-2">14 / 24</td>
+              <td className="px-4 py-2">14 / 20</td>
+              <td className="px-4 py-2 font-mono text-[13px]">text-sm leading-6 md:leading-5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <P>Use the same classes in your own components so they line up with the library.</P>
+
       <H2>Dark mode</H2>
       <P>
         Add the <InlineCode>dark</InlineCode> class to <InlineCode>&lt;html&gt;</InlineCode>. Menus, dialogs and selects render

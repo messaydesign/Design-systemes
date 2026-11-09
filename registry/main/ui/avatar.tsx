@@ -48,7 +48,7 @@ function AvatarFallback({ className, ...props }: React.ComponentProps<typeof Ava
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
       className={cn(
-        "flex size-full items-center justify-center overflow-hidden rounded-full font-sans text-sm leading-6 font-medium text-foreground",
+        "flex size-full items-center justify-center overflow-hidden rounded-full font-sans text-sm leading-6 md:leading-5 font-medium text-foreground",
         "[&_svg]:size-4 group-data-[size=lg]/avatar:[&_svg]:size-8",
         className
       )}

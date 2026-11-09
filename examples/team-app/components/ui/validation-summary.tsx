@@ -14,7 +14,7 @@ import { CheckIcon, InfoIcon, WarningIcon } from "@/components/ui/icons"
  */
 
 const summaryVariants = cva(
-  "flex w-full flex-col gap-2 rounded-[var(--radius)] border p-[15px] font-sans text-sm leading-6 outline-none [&>svg]:size-4",
+  "flex w-full flex-col gap-2 rounded-[var(--radius)] border p-[15px] font-sans text-sm leading-6 md:leading-5 outline-none [&>svg]:size-4",
   {
     variants: {
       status: {

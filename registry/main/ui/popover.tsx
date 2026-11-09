@@ -31,7 +31,7 @@ function PopoverContent({
         sideOffset={sideOffset}
         className={cn(
           "z-50 flex w-[400px] max-w-[calc(100vw-2rem)] flex-col gap-2 p-[15px] outline-none",
-          "border border-[var(--border-subtle)] bg-[var(--surface-elevated)] font-sans text-base leading-6 text-foreground shadow-[0_2px_8px_0_var(--effect-outer)]",
+          "border border-[var(--border-subtle)] bg-[var(--surface-elevated)] font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground shadow-[0_2px_8px_0_var(--effect-outer)]",
           corner === "soft" ? "rounded-[var(--radius-soft)]" : corner === "pill" ? "rounded-full" : "rounded-[var(--radius)]",
           className
         )}

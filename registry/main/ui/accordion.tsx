@@ -32,7 +32,7 @@ function AccordionTrigger({ className, children, ...props }: React.ComponentProp
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "group/accordion flex min-h-12 flex-1 cursor-pointer items-center gap-2 rounded-[var(--radius)] px-4 py-3 text-start font-sans text-base leading-6 font-semibold text-foreground outline-none",
+          "group/accordion flex min-h-12 flex-1 cursor-pointer items-center gap-2 rounded-[var(--radius)] px-4 py-3 text-start font-sans text-base leading-6 md:text-sm md:leading-5 font-semibold text-foreground outline-none",
           "focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[var(--button-focus-color)] disabled:pointer-events-none disabled:text-[var(--disabled-text)]",
           className
         )}
@@ -49,7 +49,7 @@ function AccordionContent({ className, children, ...props }: React.ComponentProp
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      className="overflow-hidden font-sans text-base leading-6 text-foreground"
+      className="overflow-hidden font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground"
       {...props}
     >
       <div className={cn("px-4 pb-4", className)}>{children}</div>

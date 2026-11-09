@@ -13,7 +13,7 @@
   "files": [
     {
       "path": "registry/main/ui/label.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Label as LabelPrimitive } from \"radix-ui\"\n\nimport { cn } from \"@/lib/utils\"\n\n/* Figma \"Brand Typography/Forms/Label\": DM Sans Medium 14/24. */\nfunction Label({ className, ...props }: React.ComponentProps<typeof LabelPrimitive.Root>) {\n  return (\n    <LabelPrimitive.Root\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-2 font-sans text-sm leading-6 font-medium text-foreground select-none\",\n        \"group-data-[disabled=true]/field:text-[var(--disabled-text)] peer-disabled:text-[var(--disabled-text)]\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Label }\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Label as LabelPrimitive } from \"radix-ui\"\n\nimport { cn } from \"@/lib/utils\"\n\n/* Figma \"Brand Typography/Forms/Label\": DM Sans Medium 14/24. */\nfunction Label({ className, ...props }: React.ComponentProps<typeof LabelPrimitive.Root>) {\n  return (\n    <LabelPrimitive.Root\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-2 font-sans text-sm leading-6 md:leading-5 font-medium text-foreground select-none\",\n        \"group-data-[disabled=true]/field:text-[var(--disabled-text)] peer-disabled:text-[var(--disabled-text)]\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Label }\n",
       "type": "registry:ui"
     }
   ],

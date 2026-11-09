@@ -228,7 +228,7 @@ function SidebarGroupLabel({ className, ...props }: React.ComponentProps<"div">)
     <div
       data-slot="sidebar-group-label"
       className={cn(
-        "font-sans text-sm leading-6 font-medium text-foreground",
+        "font-sans text-sm leading-6 md:leading-5 font-medium text-foreground",
         "group-data-[state=collapsed]/sidebar:sr-only",
         className
       )}

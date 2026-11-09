@@ -101,13 +101,13 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
       data-slot="field-description"
-      className={cn("font-sans text-sm leading-6 text-[var(--text-secondary)]", className)}
+      className={cn("font-sans text-sm leading-6 md:leading-5 text-[var(--text-secondary)]", className)}
       {...props}
     />
   )
 }
 
-const messageVariants = cva("flex w-full items-start gap-2 font-sans text-sm leading-6 [&>svg]:mt-1 [&>svg]:size-4", {
+const messageVariants = cva("flex w-full items-start gap-2 font-sans text-sm leading-6 md:leading-5 [&>svg]:mt-1 [&>svg]:size-4 md:[&>svg]:mt-0.5", {
   variants: {
     status: {
       helper: "text-[var(--text-secondary)]",
@@ -193,7 +193,7 @@ function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
       data-slot="field-set"
       className={cn(
         "m-0 flex min-w-0 flex-col gap-2 border-0 p-0",
-        "[&>[data-slot=field-description]]:text-base [&>[data-slot=field-description]]:text-foreground",
+        "[&>[data-slot=field-description]]:text-base [&>[data-slot=field-description]]:text-foreground md:[&>[data-slot=field-description]]:text-sm",
         className
       )}
       {...props}
@@ -207,7 +207,7 @@ function FieldLegend({ className, ...props }: React.ComponentProps<"legend">) {
       data-slot="field-legend"
       // A rendered <legend> sits outside the fieldset's flex flow, so it
       // carries its own 8px gap.
-      className={cn("mb-2 p-0 font-sans text-base leading-6 font-semibold text-foreground", className)}
+      className={cn("mb-2 p-0 font-sans text-base leading-6 md:text-sm md:leading-5 font-semibold text-foreground", className)}
       {...props}
     />
   )
@@ -232,7 +232,7 @@ function FieldCounter({
       data-state={exceeded ? "exceeded" : value === max ? "limit" : "normal"}
       aria-live="polite"
       className={cn(
-        "ms-auto shrink-0 font-sans text-sm leading-6 whitespace-nowrap text-[var(--text-secondary)]",
+        "ms-auto shrink-0 font-sans text-sm leading-6 md:leading-5 whitespace-nowrap text-[var(--text-secondary)]",
         exceeded && "text-[var(--status-error-text)]",
         disabled && "text-[var(--disabled-text)]",
         className

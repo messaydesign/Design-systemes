@@ -57,7 +57,7 @@ function InputOTPSlot({ index, className, ...props }: React.ComponentProps<"div"
       data-active={isActive || undefined}
       className={cn(
         "relative flex h-8 w-10 items-center justify-center rounded-[var(--radius)] border border-[var(--input-outline)] bg-[var(--input-surface)]",
-        "font-sans text-base leading-6 text-[var(--input-text)] transition-[background-color,border-color] duration-150",
+        "font-sans text-base leading-6 md:text-sm md:leading-5 text-[var(--input-text)] transition-[background-color,border-color] duration-150",
         "group-hover/otp:border-[var(--input-outline-hover)] group-hover/otp:bg-[var(--surface-hover)]",
         "data-[active]:border-[var(--input-outline-focus)] data-[active]:bg-[var(--input-surface)]",
         "group-hover/otp:data-[active]:border-[var(--input-outline-focus)] group-hover/otp:data-[active]:bg-[var(--input-surface)]",

@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils"
 
 const navItemClasses = cn(
   "relative flex h-12 w-full min-w-0 cursor-pointer items-center gap-2 rounded-[var(--radius)] px-4",
-  "font-sans text-base leading-6 font-normal text-foreground text-start no-underline outline-none",
+  "font-sans text-base leading-6 md:text-sm md:leading-5 font-normal text-foreground text-start no-underline outline-none",
   "transition-[background-color,color] duration-150",
   "hover:bg-[var(--surface-hover)]",
   "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[var(--button-focus-color)]",

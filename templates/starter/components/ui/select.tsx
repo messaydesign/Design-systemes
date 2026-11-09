@@ -28,7 +28,7 @@ function SelectTrigger({
       data-slot="select-trigger"
       className={cn(
         "group/select flex h-8 w-full min-w-0 cursor-pointer items-center justify-between gap-2 border border-[var(--input-outline)] bg-[var(--input-surface)] px-[7px] text-start",
-        "font-sans text-base leading-6 text-[var(--input-text)] data-[placeholder]:text-[var(--input-placeholder)]",
+        "font-sans text-base leading-6 md:text-sm md:leading-5 text-[var(--input-text)] data-[placeholder]:text-[var(--input-placeholder)]",
         "transition-[color,background-color,border-color] duration-150 outline-none",
         "hover:border-[var(--input-outline-hover)] hover:bg-[var(--surface-hover)]",
         "focus-visible:border-[var(--input-outline-focus)] focus-visible:bg-[var(--input-surface)]",
@@ -80,7 +80,7 @@ function SelectLabel({ className, ...props }: React.ComponentProps<typeof Select
   return (
     <SelectPrimitive.Label
       data-slot="select-label"
-      className={cn("font-sans text-sm leading-6 font-medium text-[var(--text-secondary)]", className)}
+      className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-[var(--text-secondary)]", className)}
       {...props}
     />
   )
@@ -100,7 +100,7 @@ function SelectItem({
       data-slot="select-item"
       className={cn(
         "relative flex h-8 w-full cursor-pointer items-center gap-2 rounded-[var(--radius)] border border-transparent px-[7px] select-none",
-        "font-sans text-base leading-6 text-foreground outline-none transition-colors duration-100",
+        "font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none transition-colors duration-100",
         "data-[highlighted]:bg-[var(--surface-hover)]",
         "data-[state=checked]:bg-[var(--brand-primary)] data-[state=checked]:text-[var(--brand-on-primary)]",
         "data-[state=checked]:data-[highlighted]:bg-[var(--brand-primary-hover)] data-[state=checked]:data-[highlighted]:text-[var(--brand-on-primary-active)]",

@@ -11,7 +11,7 @@ import { CheckIcon, CloseIcon, InfoIcon, WarningIcon } from "@/components/ui/ico
  * description in the status text colour. Icon + title carry meaning, not colour alone.
  */
 const alertVariants = cva(
-  "flex w-full items-start gap-4 rounded-[var(--radius)] border p-[15px] font-sans text-base leading-6 [&>svg]:mt-1 [&>svg]:size-4 [&>svg]:shrink-0",
+  "flex w-full items-start gap-4 rounded-[var(--radius)] border p-[15px] font-sans text-base leading-6 md:text-sm md:leading-5 [&>svg]:mt-1 [&>svg]:size-4 md:[&>svg]:mt-0.5 [&>svg]:shrink-0",
   {
     variants: {
       status: {

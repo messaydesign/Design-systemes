@@ -20,7 +20,7 @@ const panel =
   "z-50 flex w-80 max-w-[calc(100vw-2rem)] flex-col gap-2 overflow-y-auto rounded-[var(--radius)] border border-[var(--border-subtle)] bg-[var(--surface-elevated)] p-[7px] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)] outline-none"
 
 const item =
-  "relative flex h-12 w-full cursor-pointer items-center gap-2 rounded-[var(--radius)] px-4 font-sans text-base leading-6 text-foreground outline-none select-none data-[highlighted]:bg-[var(--surface-hover)] data-[disabled]:pointer-events-none data-[disabled]:text-[var(--disabled-text)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+  "relative flex h-12 w-full cursor-pointer items-center gap-2 rounded-[var(--radius)] px-4 font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none select-none data-[highlighted]:bg-[var(--surface-hover)] data-[disabled]:pointer-events-none data-[disabled]:text-[var(--disabled-text)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
 
 const ContextMenu = ContextMenuPrimitive.Root
 const ContextMenuTrigger = ContextMenuPrimitive.Trigger
@@ -107,7 +107,7 @@ function ContextMenuLabel({ className, ...props }: React.ComponentProps<typeof C
   return (
     <ContextMenuPrimitive.Label
       data-slot="context-menu-label"
-      className={cn("font-sans text-sm leading-6 font-medium text-foreground", className)}
+      className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-foreground", className)}
       {...props}
     />
   )
@@ -130,7 +130,7 @@ function ContextMenuShortcut({ className, ...props }: React.ComponentProps<"span
   return (
     <span
       data-slot="context-menu-shortcut"
-      className={cn("ms-auto font-sans text-sm leading-6 font-medium text-[var(--text-secondary)]", className)}
+      className={cn("ms-auto font-sans text-sm leading-6 md:leading-5 font-medium text-[var(--text-secondary)]", className)}
       {...props}
     />
   )

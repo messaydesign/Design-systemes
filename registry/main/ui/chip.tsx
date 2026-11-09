@@ -28,7 +28,7 @@ function Chip({ className, children, onRemove, removeLabel, disabled, ...props }
       data-disabled={disabled || undefined}
       className={cn(
         "inline-flex h-8 max-w-full items-center gap-2 rounded-[var(--radius)] border border-[var(--border-subtle)] bg-[var(--surface)] px-[7px]",
-        "font-sans text-sm leading-6 font-medium text-foreground transition-[background-color,border-color] duration-150",
+        "font-sans text-sm leading-6 md:leading-5 font-medium text-foreground transition-[background-color,border-color] duration-150",
         "[&:has(button:enabled):hover]:bg-[var(--surface-hover)] has-[button:focus-visible]:border-[var(--brand-primary)]",
         "data-[disabled]:bg-[var(--disabled-background)] data-[disabled]:text-[var(--disabled-text)]",
         className

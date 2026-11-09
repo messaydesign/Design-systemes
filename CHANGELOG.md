@@ -20,6 +20,9 @@ so teams can review them with `npx shadcn@latest add @main/<name> --diff`.
   `navigation-menu`, `sidebar`.
 
 ### Changed
+- Responsive component text: 16px/24px below 768px, 14px/20px from 768px
+  (labels and helper text 14px/24px → 14px/20px). Buttons keep their size
+  scale. — 30 items (all components except **button** and **pagination**)
 - All brand colours are in one `--brand-*` block: added `--brand-strong-hover`
   and `--brand-strong-pressed`; `--button-primary-active-text` and link
   hover/pressed tokens now reference brand tokens. Re-adding the theme only adds

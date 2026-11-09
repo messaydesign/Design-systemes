@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils"
  * Variants: Default · Outline (subtle border) · Muted (muted background).
  */
 const itemVariants = cva(
-  "flex w-full items-center gap-4 rounded-[var(--radius)] border border-transparent p-[15px] font-sans text-base leading-6 text-foreground",
+  "flex w-full items-center gap-4 rounded-[var(--radius)] border border-transparent p-[15px] font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground",
   {
     variants: {
       variant: {

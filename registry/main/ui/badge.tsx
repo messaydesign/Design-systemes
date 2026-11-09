@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
  * Default (brand primary) · Secondary · Outline · Destructive. Non-interactive by default.
  */
 const badgeVariants = cva(
-  "inline-flex h-6 w-fit shrink-0 items-center gap-2 rounded-full border border-transparent px-[7px] font-sans text-sm leading-6 font-medium whitespace-nowrap [&>svg]:size-4 [&>svg]:shrink-0",
+  "inline-flex h-6 w-fit shrink-0 items-center gap-2 rounded-full border border-transparent px-[7px] font-sans text-sm leading-6 md:leading-5 font-medium whitespace-nowrap [&>svg]:size-4 [&>svg]:shrink-0",
   {
     variants: {
       variant: {

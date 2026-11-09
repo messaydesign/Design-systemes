@@ -7,10 +7,10 @@ import { cn } from "@/lib/utils"
 /*
  * Badge — Figma "Badge" (144:220)
  * 24px pill, 8px padding, DM Sans Medium 14/24, optional 16px icon.
- * Default (orange) · Secondary · Outline · Destructive. Non-interactive by default.
+ * Default (brand primary) · Secondary · Outline · Destructive. Non-interactive by default.
  */
 const badgeVariants = cva(
-  "inline-flex h-6 w-fit shrink-0 items-center gap-2 rounded-full border border-transparent px-[7px] font-sans text-sm leading-6 font-medium whitespace-nowrap [&>svg]:size-4 [&>svg]:shrink-0",
+  "inline-flex h-6 w-fit shrink-0 items-center gap-2 rounded-full border border-transparent px-[7px] font-sans text-sm leading-6 md:leading-5 font-medium whitespace-nowrap [&>svg]:size-4 [&>svg]:shrink-0",
   {
     variants: {
       variant: {
