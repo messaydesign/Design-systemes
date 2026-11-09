@@ -75,9 +75,9 @@ export default function ThemingPage() {
         fields); from 768px it is 14px on a 20px line. Labels and helper text stay 14px and tighten to a 20px line.
         Buttons keep their own size scale (XS 12 → XXL 20).
       </P>
-      <div className="overflow-x-auto rounded-[var(--radius)] border border-[var(--border-subtle)]">
+      <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
-          <thead className="bg-[var(--surface)]">
+          <thead className="bg-muted">
             <tr>
               <th scope="col" className="px-4 py-2 text-start font-medium">Text</th>
               <th scope="col" className="px-4 py-2 text-start font-medium">Mobile</th>
@@ -86,13 +86,13 @@ export default function ThemingPage() {
             </tr>
           </thead>
           <tbody>
-            <tr className="border-t border-[var(--border-subtle)]">
+            <tr className="border-t border-border">
               <td className="px-4 py-2">Body, values, menu items</td>
               <td className="px-4 py-2">16 / 24</td>
               <td className="px-4 py-2">14 / 20</td>
               <td className="px-4 py-2 font-mono text-[13px]">text-base leading-6 md:text-sm md:leading-5</td>
             </tr>
-            <tr className="border-t border-[var(--border-subtle)]">
+            <tr className="border-t border-border">
               <td className="px-4 py-2">Labels, helper, badges</td>
               <td className="px-4 py-2">14 / 24</td>
               <td className="px-4 py-2">14 / 20</td>
@@ -118,9 +118,9 @@ export default function ThemingPage() {
           <section key={g.title} className="flex flex-col gap-3">
             <H3>{g.title}</H3>
             {g.note ? <P>{g.note}</P> : null}
-            <div className="overflow-x-auto rounded-[var(--radius)] border border-[var(--border-subtle)]">
+            <div className="overflow-x-auto rounded-lg border border-border">
               <table className="w-full min-w-[560px] text-sm">
-                <thead className="bg-[var(--surface)]">
+                <thead className="bg-muted">
                   <tr>
                     <th scope="col" className="px-4 py-2 text-start font-medium">Token</th>
                     <th scope="col" className="px-4 py-2 text-start font-medium">Light</th>
@@ -129,17 +129,17 @@ export default function ThemingPage() {
                 </thead>
                 <tbody>
                   {rows.map((t) => (
-                    <tr key={t.name} className="border-t border-[var(--border-subtle)]">
+                    <tr key={t.name} className="border-t border-border">
                       <td className="px-4 py-2 font-mono text-[13px]">
                         <span className="flex items-center gap-2">
                           {isColor(t.value) ? (
-                            <span aria-hidden="true" className="size-4 shrink-0 rounded-sm border border-[var(--border-subtle)]" style={{ background: `var(--${t.name})` }} />
+                            <span aria-hidden="true" className="size-4 shrink-0 rounded-sm border border-border" style={{ background: `var(--${t.name})` }} />
                           ) : null}
                           --{t.name}
                         </span>
                       </td>
-                      <td className="px-4 py-2 font-mono text-[13px] text-[var(--text-secondary)]">{t.value}</td>
-                      <td className="px-4 py-2 font-mono text-[13px] text-[var(--text-secondary)]">
+                      <td className="px-4 py-2 font-mono text-[13px] text-muted-foreground">{t.value}</td>
+                      <td className="px-4 py-2 font-mono text-[13px] text-muted-foreground">
                         {t.dark ?? "same"}
                         {t.darkComment?.includes("derived") ? " · derived" : ""}
                       </td>

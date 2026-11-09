@@ -13,13 +13,13 @@ import { cn } from "@/lib/utils"
  * Variants: Default · Outline (subtle border) · Muted (muted background).
  */
 const itemVariants = cva(
-  "flex w-full items-center gap-4 rounded-[var(--radius)] border border-transparent p-[15px] font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground",
+  "flex w-full items-center gap-4 rounded-lg border border-transparent p-[15px] font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground",
   {
     variants: {
       variant: {
         default: "",
-        outline: "border-[var(--border-subtle)]",
-        muted: "bg-[var(--muted-background)]",
+        outline: "border-border",
+        muted: "bg-muted",
       },
     },
     defaultVariants: { variant: "default" },
@@ -60,7 +60,7 @@ function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function ItemDescription({ className, ...props }: React.ComponentProps<"p">) {
-  return <p data-slot="item-description" className={cn("text-[var(--text-secondary)]", className)} {...props} />
+  return <p data-slot="item-description" className={cn("text-muted-foreground", className)} {...props} />
 }
 
 function ItemActions({ className, ...props }: React.ComponentProps<"div">) {

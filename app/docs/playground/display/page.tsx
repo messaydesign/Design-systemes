@@ -7,9 +7,9 @@ export default function DisplayPage() {
   return (
     <div className="flex flex-col gap-12">
       <header className="flex flex-col gap-2">
-        <p className="text-sm text-[var(--text-secondary)]">Playground · all states</p>
+        <p className="text-sm text-muted-foreground">Playground · all states</p>
         <h1 className="font-heading text-4xl font-bold tracking-tight">Content and feedback</h1>
-        <p className="max-w-2xl text-[var(--text-secondary)]">
+        <p className="max-w-2xl text-muted-foreground">
           Card, Item, Avatar, Accordion, Collapsible, Separator, Kbd, Aspect Ratio, Alert, Badge,
           Progress, Skeleton, Spinner and Empty — from Figma pages “06 · Content and layout” and “07 · Feedback”.
         </p>

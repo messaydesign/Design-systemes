@@ -28,7 +28,7 @@ export default function Overview() {
           <CardTitle>Start something new</CardTitle>
           <CardDescription>Create a project and invite your team.</CardDescription>
         </CardHeader>
-        <CardContent className="text-[var(--text-secondary)]">
+        <CardContent className="text-muted-foreground">
           The form validates as you go after the first submit and lists problems at the top.
         </CardContent>
         <CardFooter>

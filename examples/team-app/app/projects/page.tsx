@@ -28,7 +28,7 @@ export default function ProjectsPage() {
       <Suspense fallback={<LoadingRows label="Loading projects" />}>
         <ProjectsList />
       </Suspense>
-      <p className="text-sm text-[var(--text-secondary)]">
+      <p className="text-sm text-muted-foreground">
         Demo states: <Link className="underline" href="/projects?simulate=error">error</Link> ·{" "}
         <Link className="underline" href="/projects?simulate=empty">empty</Link> ·{" "}
         <Link className="underline" href="/projects">normal</Link>

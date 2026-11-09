@@ -27,9 +27,9 @@ function Chip({ className, children, onRemove, removeLabel, disabled, ...props }
       data-slot="chip"
       data-disabled={disabled || undefined}
       className={cn(
-        "inline-flex h-8 max-w-full items-center gap-2 rounded-[var(--radius)] border border-[var(--border-subtle)] bg-[var(--surface)] px-[7px]",
+        "inline-flex h-8 max-w-full items-center gap-2 rounded-lg border border-border bg-muted px-[7px]",
         "font-sans text-sm leading-6 md:leading-5 font-medium text-foreground transition-[background-color,border-color] duration-150",
-        "[&:has(button:enabled):hover]:bg-[var(--surface-hover)] has-[button:focus-visible]:border-[var(--brand-primary)]",
+        "[&:has(button:enabled):hover]:bg-accent has-[button:focus-visible]:border-primary",
         "data-[disabled]:bg-[var(--disabled-background)] data-[disabled]:text-[var(--disabled-text)]",
         className
       )}
@@ -44,7 +44,7 @@ function Chip({ className, children, onRemove, removeLabel, disabled, ...props }
           disabled={disabled}
           onClick={onRemove}
           className={cn(
-            "relative inline-flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-sm text-[var(--text-secondary)] outline-none",
+            "relative inline-flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-sm text-muted-foreground outline-none",
             "after:absolute after:top-1/2 after:left-1/2 after:size-12 after:-translate-x-1/2 after:-translate-y-1/2",
             "disabled:cursor-default disabled:text-[var(--disabled-text)]"
           )}

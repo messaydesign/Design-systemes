@@ -41,11 +41,11 @@ const buttonGroupVariants = cva(
       },
     },
     compoundVariants: [
-      { orientation: "horizontal", corner: "default", className: "[&>*:first-child]:rounded-e-none [&>*:first-child]:rounded-s-[var(--radius)] [&>*:last-child]:rounded-s-none [&>*:last-child]:rounded-e-[var(--radius)]" },
-      { orientation: "horizontal", corner: "soft", className: "[&>*:first-child]:rounded-e-none [&>*:first-child]:rounded-s-[var(--radius-soft)] [&>*:last-child]:rounded-s-none [&>*:last-child]:rounded-e-[var(--radius-soft)]" },
+      { orientation: "horizontal", corner: "default", className: "[&>*:first-child]:rounded-e-none [&>*:first-child]:rounded-s-lg [&>*:last-child]:rounded-s-none [&>*:last-child]:rounded-e-lg" },
+      { orientation: "horizontal", corner: "soft", className: "[&>*:first-child]:rounded-e-none [&>*:first-child]:rounded-s-xl [&>*:last-child]:rounded-s-none [&>*:last-child]:rounded-e-xl" },
       { orientation: "horizontal", corner: "pill", className: "[&>*:first-child]:rounded-e-none [&>*:first-child]:rounded-s-full [&>*:last-child]:rounded-s-none [&>*:last-child]:rounded-e-full" },
-      { orientation: "vertical", corner: "default", className: "[&>*:first-child]:rounded-b-none [&>*:first-child]:rounded-t-[var(--radius)] [&>*:last-child]:rounded-t-none [&>*:last-child]:rounded-b-[var(--radius)]" },
-      { orientation: "vertical", corner: "soft", className: "[&>*:first-child]:rounded-b-none [&>*:first-child]:rounded-t-[var(--radius-soft)] [&>*:last-child]:rounded-t-none [&>*:last-child]:rounded-b-[var(--radius-soft)]" },
+      { orientation: "vertical", corner: "default", className: "[&>*:first-child]:rounded-b-none [&>*:first-child]:rounded-t-lg [&>*:last-child]:rounded-t-none [&>*:last-child]:rounded-b-lg" },
+      { orientation: "vertical", corner: "soft", className: "[&>*:first-child]:rounded-b-none [&>*:first-child]:rounded-t-xl [&>*:last-child]:rounded-t-none [&>*:last-child]:rounded-b-xl" },
       { orientation: "vertical", corner: "pill", className: "[&>*:first-child]:rounded-b-none [&>*:first-child]:rounded-t-[24px] [&>*:last-child]:rounded-t-none [&>*:last-child]:rounded-b-[24px]" },
     ],
     defaultVariants: {

@@ -33,7 +33,7 @@ export default function ContributingPage() {
         components stay in your product.
       </P>
       <H2>Review checklist</H2>
-      <ul className="flex max-w-[70ch] flex-col gap-2 ps-5 leading-7 text-[var(--text-secondary)] [&>li]:list-disc">
+      <ul className="flex max-w-[70ch] flex-col gap-2 ps-5 leading-7 text-muted-foreground [&>li]:list-disc">
         {checklist.map((item) => (
           <li key={item}>{item}</li>
         ))}

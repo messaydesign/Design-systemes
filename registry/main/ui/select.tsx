@@ -27,22 +27,22 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        "group/select flex h-8 w-full min-w-0 cursor-pointer items-center justify-between gap-2 border border-[var(--input-outline)] bg-[var(--input-surface)] px-[7px] text-start",
-        "font-sans text-base leading-6 md:text-sm md:leading-5 text-[var(--input-text)] data-[placeholder]:text-[var(--input-placeholder)]",
+        "group/select flex h-8 w-full min-w-0 cursor-pointer items-center justify-between gap-2 border border-input bg-[var(--input-surface)] px-[7px] text-start",
+        "font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground data-[placeholder]:text-[var(--input-placeholder)]",
         "transition-[color,background-color,border-color] duration-150 outline-none",
-        "hover:border-[var(--input-outline-hover)] hover:bg-[var(--surface-hover)]",
+        "hover:border-[var(--input-outline-hover)] hover:bg-accent",
         "focus-visible:border-[var(--input-outline-focus)] focus-visible:bg-[var(--input-surface)]",
         "data-[state=open]:border-[var(--input-outline-focus)] data-[state=open]:bg-[var(--input-surface)]",
         "aria-invalid:border-[var(--status-error-border)]",
         "disabled:pointer-events-none disabled:border-[var(--disabled-border)] disabled:bg-[var(--input-surface-disabled)] disabled:text-[var(--disabled-text)]",
         "[&>span]:line-clamp-1",
-        shape === "rounded" ? "rounded-[var(--radius-input-pill)] px-[15px]" : "rounded-[var(--radius)]",
+        shape === "rounded" ? "rounded-[var(--radius-input-pill)] px-[15px]" : "rounded-lg",
         className
       )}
       {...props}
     >
       {children}
-      <SelectPrimitive.Icon className="flex shrink-0 text-[var(--icon-secondary)] transition-transform duration-150 group-data-[state=open]/select:rotate-180 group-disabled/select:text-[var(--disabled-text)]">
+      <SelectPrimitive.Icon className="flex shrink-0 text-muted-foreground transition-transform duration-150 group-data-[state=open]/select:rotate-180 group-disabled/select:text-[var(--disabled-text)]">
         <ChevronDownIcon className="size-4" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
@@ -64,7 +64,7 @@ function SelectContent({
         sideOffset={sideOffset}
         className={cn(
           "relative z-50 max-h-(--radix-select-content-available-height) min-w-32 overflow-hidden",
-          "rounded-[var(--radius)] border border-[var(--border-control)] bg-[var(--surface-elevated)] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)]",
+          "rounded-lg border border-[var(--border-control)] bg-popover text-foreground shadow-[0_2px_8px_0_var(--effect-outer)]",
           position === "popper" && "w-full min-w-(--radix-select-trigger-width)",
           className
         )}
@@ -80,7 +80,7 @@ function SelectLabel({ className, ...props }: React.ComponentProps<typeof Select
   return (
     <SelectPrimitive.Label
       data-slot="select-label"
-      className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-[var(--text-secondary)]", className)}
+      className={cn("font-sans text-sm leading-6 md:leading-5 font-medium text-muted-foreground", className)}
       {...props}
     />
   )
@@ -99,11 +99,11 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "relative flex h-8 w-full cursor-pointer items-center gap-2 rounded-[var(--radius)] border border-transparent px-[7px] select-none",
+        "relative flex h-8 w-full cursor-pointer items-center gap-2 rounded-lg border border-transparent px-[7px] select-none",
         "font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none transition-colors duration-100",
-        "data-[highlighted]:bg-[var(--surface-hover)]",
-        "data-[state=checked]:bg-[var(--brand-primary)] data-[state=checked]:text-[var(--brand-on-primary)]",
-        "data-[state=checked]:data-[highlighted]:bg-[var(--brand-primary-hover)] data-[state=checked]:data-[highlighted]:text-[var(--brand-on-primary-active)]",
+        "data-[highlighted]:bg-accent",
+        "data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
+        "data-[state=checked]:data-[highlighted]:bg-primary-hover data-[state=checked]:data-[highlighted]:text-[var(--primary-active-foreground)]",
         "data-[disabled]:pointer-events-none data-[disabled]:bg-[var(--disabled-background)] data-[disabled]:text-[var(--disabled-text)]",
         className
       )}
@@ -123,7 +123,7 @@ function SelectSeparator({ className, ...props }: React.ComponentProps<typeof Se
   return (
     <SelectPrimitive.Separator
       data-slot="select-separator"
-      className={cn("-mx-2 h-px bg-[var(--border)]", className)}
+      className={cn("-mx-2 h-px bg-border", className)}
       {...props}
     />
   )

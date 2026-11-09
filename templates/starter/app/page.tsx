@@ -19,7 +19,7 @@ export default function Home() {
               <CardDescription>Step {i + 1}</CardDescription>
               <CardTitle>{step.title}</CardTitle>
             </CardHeader>
-            <CardContent className="text-[var(--text-secondary)]">{step.text}</CardContent>
+            <CardContent className="text-muted-foreground">{step.text}</CardContent>
           </Card>
         ))}
       </div>

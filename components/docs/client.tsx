@@ -111,7 +111,7 @@ export function PreviewShell({
           data-slot="docs-preview"
           style={{ minHeight }}
           className={cn(
-            "flex w-full flex-wrap gap-4 overflow-x-auto rounded-[var(--radius)] border border-[var(--border-subtle)] bg-background p-6 sm:p-10",
+            "flex w-full flex-wrap gap-4 overflow-x-auto rounded-lg border border-border bg-background p-6 sm:p-10",
             align === "center" ? "items-center justify-center" : "items-start justify-start"
           )}
         >
@@ -130,7 +130,7 @@ export function CodeView({ html, code, className }: { html: string; code: string
   return (
     <div className={cn("relative", className)}>
       <div
-        className="docs-code max-h-[480px] overflow-auto rounded-[var(--radius)] border border-[var(--border-subtle)] bg-[var(--surface)] p-4 text-sm leading-6"
+        className="docs-code max-h-[480px] overflow-auto rounded-lg border border-border bg-muted p-4 text-sm leading-6"
         dangerouslySetInnerHTML={{ __html: html }}
       />
       <CopyButton value={code} className="absolute end-3 top-3" />
@@ -192,7 +192,7 @@ export function TableOfContents() {
             <a
               href={`#${item.id}`}
               aria-current={active === item.id ? "location" : undefined}
-              className="block py-1 text-[var(--text-secondary)] hover:text-foreground aria-[current=location]:font-medium aria-[current=location]:text-[var(--button-selected-text)]"
+              className="block py-1 text-muted-foreground hover:text-foreground aria-[current=location]:font-medium aria-[current=location]:text-[var(--button-selected-text)]"
             >
               {item.text}
             </a>

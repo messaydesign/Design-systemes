@@ -63,8 +63,8 @@ function SheetContent({
         data-close={showCloseButton}
         className={cn(
           "group/dialog fixed z-50 flex flex-col gap-4 overflow-y-auto",
-          "border border-[var(--border-subtle)] bg-[var(--surface-elevated)] p-[23px] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)] outline-none",
-          corner === "soft" ? "rounded-[var(--radius-soft)]" : "rounded-[var(--radius)]",
+          "border border-border bg-popover p-[23px] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)] outline-none",
+          corner === "soft" ? "rounded-xl" : "rounded-lg",
           sideClasses[side],
           className
         )}

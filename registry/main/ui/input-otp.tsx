@@ -56,9 +56,9 @@ function InputOTPSlot({ index, className, ...props }: React.ComponentProps<"div"
       data-slot="input-otp-slot"
       data-active={isActive || undefined}
       className={cn(
-        "relative flex h-8 w-10 items-center justify-center rounded-[var(--radius)] border border-[var(--input-outline)] bg-[var(--input-surface)]",
-        "font-sans text-base leading-6 md:text-sm md:leading-5 text-[var(--input-text)] transition-[background-color,border-color] duration-150",
-        "group-hover/otp:border-[var(--input-outline-hover)] group-hover/otp:bg-[var(--surface-hover)]",
+        "relative flex h-8 w-10 items-center justify-center rounded-lg border border-input bg-[var(--input-surface)]",
+        "font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground transition-[background-color,border-color] duration-150",
+        "group-hover/otp:border-[var(--input-outline-hover)] group-hover/otp:bg-accent",
         "data-[active]:border-[var(--input-outline-focus)] data-[active]:bg-[var(--input-surface)]",
         "group-hover/otp:data-[active]:border-[var(--input-outline-focus)] group-hover/otp:data-[active]:bg-[var(--input-surface)]",
         "group-has-[[aria-invalid=true]]/otp:border-[var(--status-error-border)]",
@@ -70,7 +70,7 @@ function InputOTPSlot({ index, className, ...props }: React.ComponentProps<"div"
       {char}
       {hasFakeCaret && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="h-4 w-px animate-pulse bg-[var(--input-text)] motion-reduce:animate-none" />
+          <div className="h-4 w-px animate-pulse bg-foreground motion-reduce:animate-none" />
         </div>
       )}
     </div>
@@ -79,7 +79,7 @@ function InputOTPSlot({ index, className, ...props }: React.ComponentProps<"div"
 
 function InputOTPSeparator(props: React.ComponentProps<"div">) {
   return (
-    <div data-slot="input-otp-separator" role="separator" className="text-[var(--text-secondary)]" {...props}>
+    <div data-slot="input-otp-separator" role="separator" className="text-muted-foreground" {...props}>
       <MinusIcon className="size-4" />
     </div>
   )

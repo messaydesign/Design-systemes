@@ -108,7 +108,7 @@ function Toggles() {
     <div className="flex flex-col gap-4">
       {(["default", "outline"] as const).map((variant) => (
         <div key={variant} className="flex items-center gap-6">
-          <span className="w-20 text-sm text-[var(--text-secondary)]">{variant}</span>
+          <span className="w-20 text-sm text-muted-foreground">{variant}</span>
           <Toggle variant={variant} aria-label="Add to favourites" className="group/toggle">
             <ToggleIcon />
           </Toggle>

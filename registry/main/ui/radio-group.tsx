@@ -29,13 +29,13 @@ function RadioGroupItem({ className, ...props }: React.ComponentProps<typeof Rad
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
       className={cn(
-        "peer group/radio relative inline-flex h-8 w-12 shrink-0 cursor-pointer items-center justify-center rounded-[var(--radius)] outline-none",
+        "peer group/radio relative inline-flex h-8 w-12 shrink-0 cursor-pointer items-center justify-center rounded-lg outline-none",
         "[--rb-bg:var(--input-surface)] [--rb-border:var(--border-control)] [--rb-dot:var(--brand-on-primary)]",
         "hover:[--rb-bg:var(--surface-hover)]",
         "focus-visible:bg-[var(--selected-background)] focus-visible:[--rb-border:var(--brand-primary)]",
         "data-[state=checked]:[--rb-bg:var(--brand-primary)] data-[state=checked]:[--rb-border:var(--brand-primary)]",
-        "data-[state=checked]:hover:[--rb-bg:var(--brand-primary-hover)] data-[state=checked]:hover:[--rb-dot:var(--brand-on-primary-active)]",
-        "data-[state=checked]:active:[--rb-bg:var(--brand-primary-pressed)] data-[state=checked]:active:[--rb-dot:var(--brand-on-primary-active)]",
+        "data-[state=checked]:hover:[--rb-bg:var(--brand-primary-hover)] data-[state=checked]:hover:[--rb-dot:var(--primary-active-foreground)]",
+        "data-[state=checked]:active:[--rb-bg:var(--brand-primary-pressed)] data-[state=checked]:active:[--rb-dot:var(--primary-active-foreground)]",
         "aria-invalid:[--rb-border:var(--status-error-border)]",
         "disabled:pointer-events-none disabled:[--rb-bg:var(--disabled-background)] disabled:[--rb-border:var(--disabled-border)] disabled:[--rb-dot:var(--disabled-text)]",
         "disabled:data-[state=checked]:[--rb-bg:var(--disabled-background)] disabled:data-[state=checked]:[--rb-border:var(--disabled-border)]",

@@ -29,8 +29,8 @@ const SplitButtonContext = React.createContext<SplitButtonContextValue>({
   disabled: false,
 })
 
-const startCorner = { default: "rounded-s-[var(--radius)]", soft: "rounded-s-[var(--radius-soft)]", pill: "rounded-s-full" }
-const endCorner = { default: "rounded-e-[var(--radius)]", soft: "rounded-e-[var(--radius-soft)]", pill: "rounded-e-full" }
+const startCorner = { default: "rounded-s-lg", soft: "rounded-s-xl", pill: "rounded-s-full" }
+const endCorner = { default: "rounded-e-lg", soft: "rounded-e-xl", pill: "rounded-e-full" }
 
 function SplitButton({
   className,
@@ -77,7 +77,7 @@ function SplitButtonTrigger({
       size="icon"
       aria-label={ariaLabel}
       disabled={disabled || loading}
-      className={cn("rounded-none border-s-[var(--brand-on-primary)]", endCorner[corner], className)}
+      className={cn("rounded-none border-s-primary-foreground", endCorner[corner], className)}
       {...props}
     >
       {children ?? <ChevronDownIcon />}

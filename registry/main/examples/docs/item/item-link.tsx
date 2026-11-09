@@ -6,7 +6,7 @@ export default function ItemAsLink() {
     <Item
       asChild
       variant="outline"
-      className="max-w-md hover:bg-[var(--surface-hover)] focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[var(--button-focus-color)]"
+      className="max-w-md hover:bg-accent focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-ring"
     >
       <a href="#item-as-link">
         <ItemMedia>

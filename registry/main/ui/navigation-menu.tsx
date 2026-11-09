@@ -77,7 +77,7 @@ function NavigationMenuContent({
       data-slot="navigation-menu-content"
       className={cn(
         "absolute start-0 top-full z-50 mt-2 flex w-max flex-col gap-2",
-        "rounded-[var(--radius)] border border-[var(--border-subtle)] bg-[var(--surface-elevated)] p-[15px] text-foreground",
+        "rounded-lg border border-border bg-popover p-[15px] text-foreground",
         "[&_[data-slot=navigation-menu-link]]:w-60",
         className
       )}

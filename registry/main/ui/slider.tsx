@@ -51,7 +51,7 @@ function Slider({
       >
         <SliderPrimitive.Range
           data-slot="slider-range"
-          className="absolute rounded-full bg-[var(--brand-primary)] data-[disabled]:bg-[var(--disabled-text)] data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
+          className="absolute rounded-full bg-primary data-[disabled]:bg-[var(--disabled-text)] data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
         />
       </SliderPrimitive.Track>
       {values.map((_, index) => (
@@ -60,9 +60,9 @@ function Slider({
           data-slot="slider-thumb"
           aria-label={thumbLabels?.[index]}
           className={cn(
-            "relative block size-6 shrink-0 cursor-grab rounded-full border border-[var(--input-outline)] bg-[var(--input-surface)] outline-none active:cursor-grabbing",
+            "relative block size-6 shrink-0 cursor-grab rounded-full border border-input bg-[var(--input-surface)] outline-none active:cursor-grabbing",
             "after:absolute after:top-1/2 after:left-1/2 after:size-12 after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full",
-            "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[var(--button-focus-color)]",
+            "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ring",
             "data-[disabled]:border-[var(--disabled-border)]"
           )}
         />

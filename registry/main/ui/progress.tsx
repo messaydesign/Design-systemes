@@ -23,7 +23,7 @@ function Progress({ className, value, ...props }: React.ComponentProps<typeof Pr
       <ProgressPrimitive.Indicator
         data-slot="progress-indicator"
         className={cn(
-          "h-full rounded-full bg-[var(--brand-primary)] transition-[width] duration-300 motion-reduce:transition-none",
+          "h-full rounded-full bg-primary transition-[width] duration-300 motion-reduce:transition-none",
           indeterminate && "w-1/3 motion-safe:animate-[progress-indeterminate_1.4s_ease-in-out_infinite]"
         )}
         style={indeterminate ? undefined : { width: `${Math.min(100, Math.max(0, value ?? 0))}%` }}

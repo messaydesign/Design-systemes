@@ -51,7 +51,7 @@ export default function AvatarPage() {
       <H2>Customization</H2>
       <P>
         Background uses <InlineCode>--muted-background</InlineCode>. For a square avatar, pass{" "}
-        <InlineCode>className=&quot;rounded-[var(--radius)]&quot;</InlineCode> to Avatar, AvatarImage and AvatarFallback.
+        <InlineCode>className=&quot;rounded-lg&quot;</InlineCode> to Avatar, AvatarImage and AvatarFallback.
       </P>
 
       <H2>API reference</H2>

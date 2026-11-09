@@ -106,11 +106,11 @@ function TabsDemo({ variant, orientation }: { variant: "line" | "pill"; orientat
       </TabsContent>
       <TabsContent value="password">
         <p className="font-semibold">Password</p>
-        <p className="text-[var(--text-secondary)]">Change your password here.</p>
+        <p className="text-muted-foreground">Change your password here.</p>
       </TabsContent>
       <TabsContent value="security">
         <p className="font-semibold">Security</p>
-        <p className="text-[var(--text-secondary)]">Two-step verification and sessions.</p>
+        <p className="text-muted-foreground">Two-step verification and sessions.</p>
       </TabsContent>
     </Tabs>
   )
@@ -355,7 +355,7 @@ function SidebarDemo() {
           <SidebarTrigger variant="outline" />
         </div>
         <p className="font-semibold">{current}</p>
-        <p className="text-[var(--text-secondary)]">
+        <p className="text-muted-foreground">
           Collapse the sidebar with its button or ⌘B / Ctrl+B. Below 768px it opens as a Sheet.
         </p>
       </SidebarInset>

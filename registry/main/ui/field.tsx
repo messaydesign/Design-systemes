@@ -91,7 +91,7 @@ function FieldLabel({
     <Label data-slot="field-label" className={cn("w-full justify-between", className)} {...props}>
       <span>{children}</span>
       {requirement ? (
-        <span className="text-sm font-normal text-[var(--text-secondary)]">{requirement}</span>
+        <span className="text-sm font-normal text-muted-foreground">{requirement}</span>
       ) : null}
     </Label>
   )
@@ -101,7 +101,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
       data-slot="field-description"
-      className={cn("font-sans text-sm leading-6 md:leading-5 text-[var(--text-secondary)]", className)}
+      className={cn("font-sans text-sm leading-6 md:leading-5 text-muted-foreground", className)}
       {...props}
     />
   )
@@ -110,7 +110,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
 const messageVariants = cva("flex w-full items-start gap-2 font-sans text-sm leading-6 md:leading-5 [&>svg]:mt-1 [&>svg]:size-4 md:[&>svg]:mt-0.5", {
   variants: {
     status: {
-      helper: "text-[var(--text-secondary)]",
+      helper: "text-muted-foreground",
       info: "text-[var(--status-info-text)] [&>svg]:text-[var(--status-info-icon)]",
       success: "text-[var(--status-success-text)] [&>svg]:text-[var(--status-success-icon)]",
       warning: "text-[var(--status-warning-text)] [&>svg]:text-[var(--status-warning-icon)]",
@@ -232,7 +232,7 @@ function FieldCounter({
       data-state={exceeded ? "exceeded" : value === max ? "limit" : "normal"}
       aria-live="polite"
       className={cn(
-        "ms-auto shrink-0 font-sans text-sm leading-6 md:leading-5 whitespace-nowrap text-[var(--text-secondary)]",
+        "ms-auto shrink-0 font-sans text-sm leading-6 md:leading-5 whitespace-nowrap text-muted-foreground",
         exceeded && "text-[var(--status-error-text)]",
         disabled && "text-[var(--disabled-text)]",
         className

@@ -38,8 +38,8 @@ function AlertDialogContent({
         data-slot="alert-dialog-content"
         className={cn(
           "fixed top-1/2 left-1/2 z-50 flex max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-[480px] -translate-x-1/2 -translate-y-1/2 flex-col gap-4 overflow-y-auto",
-          "border border-[var(--border-subtle)] bg-[var(--surface-elevated)] p-[23px] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)] outline-none",
-          corner === "soft" ? "rounded-[var(--radius-soft)]" : "rounded-[var(--radius)]",
+          "border border-border bg-popover p-[23px] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)] outline-none",
+          corner === "soft" ? "rounded-xl" : "rounded-lg",
           className
         )}
         {...props}

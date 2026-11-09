@@ -23,7 +23,7 @@ export default function DialogScroll() {
         </DialogHeader>
         <div className="-mx-2 max-h-64 overflow-y-auto px-2" tabIndex={0} aria-label="Terms text">
           {Array.from({ length: 8 }, (_, i) => (
-            <p key={i} className="mb-4 leading-7 text-[var(--text-secondary)]">
+            <p key={i} className="mb-4 leading-7 text-muted-foreground">
               Section {i + 1}. Long content scrolls inside the dialog body, so the title and the actions stay visible.
               The scrolling region is focusable so keyboard users can scroll it too.
             </p>

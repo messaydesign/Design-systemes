@@ -38,9 +38,9 @@ export default function CoveragePage() {
       {GROUPS.map((group) => (
         <section key={group} className="flex flex-col gap-3">
           <H2>{group}</H2>
-          <div className="overflow-x-auto rounded-[var(--radius)] border border-[var(--border-subtle)]">
+          <div className="overflow-x-auto rounded-lg border border-border">
             <table className="w-full min-w-[900px] text-sm">
-              <thead className="bg-[var(--surface)]">
+              <thead className="bg-muted">
                 <tr>
                   {["Component", "Status", "Code", "Props", "Variants and states", "Doc sections", "Missing"].map((h) => (
                     <th key={h} scope="col" className="px-3 py-2 text-start align-bottom font-medium">{h}</th>
@@ -49,23 +49,23 @@ export default function CoveragePage() {
               </thead>
               <tbody>
                 {INVENTORY.filter((i) => i.group === group).map((item) => (
-                  <tr key={item.slug} className="border-t border-[var(--border-subtle)] align-top">
+                  <tr key={item.slug} className="border-t border-border align-top">
                     <th scope="row" className="px-3 py-2 text-start font-medium">
                       {item.status === "documented" ? (
                         <Link className="underline" href={`/docs/components/${item.slug}`}>{item.name}</Link>
                       ) : (
                         item.name
                       )}
-                      <a className="mt-1 block text-xs font-normal text-[var(--text-secondary)] underline" href={figmaUrl(item.figma)} target="_blank" rel="noreferrer">
+                      <a className="mt-1 block text-xs font-normal text-muted-foreground underline" href={figmaUrl(item.figma)} target="_blank" rel="noreferrer">
                         Figma
                       </a>
                     </th>
                     <td className="px-3 py-2"><Badge variant={statusVariant[item.status]}>{statusLabel[item.status]}</Badge></td>
                     <td className="px-3 py-2 font-mono text-xs">{item.code.join(", ") || "—"}</td>
-                    <td className="px-3 py-2 text-[var(--text-secondary)]">{item.props}</td>
-                    <td className="px-3 py-2 text-[var(--text-secondary)]">{item.examples}</td>
-                    <td className="px-3 py-2 text-xs text-[var(--text-secondary)]">{sectionsFor(item).join(" · ")}</td>
-                    <td className="px-3 py-2 text-[var(--text-secondary)]">{item.missing ?? "—"}</td>
+                    <td className="px-3 py-2 text-muted-foreground">{item.props}</td>
+                    <td className="px-3 py-2 text-muted-foreground">{item.examples}</td>
+                    <td className="px-3 py-2 text-xs text-muted-foreground">{sectionsFor(item).join(" · ")}</td>
+                    <td className="px-3 py-2 text-muted-foreground">{item.missing ?? "—"}</td>
                   </tr>
                 ))}
               </tbody>

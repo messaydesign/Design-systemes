@@ -21,10 +21,10 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
       role="group"
       data-slot="input-group"
       className={cn(
-        "relative flex h-8 w-full min-w-0 items-center gap-2 rounded-[var(--radius)] border border-[var(--input-outline)] bg-[var(--input-surface)] px-[15px]",
-        "font-sans text-base leading-6 md:text-sm md:leading-5 text-[var(--input-text)]",
+        "relative flex h-8 w-full min-w-0 items-center gap-2 rounded-lg border border-input bg-[var(--input-surface)] px-[15px]",
+        "font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground",
         "transition-[background-color,border-color] duration-150",
-        "hover:border-[var(--input-outline-hover)] hover:bg-[var(--surface-hover)]",
+        "hover:border-[var(--input-outline-hover)] hover:bg-accent",
         "has-[[data-slot=input-group-control]:focus]:border-[var(--input-outline-focus)] has-[[data-slot=input-group-control]:focus]:bg-[var(--input-surface)]",
         "has-[[aria-invalid=true]]:border-[var(--status-error-border)]",
         "data-[validation=warning]:border-[var(--status-warning-border)] data-[validation=success]:border-[var(--status-success-border)]",
@@ -42,7 +42,7 @@ function InputGroupInput({ className, ...props }: React.ComponentProps<"input">)
     <input
       data-slot="input-group-control"
       className={cn(
-        "h-full min-w-0 flex-1 bg-transparent font-sans text-base leading-6 md:text-sm md:leading-5 text-[var(--input-text)] outline-none",
+        "h-full min-w-0 flex-1 bg-transparent font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none",
         "placeholder:text-[var(--input-placeholder)] disabled:cursor-not-allowed disabled:text-[var(--disabled-text)] disabled:placeholder:text-[var(--disabled-text)]",
         "[&::-webkit-search-cancel-button]:hidden",
         className
@@ -71,7 +71,7 @@ function InputGroupButton({ className, size = "icon-xs", variant = "ghost", ...p
       size={size}
       variant={variant}
       // Figma centres the 32px face in a 48px-wide wrapper.
-      className={cn("mx-2 text-[var(--input-text)]", className)}
+      className={cn("mx-2 text-foreground", className)}
       {...props}
     />
   )

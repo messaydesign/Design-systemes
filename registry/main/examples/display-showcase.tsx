@@ -65,7 +65,7 @@ function Content() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">Item · Default / Outline / Muted</h3>
+        <h3 className="text-sm font-medium text-muted-foreground">Item · Default / Outline / Muted</h3>
         <ProjectItem />
         <ProjectItem variant="outline" />
         <ProjectItem variant="muted" />
@@ -126,7 +126,7 @@ function Content() {
           ["3 / 4", 3 / 4],
         ].map(([label, ratio]) => (
           <AspectRatio key={label as string} ratio={ratio as number}>
-            <div className="flex size-full items-center justify-center rounded-[var(--radius)] bg-[var(--muted-background)] text-sm text-[var(--text-secondary)]">
+            <div className="flex size-full items-center justify-center rounded-lg bg-muted text-sm text-muted-foreground">
               {label}
             </div>
           </AspectRatio>
@@ -179,12 +179,12 @@ function Feedback() {
         {[0, 25, 50, 75, 100].map((v) => (
           <div key={v} className="flex flex-col gap-2">
             <Progress value={v} aria-label={`${v}% complete`} />
-            <span className="text-sm text-[var(--text-secondary)]">{v}%</span>
+            <span className="text-sm text-muted-foreground">{v}%</span>
           </div>
         ))}
         <div className="flex flex-col gap-2">
           <Progress value={null} aria-label="Loading" />
-          <span className="text-sm text-[var(--text-secondary)]">Loading…</span>
+          <span className="text-sm text-muted-foreground">Loading…</span>
         </div>
       </div>
 

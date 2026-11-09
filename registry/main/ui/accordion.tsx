@@ -20,7 +20,7 @@ function AccordionItem({ className, ...props }: React.ComponentProps<typeof Acco
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn("rounded-[var(--radius)] border border-[var(--border-subtle)]", className)}
+      className={cn("rounded-lg border border-border", className)}
       {...props}
     />
   )
@@ -32,8 +32,8 @@ function AccordionTrigger({ className, children, ...props }: React.ComponentProp
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "group/accordion flex min-h-12 flex-1 cursor-pointer items-center gap-2 rounded-[var(--radius)] px-4 py-3 text-start font-sans text-base leading-6 md:text-sm md:leading-5 font-semibold text-foreground outline-none",
-          "focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[var(--button-focus-color)] disabled:pointer-events-none disabled:text-[var(--disabled-text)]",
+          "group/accordion flex min-h-12 flex-1 cursor-pointer items-center gap-2 rounded-lg px-4 py-3 text-start font-sans text-base leading-6 md:text-sm md:leading-5 font-semibold text-foreground outline-none",
+          "focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:text-[var(--disabled-text)]",
           className
         )}
         {...props}

@@ -115,7 +115,7 @@ function SidebarProvider({
 }
 
 const panelClasses =
-  "flex flex-col gap-4 rounded-[var(--radius)] border border-[var(--border-subtle)] bg-[var(--surface)] p-[15px] text-foreground"
+  "flex flex-col gap-4 rounded-lg border border-border bg-muted p-[15px] text-foreground"
 
 function Sidebar({
   className,
@@ -297,7 +297,7 @@ function SidebarMenuButton({
           aria-hidden="true"
           className={cn(
             "pointer-events-none invisible absolute start-[calc(100%+8px)] top-1/2 z-50 -translate-y-1/2 opacity-0",
-            "rounded-[var(--radius)] bg-[var(--tooltip-background)] p-2 font-sans text-xs leading-4 whitespace-nowrap text-[var(--tooltip-text)]",
+            "rounded-lg bg-[var(--tooltip-background)] p-2 font-sans text-xs leading-4 whitespace-nowrap text-[var(--tooltip-text)]",
             "transition-opacity duration-150 peer-hover/menu-button:visible peer-hover/menu-button:opacity-100",
             "peer-focus-visible/menu-button:visible peer-focus-visible/menu-button:opacity-100"
           )}

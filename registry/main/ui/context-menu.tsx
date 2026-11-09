@@ -17,10 +17,10 @@ import { CheckIcon, ChevronRightIcon } from "@/registry/main/ui/icons"
  */
 
 const panel =
-  "z-50 flex w-80 max-w-[calc(100vw-2rem)] flex-col gap-2 overflow-y-auto rounded-[var(--radius)] border border-[var(--border-subtle)] bg-[var(--surface-elevated)] p-[7px] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)] outline-none"
+  "z-50 flex w-80 max-w-[calc(100vw-2rem)] flex-col gap-2 overflow-y-auto rounded-lg border border-border bg-popover p-[7px] text-foreground shadow-[0_2px_8px_0_var(--effect-outer)] outline-none"
 
 const item =
-  "relative flex h-12 w-full cursor-pointer items-center gap-2 rounded-[var(--radius)] px-4 font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none select-none data-[highlighted]:bg-[var(--surface-hover)] data-[disabled]:pointer-events-none data-[disabled]:text-[var(--disabled-text)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+  "relative flex h-12 w-full cursor-pointer items-center gap-2 rounded-lg px-4 font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground outline-none select-none data-[highlighted]:bg-accent data-[disabled]:pointer-events-none data-[disabled]:text-[var(--disabled-text)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
 
 const ContextMenu = ContextMenuPrimitive.Root
 const ContextMenuTrigger = ContextMenuPrimitive.Trigger
@@ -120,7 +120,7 @@ function ContextMenuSeparator({
   return (
     <ContextMenuPrimitive.Separator
       data-slot="context-menu-separator"
-      className={cn("-mx-2 h-px bg-[var(--border-subtle)]", className)}
+      className={cn("-mx-2 h-px bg-border", className)}
       {...props}
     />
   )
@@ -130,7 +130,7 @@ function ContextMenuShortcut({ className, ...props }: React.ComponentProps<"span
   return (
     <span
       data-slot="context-menu-shortcut"
-      className={cn("ms-auto font-sans text-sm leading-6 md:leading-5 font-medium text-[var(--text-secondary)]", className)}
+      className={cn("ms-auto font-sans text-sm leading-6 md:leading-5 font-medium text-muted-foreground", className)}
       {...props}
     />
   )
@@ -144,7 +144,7 @@ function ContextMenuSubTrigger({
   return (
     <ContextMenuPrimitive.SubTrigger
       data-slot="context-menu-sub-trigger"
-      className={cn(item, "data-[state=open]:bg-[var(--surface-hover)]", className)}
+      className={cn(item, "data-[state=open]:bg-accent", className)}
       {...props}
     >
       {children}

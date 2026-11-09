@@ -41,7 +41,7 @@ function BreadcrumbLink({ asChild, className, ...props }: React.ComponentProps<"
       className={cn(
         "rounded-[2px] text-foreground underline decoration-from-font underline-offset-auto",
         "hover:text-[var(--button-selected-text)]",
-        "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[var(--button-focus-color)]",
+        "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ring",
         className
       )}
       {...props}
@@ -88,7 +88,7 @@ function BreadcrumbEllipsis({
       type="button"
       data-slot="breadcrumb-ellipsis"
       aria-label={ariaLabel}
-      className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "rounded-[var(--radius)] text-base", className)}
+      className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "rounded-lg text-base", className)}
       {...props}
     >
       <span aria-hidden="true">…</span>

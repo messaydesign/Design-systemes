@@ -33,11 +33,11 @@ export function H3({ children, id }: { children: string; id?: string }) {
 }
 
 export function P({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <p className={cn("max-w-[70ch] leading-7 text-[var(--text-secondary)]", className)}>{children}</p>
+  return <p className={cn("max-w-[70ch] leading-7 text-muted-foreground", className)}>{children}</p>
 }
 
 export function InlineCode({ children }: { children: React.ReactNode }) {
-  return <code className="rounded-sm bg-[var(--surface)] px-1.5 py-0.5 font-mono text-[0.875em] text-foreground">{children}</code>
+  return <code className="rounded-sm bg-muted px-1.5 py-0.5 font-mono text-[0.875em] text-foreground">{children}</code>
 }
 
 /* ---------- Page header ---------- */
@@ -55,9 +55,9 @@ export function DocHeader({
   const item = slug ? bySlug(slug) : undefined
   return (
     <header className="flex flex-col gap-4">
-      {item ? <p className="text-sm text-[var(--text-secondary)]">{item.group}</p> : null}
+      {item ? <p className="text-sm text-muted-foreground">{item.group}</p> : null}
       <h1 className="font-heading text-4xl font-bold tracking-tight">{title}</h1>
-      <p className="max-w-[70ch] text-lg leading-7 text-[var(--text-secondary)]">{description}</p>
+      <p className="max-w-[70ch] text-lg leading-7 text-muted-foreground">{description}</p>
       {item ? (
         <div className="flex flex-wrap items-center gap-2">
           <Button asChild size="sm" variant="secondary">
@@ -178,10 +178,10 @@ export type PropRow = { name: string; type: string; default?: string; descriptio
 
 export function PropsTable({ rows, caption }: { rows: PropRow[]; caption?: string }) {
   return (
-    <div className="overflow-x-auto rounded-[var(--radius)] border border-[var(--border-subtle)]">
+    <div className="overflow-x-auto rounded-lg border border-border">
       <table className="w-full min-w-[560px] border-collapse text-sm">
         {caption ? <caption className="sr-only">{caption}</caption> : null}
-        <thead className="bg-[var(--surface)] text-start">
+        <thead className="bg-muted text-start">
           <tr>
             <th scope="col" className="px-4 py-3 text-start font-medium">Prop</th>
             <th scope="col" className="px-4 py-3 text-start font-medium">Type</th>
@@ -191,10 +191,10 @@ export function PropsTable({ rows, caption }: { rows: PropRow[]; caption?: strin
         </thead>
         <tbody>
           {rows.map((row) => (
-            <tr key={row.name} className="border-t border-[var(--border-subtle)] align-top">
+            <tr key={row.name} className="border-t border-border align-top">
               <td className="px-4 py-3 font-mono text-[13px]">{row.name}</td>
-              <td className="px-4 py-3 font-mono text-[13px] text-[var(--text-secondary)]">{row.type}</td>
-              <td className="px-4 py-3 font-mono text-[13px] text-[var(--text-secondary)]">{row.default ?? "—"}</td>
+              <td className="px-4 py-3 font-mono text-[13px] text-muted-foreground">{row.type}</td>
+              <td className="px-4 py-3 font-mono text-[13px] text-muted-foreground">{row.default ?? "—"}</td>
               <td className="px-4 py-3 leading-6">{row.description}</td>
             </tr>
           ))}
@@ -219,10 +219,10 @@ export function Callout({
   return (
     <div
       className={cn(
-        "flex gap-3 rounded-[var(--radius)] border p-[15px] text-sm leading-6",
+        "flex gap-3 rounded-lg border p-[15px] text-sm leading-6",
         tone === "info" && "border-[var(--status-info-border)] bg-[var(--status-info-background)] text-[var(--status-info-text)]",
         tone === "warning" && "border-[var(--status-warning-border)] bg-[var(--status-warning-background)] text-[var(--status-warning-text)]",
-        tone === "missing" && "border-dashed border-[var(--border-control)] bg-[var(--surface)] text-[var(--text-secondary)]"
+        tone === "missing" && "border-dashed border-[var(--border-control)] bg-muted text-muted-foreground"
       )}
     >
       <Icon className="mt-1 size-4 shrink-0" />
@@ -237,7 +237,7 @@ export function Callout({
 /** Bulleted accessibility notes. */
 export function A11yList({ items }: { items: React.ReactNode[] }) {
   return (
-    <ul className="flex max-w-[70ch] flex-col gap-2 ps-5 leading-7 text-[var(--text-secondary)] [&>li]:list-disc">
+    <ul className="flex max-w-[70ch] flex-col gap-2 ps-5 leading-7 text-muted-foreground [&>li]:list-disc">
       {items.map((item, i) => (
         <li key={i}>{item}</li>
       ))}

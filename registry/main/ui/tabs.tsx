@@ -60,13 +60,13 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
       data-slot="tabs-trigger"
       data-variant={variant}
       className={cn(
-        "relative inline-flex h-12 shrink-0 cursor-pointer items-center gap-2 rounded-[var(--radius)] px-4 whitespace-nowrap",
+        "relative inline-flex h-12 shrink-0 cursor-pointer items-center gap-2 rounded-lg px-4 whitespace-nowrap",
         "font-sans text-base leading-6 md:text-sm md:leading-5 font-normal text-foreground outline-none",
         "transition-[background-color,color] duration-150",
-        "hover:bg-[var(--surface-hover)]",
-        "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[var(--button-focus-color)]",
+        "hover:bg-accent",
+        "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ring",
         "data-[state=active]:font-semibold data-[state=active]:text-[var(--button-selected-text)]",
-        "data-[variant=line]:data-[state=active]:border-b-2 data-[variant=line]:data-[state=active]:border-[var(--brand-primary)]",
+        "data-[variant=line]:data-[state=active]:border-b-2 data-[variant=line]:data-[state=active]:border-primary",
         "data-[variant=pill]:data-[state=active]:bg-[var(--button-ghost-selected-background)] data-[variant=pill]:data-[state=active]:hover:bg-[var(--button-ghost-selected-background)]",
         "disabled:pointer-events-none disabled:text-[var(--disabled-text)] disabled:data-[state=active]:text-[var(--disabled-text)]",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
@@ -82,8 +82,8 @@ function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPr
     <TabsPrimitive.Content
       data-slot="tabs-content"
       className={cn(
-        "flex min-w-0 flex-1 flex-col gap-2 rounded-[var(--radius)] outline-none",
-        "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[var(--button-focus-color)]",
+        "flex min-w-0 flex-1 flex-col gap-2 rounded-lg outline-none",
+        "focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ring",
         className
       )}
       {...props}

@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-12">
       <header className="flex flex-col gap-2">
-        <p className="text-sm text-[var(--text-secondary)]">Playground · all states</p>
+        <p className="text-sm text-muted-foreground">Playground · all states</p>
         <h1 className="font-heading text-4xl font-bold tracking-tight">Button</h1>
-        <p className="max-w-2xl text-[var(--text-secondary)]">
+        <p className="max-w-2xl text-muted-foreground">
           Built from Figma “Button / Adaptive” — six variants, five states,
           five sizes, three corner styles, loading and focus. Install with{" "}
           <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">

@@ -34,8 +34,8 @@ const toggleVariants = cva(
         ],
       },
       corner: {
-        default: "rounded-[var(--radius)]",
-        soft: "rounded-[var(--radius-soft)]",
+        default: "rounded-lg",
+        soft: "rounded-xl",
         pill: "rounded-full",
       },
     },

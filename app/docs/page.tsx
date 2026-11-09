@@ -25,8 +25,8 @@ export default function DocsHome() {
       />
       <div className="grid gap-4 sm:grid-cols-2">
         {steps.map((s) => (
-          <Link key={s.href} href={s.href} className="group rounded-[var(--radius)] outline-offset-2 focus-visible:outline focus-visible:outline-[var(--button-focus-color)]">
-            <Card className="h-full transition-colors group-hover:bg-[var(--surface-hover)]">
+          <Link key={s.href} href={s.href} className="group rounded-lg outline-offset-2 focus-visible:outline focus-visible:outline-ring">
+            <Card className="h-full transition-colors group-hover:bg-accent">
               <CardHeader>
                 <CardTitle>{s.title}</CardTitle>
                 <CardDescription>{s.text}</CardDescription>

@@ -17,19 +17,19 @@ function NativeSelect({
       <select
         data-slot="native-select"
         className={cn(
-          "flex h-8 w-full min-w-0 cursor-pointer appearance-none border border-[var(--input-outline)] bg-[var(--input-surface)] ps-[7px] pe-8",
-          "font-sans text-base leading-6 md:text-sm md:leading-5 text-[var(--input-text)]",
+          "flex h-8 w-full min-w-0 cursor-pointer appearance-none border border-input bg-[var(--input-surface)] ps-[7px] pe-8",
+          "font-sans text-base leading-6 md:text-sm md:leading-5 text-foreground",
           "transition-[color,background-color,border-color] duration-150 outline-none",
-          "hover:border-[var(--input-outline-hover)] hover:bg-[var(--surface-hover)]",
+          "hover:border-[var(--input-outline-hover)] hover:bg-accent",
           "focus-visible:border-[var(--input-outline-focus)] focus-visible:bg-[var(--input-surface)]",
           "aria-invalid:border-[var(--status-error-border)]",
           "disabled:cursor-not-allowed disabled:border-[var(--disabled-border)] disabled:bg-[var(--input-surface-disabled)] disabled:text-[var(--disabled-text)]",
-          shape === "rounded" ? "rounded-[var(--radius-input-pill)] ps-[15px]" : "rounded-[var(--radius)]",
+          shape === "rounded" ? "rounded-[var(--radius-input-pill)] ps-[15px]" : "rounded-lg",
           className
         )}
         {...props}
       />
-      <ChevronDownIcon className="pointer-events-none absolute end-2 top-1/2 size-4 -translate-y-1/2 text-[var(--icon-secondary)] group-has-disabled/native-select:text-[var(--disabled-text)]" />
+      <ChevronDownIcon className="pointer-events-none absolute end-2 top-1/2 size-4 -translate-y-1/2 text-muted-foreground group-has-disabled/native-select:text-[var(--disabled-text)]" />
     </div>
   )
 }

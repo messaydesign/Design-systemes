@@ -41,7 +41,7 @@ function TooltipContent({
         data-slot="tooltip-content"
         sideOffset={sideOffset}
         className={cn(
-          "z-50 max-w-[208px] rounded-[var(--radius)] bg-[var(--tooltip-background)] p-2",
+          "z-50 max-w-[208px] rounded-lg bg-[var(--tooltip-background)] p-2",
           "font-sans text-xs leading-4 text-[var(--tooltip-text)]",
           className
         )}

@@ -181,7 +181,7 @@ function Floating() {
         </PopoverTrigger>
         <PopoverContent>
           <p className="font-semibold">Dimensions</p>
-          <p className="text-[var(--text-secondary)]">Set the width for this layer.</p>
+          <p className="text-muted-foreground">Set the width for this layer.</p>
           <Field>
             <FieldLabel htmlFor="pop-width">Width</FieldLabel>
             <FieldControl>
@@ -214,7 +214,7 @@ function Floating() {
           </a>
         </HoverCardTrigger>
         <HoverCardContent>
-          <div className="flex size-12 items-center justify-center rounded-full bg-[var(--muted-background)] text-sm font-medium">
+          <div className="flex size-12 items-center justify-center rounded-full bg-muted text-sm font-medium">
             MM
           </div>
           <p className="font-semibold">Messay M.</p>
@@ -298,7 +298,7 @@ function Menus() {
       </DropdownMenu>
 
       <ContextMenu>
-        <ContextMenuTrigger className="flex h-40 w-full max-w-[480px] items-center justify-center rounded-[var(--radius)] border border-dashed border-[var(--border-control)] text-sm text-[var(--text-secondary)]">
+        <ContextMenuTrigger className="flex h-40 w-full max-w-[480px] items-center justify-center rounded-lg border border-dashed border-[var(--border-control)] text-sm text-muted-foreground">
           Right-click here
         </ContextMenuTrigger>
         <ContextMenuContent>

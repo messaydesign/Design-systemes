@@ -104,7 +104,7 @@ function Choices() {
   return (
     <div className={grid}>
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">Checkbox</h3>
+        <h3 className="text-sm font-medium text-muted-foreground">Checkbox</h3>
         {[
           ["cb-1", "Option label", false, false],
           ["cb-2", "Checked", true, false],
@@ -127,7 +127,7 @@ function Choices() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">Radio group</h3>
+        <h3 className="text-sm font-medium text-muted-foreground">Radio group</h3>
         <RadioGroup defaultValue="design" aria-label="Discipline">
           {[
             ["design", "Product design", false],
@@ -146,7 +146,7 @@ function Choices() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">Switch</h3>
+        <h3 className="text-sm font-medium text-muted-foreground">Switch</h3>
         {[
           ["sw-1", "Enable notifications", false, false],
           ["sw-2", "Weekly digest", true, false],

@@ -34,7 +34,7 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <div className="flex flex-col gap-6">
       <section className="flex flex-col gap-1">
-        <h2 className="px-4 text-xs font-semibold tracking-wide text-[var(--text-secondary)] uppercase">Get started</h2>
+        <h2 className="px-4 text-xs font-semibold tracking-wide text-muted-foreground uppercase">Get started</h2>
         {GUIDES.map((g) => (
           <NavItem key={g.href} asChild isActive={pathname === g.href} className={compact}>
             <Link href={g.href} onClick={onNavigate}>
@@ -44,7 +44,7 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
         ))}
       </section>
       <section className="flex flex-col gap-1">
-        <h2 className="px-4 text-xs font-semibold tracking-wide text-[var(--text-secondary)] uppercase">
+        <h2 className="px-4 text-xs font-semibold tracking-wide text-muted-foreground uppercase">
           Playground · all states
         </h2>
         {PLAYGROUND.map((p) => (
@@ -60,7 +60,7 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
         if (!items.length) return null
         return (
           <section key={group} className="flex flex-col gap-1">
-            <h2 className="px-4 text-xs font-semibold tracking-wide text-[var(--text-secondary)] uppercase">{group}</h2>
+            <h2 className="px-4 text-xs font-semibold tracking-wide text-muted-foreground uppercase">{group}</h2>
             {items.map((item) =>
               item.status === "documented" ? (
                 <NavItem

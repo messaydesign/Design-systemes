@@ -20,53 +20,77 @@
 @custom-variant selected (&:is([aria-pressed="true"], [aria-current="page"], [data-state="on"]):not(:disabled, [aria-disabled="true"]));
 
 :root {
-  /* ── Foundations / Light (Figma variables) ── */
-  /* ── Brand — edit these to rebrand (and the matching .dark values) ── */
-  --brand-primary: #ff4800;           /* primary fill */
-  --brand-primary-hover: #d43b00;
-  --brand-primary-pressed: #b83200;
-  --brand-on-primary: #150a07;        /* text on the primary fill */
-  --brand-on-primary-active: #ffffff; /* text on hover/pressed fill */
-  /* Brand text, strokes and focus on surfaces (Figma button focus/selected colour). */
-  --brand-strong: #b83200;
-  /* Brand tint behind selected items. */
-  --brand-subtle: #fff4ed;
-  --brand-strong-hover: #8f2900;      /* link hover */
-  --brand-strong-pressed: #702100;    /* link pressed */
-  /* ── End of brand tokens ── */
-  --text-primary: #1c1c1c;
-  --surface: #f5f5f5;
-  --surface-elevated: #ffffff;
-  --surface-hover: #eeeeee;
-  --muted-background: #f5f5f5;
+  /* ── Theme: shadcn tokens. Edit these to rebrand (and the matching .dark values). ── */
+  --radius: 8px; /* Figma Corner Default */
+  --background: #ffffff;
+  --foreground: #1c1c1c;
+  --card: #ffffff;
+  --card-foreground: #1c1c1c;
+  --popover: #ffffff;
+  --popover-foreground: #1c1c1c;
+  --primary: #ff4800;
+  --primary-foreground: #150a07;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #1c1c1c;
+  --muted: #f5f5f5;
+  --muted-foreground: #525252;
+  --accent: #eeeeee;
+  --accent-foreground: #1c1c1c;
+  --destructive: #b91c1c;
+  --destructive-foreground: #ffffff;
+  --border: #d4d4d4;
+  --input: #929292;
+  --ring: var(--primary-strong);
+  --chart-1: #ff4800; /* derived from the Figma palette */
+  --chart-2: #1d4ed8; /* derived */
+  --chart-3: #15803d; /* derived */
+  --chart-4: #a16207; /* derived */
+  --chart-5: #525252; /* derived */
+  --sidebar: #f5f5f5;
+  --sidebar-foreground: #1c1c1c;
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: #eeeeee;
+  --sidebar-accent-foreground: #1c1c1c;
+  --sidebar-border: #d4d4d4;
+  --sidebar-ring: var(--ring);
+
+  /* ── Brand extensions (no shadcn equivalent) ── */
+  --primary-hover: #d43b00;
+  --primary-active: #b83200;            /* pressed fill */
+  --primary-active-foreground: #ffffff; /* text on hover/pressed fill */
+  --primary-strong: #b83200;            /* brand text, borders and focus on surfaces */
+  --primary-strong-hover: #8f2900;      /* link hover */
+  --primary-strong-active: #702100;     /* link pressed */
+  --primary-subtle: #fff4ed;            /* tint behind selected items */
+  --radius-soft: 16px; /* Figma Corner Soft */
+
+  /* ── Foundations (Figma-only) ── */
   --status-error-text: #991b1b;
   --status-error-background: #fef2f2;
   --border-disabled: #d4d4d4;
 
-  /* ── shadcn semantic names ── */
-  --background: #ffffff;
-  --foreground: var(--text-primary);
-  --card: var(--surface-elevated);
-  --card-foreground: var(--text-primary);
-  --popover: var(--surface-elevated);
-  --popover-foreground: var(--text-primary);
-  --primary: var(--brand-primary);
-  --primary-foreground: var(--brand-on-primary);
-  --secondary: var(--surface);
-  --secondary-foreground: var(--text-primary);
-  --muted: var(--muted-background);
-  --muted-foreground: #666666;
-  --accent: var(--surface-hover);
-  --accent-foreground: var(--text-primary);
-  --destructive: #b91c1c;
-  --destructive-foreground: #ffffff;
-  --border: #d4d4d4;
-  --input: #767676;
-  --ring: var(--brand-strong); /* --button-focus-color */
+  /* ── Figma variable names → theme tokens (kept for Figma parity) ── */
+  --brand-primary: var(--primary);
+  --brand-primary-hover: var(--primary-hover);
+  --brand-primary-pressed: var(--primary-active);
+  --brand-on-primary: var(--primary-foreground);
+  --brand-on-primary-active: var(--primary-active-foreground);
+  --brand-strong: var(--primary-strong);
+  --brand-strong-hover: var(--primary-strong-hover);
+  --brand-strong-pressed: var(--primary-strong-active);
+  --brand-subtle: var(--primary-subtle);
+  --text-primary: var(--foreground);
+  --text-secondary: var(--muted-foreground);
+  --surface: var(--secondary);
+  --surface-elevated: var(--card);
+  --surface-hover: var(--accent);
+  --muted-background: var(--muted);
+  --border-subtle: var(--border);
+  --input-outline: var(--input);
+  --button-focus-color: var(--ring);
 
   /* ── Geometry ── */
-  --radius: 8px; /* Corner Default */
-  --radius-soft: 16px; /* Corner Soft */
   --stroke: 1px;
 
   /* ── Elevation ── */
@@ -74,12 +98,10 @@
   --effect-pressed-inner: rgb(0 0 0 / 0.04); /* inset 0 1 2 -1 */
 
   /* ── Form tokens (Figma "Inputs / Compact 32px / Light", 303:5025) ── */
-  --text-secondary: #525252;
   --icon-secondary: #525252;
   --input-surface: #ffffff;
   --input-text: #1c1c1c;
   --input-placeholder: #666666;
-  --input-outline: #929292;
   --input-outline-hover: #767676;
   --input-outline-focus: var(--brand-primary);
   --input-surface-disabled: #f5f5f5;
@@ -111,13 +133,11 @@
   --surface-pressed: #e5e5e5;
 
   /* ── Overlay tokens (Figma "05 · Overlays and menus") ── */
-  --border-subtle: #d4d4d4;
   --overlay: rgb(0 0 0 / 0.64);
   --tooltip-background: #111111;
   --tooltip-text: #f5f5f5;
 
   /* ── Button tokens (Figma variables, light) ── */
-  --button-focus-color: var(--brand-strong);
   --button-disabled-background: #e5e5e5;
   --button-disabled-text: #858585;
 
@@ -162,48 +182,76 @@
 }
 
 .dark {
-  /* ── Foundations / Dark (Figma variables) ── */
-  --text-primary: #f5f5f5;
-  --surface: #1c1c1c;
-  --surface-elevated: #262626;
-  --surface-hover: #333333;
-  --muted-background: #262626;
+  /* ── Theme: shadcn tokens, dark ── */
+  --background: #111111;
+  --foreground: #f5f5f5;
+  --card: #262626;
+  --card-foreground: #f5f5f5;
+  --popover: #262626;
+  --popover-foreground: #f5f5f5;
+  --secondary: #1c1c1c;
+  --secondary-foreground: #f5f5f5;
+  --muted: #262626;
+  --muted-foreground: #b0b0b0;
+  --accent: #333333;
+  --accent-foreground: #f5f5f5;
+  --destructive: #dc2626; /* derived */
+  --border: #404040; /* derived */
+  --input: #707070;
+  --ring: var(--primary-strong);
+  --chart-1: #ff753d; /* derived */
+  --chart-2: #60a5fa; /* derived */
+  --chart-3: #4ade80; /* derived */
+  --chart-4: #facc15; /* derived */
+  --chart-5: #b0b0b0; /* derived */
+  --sidebar: #1c1c1c;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: #333333;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-border: #404040;
+  --sidebar-ring: var(--ring);
+
+  /* ── Brand extensions, dark ── */
+  --primary-strong: #ff753d;
+  --primary-strong-hover: #ff9a6e;
+  --primary-strong-active: #ffbfa3;
+  --primary-subtle: #2a1206;
+
+  /* ── Foundations (Figma-only), dark ── */
   --status-error-text: #fecaca;
   --status-error-background: #450a0a;
   --border-disabled: #404040; /* Figma --disabled-border */
 
-  --background: #111111;
-  /* Aliases resolve where declared, so re-point them at the dark values. */
-  --foreground: var(--text-primary);
-  --card: var(--surface-elevated);
-  --card-foreground: var(--text-primary);
-  --popover: var(--surface-elevated);
-  --popover-foreground: var(--text-primary);
-  --secondary: var(--surface);
-  --secondary-foreground: var(--text-primary);
-  --muted: var(--muted-background);
-  --accent: var(--surface-hover);
-  --accent-foreground: var(--text-primary);
-  --muted-foreground: #a3a3a3;
-  --destructive: #dc2626; /* derived */
-  --border: #404040; /* derived */
-  --input: #8a8a8a; /* derived */
-  --brand-strong: #ff753d;
-  --brand-subtle: #2a1206;
-  --brand-strong-hover: #ff9a6e;
-  --brand-strong-pressed: #ffbfa3;
-  --ring: var(--brand-strong); /* --button-focus-color (Figma) */
+  /* ── Figma variable names → theme tokens (kept for Figma parity) ── */
+  --brand-primary: var(--primary);
+  --brand-primary-hover: var(--primary-hover);
+  --brand-primary-pressed: var(--primary-active);
+  --brand-on-primary: var(--primary-foreground);
+  --brand-on-primary-active: var(--primary-active-foreground);
+  --brand-strong: var(--primary-strong);
+  --brand-strong-hover: var(--primary-strong-hover);
+  --brand-strong-pressed: var(--primary-strong-active);
+  --brand-subtle: var(--primary-subtle);
+  --text-primary: var(--foreground);
+  --text-secondary: var(--muted-foreground);
+  --surface: var(--secondary);
+  --surface-elevated: var(--card);
+  --surface-hover: var(--accent);
+  --muted-background: var(--muted);
+  --border-subtle: var(--border);
+  --input-outline: var(--input);
+  --button-focus-color: var(--ring);
 
   --effect-outer: rgb(0 0 0 / 0.4); /* derived */
   --effect-pressed-inner: rgb(0 0 0 / 0.3); /* derived */
 
   /* ── Form tokens (Figma "Inputs / Compact 32px / Dark", 303:5442) ── */
-  --text-secondary: #b0b0b0;
   --icon-secondary: #b0b0b0;
   --input-surface: #1c1c1c;
   --input-text: #f5f5f5;
   --input-placeholder: #a3a3a3;
-  --input-outline: #707070;
   --input-outline-hover: #8a8a8a; /* derived */
   --input-surface-disabled: #262626;
   --border-control: #8a8a8a; /* derived */
@@ -230,12 +278,10 @@
   --surface-pressed: #333333;
 
   /* ── Overlay tokens, dark (Figma) ── */
-  --border-subtle: #404040;
   --tooltip-background: #f5f5f5;
   --tooltip-text: #000000;
 
   /* ── Button tokens, dark ── primary family from Figma; rest derived */
-  --button-focus-color: var(--brand-strong);
   --button-disabled-background: #262626;
   --button-disabled-text: #6b6b6b;
 
@@ -288,6 +334,23 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-subtle: var(--primary-subtle);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: var(--radius);

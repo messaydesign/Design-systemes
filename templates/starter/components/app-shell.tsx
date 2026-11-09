@@ -56,7 +56,7 @@ export function AppShell({ appName, children }: { appName: string; children: Rea
         </SidebarContent>
       </Sidebar>
       <SidebarInset className="flex min-h-svh flex-col md:min-h-0">
-        <header className="flex h-16 items-center gap-2 border-b border-[var(--border-subtle)] px-4 md:rounded-[var(--radius)] md:border">
+        <header className="flex h-16 items-center gap-2 border-b border-border px-4 md:rounded-lg md:border">
           <div className="md:hidden">
             <SidebarTrigger variant="outline" size="sm" />
           </div>
